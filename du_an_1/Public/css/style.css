@@ -5,6 +5,20 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Common */
+.bg__main-color {
+    background-color: #A435F0 !important;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.active__list-item {
+    background-color: #b9b9b9;
+}
+
+
 /* header */
 #header{
     height: 4rem;
