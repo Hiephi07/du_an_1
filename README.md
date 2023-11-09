@@ -67,7 +67,14 @@ https://www.youtube.com/watch?v=eNEgqCIFPQ8&list=PLWTu87GngvNwRxrFZ_wbxfvHHed14H
 
 - Cấu trúc thư mục dự án: 
 
-- Quy tắc đặt tên class, thư mục file: 
+- Quy tắc đặt tên class, thư mục file:
+
+- Quy tắc Commit : 
++ thêm file: "add ten_file"
++ sửa tên file: "rename ten_file_ban_dau"
++ xóa file: "delete ten_file"
++ thêm, sửa, xóa chức năng trong file: "add/fix/delete chuc_nang"
++ Ví dụ sửa chức năng Login password phải có tối thiểu 8 kí tự: "fix Login_password_min_8_character"
 
 *<video poster="pathImg" src="movie.mp4" type="video/mp4">*
 
