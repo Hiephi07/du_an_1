@@ -98,7 +98,6 @@
 }
 
 /* header */
-
 .w-1400{
     max-width: 1400px;
 }
@@ -106,3 +105,40 @@
 .card{
     border: none !important;
 }
+
+
+
+/* Responsive */
+@media (min-width: 480px) {
+    #avatar-img, #btn__upload-avatar {
+        width: 50% !important;
+    }
+}
+
+@media (min-width: 576px) {
+    
+}
+
+@media (min-width: 768px) {
+    
+}
+
+@media (min-width: 992px) {
+    #avatar-img, #btn__upload-avatar{
+        width: 100% !important;
+    }
+
+    #account__side-bar {
+        height: 600px;
+    }   
+}
+
+@media (min-width: 1200px) {
+    
+}
+
+
+@media (min-width: 1400px) {
+
+}
+

@@ -28,50 +28,50 @@
             <div class="login dropdown">
                 <i class="fa-regular fa-circle-user fa-xl p-3" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
                 <!-- Dropdown box -->
-                <div class="dropdown-menu p-0 rounded-0 " style="top: 30px;">
+                <div class="dropdown-menu p-0 rounded-0" style="top: 30px">
                     <div class="card">
                         <div class="card-body p-0">
                             <div class="d-flex bg-body-secondary p-3">
                                 <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="../Public/images/avatar.png" width="40px" alt="">
+                                    <img class="rounded-circle" src="../Public/images/avatar.png" width="40px" alt="" />
                                 </div>
                                 <div class="ps-3">
                                     <h5 class="mb-1">Nam Nguyễn</h5>
-                                    <p class="mb-0 " style="font-size: 14px;">namnguyen@gmail.com</p>
+                                    <p class="mb-0" style="font-size: 14px">namnguyen@gmail.com</p>
                                 </div>
                             </div>
                             <div class="list-group">
-                        <a href="taikhoan.html" class="list-group-item list-group-item-action rounded-0 border-0 p-2 " aria-current="true">
-                            <div class="d-inline-block text-end me-2" style="width: 25px;">
-                                <i class="fa-solid fa-video"></i>
+                                <a href="taikhoan.html" class="list-group-item list-group-item-action rounded-0 border-0 p-2" aria-current="true">
+                                    <div class="d-inline-block text-end me-2" style="width: 25px">
+                                        <i class="fa-solid fa-video"></i>
+                                    </div>
+                                    <span>Khóa học của tôi</span>
+                                </a>
+                                <a href="baomattaikhoan.html" class="list-group-item list-group-item-action border-0 p-2">
+                                    <div class="d-inline-block text-end me-2" style="width: 25px">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                    </div>
+                                    <span>Giỏ hàng</span>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action border-0 p-2">
+                                    <div class="d-inline-block text-end me-2" style="width: 25px">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </div>
+                                    <span>Chỉnh sửa hồ sơ</span>
+                                </a>
+                                <a href="historypayment.html" class="list-group-item list-group-item-action rounded-0 border-0 p-2">
+                                    <div class="d-inline-block text-end me-2" style="width: 25px">
+                                        <i class="fa-solid fa-clock-rotate-left"></i>
+                                    </div>
+                                    <span>Lịch sử thanh toán</span>
+                                </a>
+                                <a href="historypayment.html" class="list-group-item list-group-item-action rounded-0 border-0 p-2">
+                                    <div class="d-inline-block text-end me-2" style="width: 25px">
+                                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                    </div>
+                                    <span>Đăng xuất</span>
+                                </a>
                             </div>
-                            <span>Khóa học của tôi</span>
-                        </a>
-                        <a href="baomattaikhoan.html" class="list-group-item list-group-item-action border-0 p-2">
-                            <div class="d-inline-block text-end me-2" style="width: 25px;">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                            </div>
-                            <span>Giỏ hàng</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action border-0 p-2">
-                            <div class="d-inline-block text-end me-2" style="width: 25px;">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </div>
-                            <span>Chỉnh sửa hồ sơ</span>
-                        </a>
-                        <a href="historypayment.html" class="list-group-item list-group-item-action rounded-0 border-0 p-2">
-                            <div class="d-inline-block text-end me-2" style="width: 25px;">
-                                <i class="fa-solid fa-clock-rotate-left"></i>
-                            </div>
-                            <span>Lịch sử thanh toán</span>
-                        </a>
-                        <a href="historypayment.html" class="list-group-item list-group-item-action rounded-0 border-0 p-2">
-                            <div class="d-inline-block text-end me-2" style="width: 25px;">
-                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                            </div>
-                            <span>Đăng xuất</span>
-                        </a>
-                    </div>
                         </div>
                     </div>
                 </div>
@@ -84,16 +84,18 @@
         <div class="container-fluid w-1400 my-5" id="profile">
             <div class="row px-3">
                 <!-- Profile: Sidebar -->
-                <div class="col-3 border border-secondary py-3 px-0 rounded-1" style="height: 600px">
-                    <div class="d-flex px-3 mb-4">
-                        <img class="rounded-2" src="../Public/images/avatar.png" alt="" width="100px" />
-                        <div class="p-3">
+                <div class="col-lg-3 col-12 border border-secondary px-0 rounded-1" id="account__side-bar">
+                    <div class="d-flex px-3 pt-3 mb-4">
+                        <div>
+                            <img class="rounded-2" src="../Public/images/avatar.png" alt="" style="max-width: 80px;" />
+                        </div>
+                        <div class="px-3 align-self-center ">
                             <span>Tài khoản của</span>
-                            <span class="d-block fw-bold fs-4">Nam Nguyễn</span>
+                            <span class="d-block fw-bold fs-5">Nam Nguyễn</span>
                         </div>
                     </div>
                     <div class="list-group">
-                        <a href="taikhoan.html" class="list-group-item list-group-item-action border-start-0 border-end-0 rounded-0" aria-current="true">
+                        <a href="taikhoan.html" class="list-group-item list-group-item-action rounded-0 border-start-0 border-end-0" aria-current="true">
                             <div class="d-inline-block text-end me-2" style="width: 25px">
                                 <i class="fa-solid fa-user fa-lg"></i>
                             </div>
@@ -105,7 +107,7 @@
                             </div>
                             <span>Đổi mật khẩu</span>
                         </a>
-                        <a href="historypayment.html" class="list-group-item list-group-item-action rounded-0 border-start-0 border-end-0 active__list-item">
+                        <a href="historypayment.html" class="list-group-item list-group-item-action border-start-0 border-end-0 rounded-0 active__list-item">
                             <div class="d-inline-block text-end me-2" style="width: 25px">
                                 <i class="fa-solid fa-clock-rotate-left fa-lg"></i>
                             </div>
@@ -116,55 +118,55 @@
                 <!-- Profile: Sidebar -->
 
                 <!-- Profile: Payment history -->
-                <div class="col-9 px-5">
-                    <h1 class="mb-4">Lịch sử thanh toán</h1>
+                <div class="col-lg-9 col-12 px-lg-5">
+                    <h1 class="mb-3 mt-4 mt-lg-0">Lịch sử thanh toán</h1>
                     <div class="container">
-                        <div class="row">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">STT</th>
-                                        <th scope="col">Tên khóa học</th>
-                                        <th scope="col">Mã đơn hàng</th>
-                                        <th scope="col">Ngày mua</th>
-                                        <th scope="col">Giá</th>
-                                        <th scope="col">Trạng thái</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>HTML & CSS</td>
-                                        <td>#39978</td>
-                                        <td>10/11/2023</td>
-                                        <td>500,000 đ</td>
-                                        <td class="text-success fw-bold ">Đã thanh toán</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Javascript</td>
-                                        <td>#39977</td>
-                                        <td>10/11/2023</td>
-                                        <td>500,000 đ</td>
-                                        <td class="text-success fw-bold ">Đã thanh toán</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>PHP cơ bản</td>
-                                        <td>#39976</td>
-                                        <td>10/11/2023</td>
-                                        <td>500,000 đ</td>
-                                        <td class="text-danger  fw-bold ">Thanh toán lỗi</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="row ">
+                            <div class="overflow-auto ">
+                                <table class="table table-hover" style="min-width: 585px;">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">STT</th>
+                                            <th scope="col">Tên khóa học</th>
+                                            <th scope="col">Mã đơn hàng</th>
+                                            <th scope="col">Ngày mua</th>
+                                            <th scope="col">Giá</th>
+                                            <th scope="col">Trạng thái</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>HTML & CSS</td>
+                                            <td>#39978</td>
+                                            <td>10/11/2023</td>
+                                            <td>500,000 đ</td>
+                                            <td class="text-success fw-bold">Đã thanh toán</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Javascript</td>
+                                            <td>#39977</td>
+                                            <td>10/11/2023</td>
+                                            <td>500,000 đ</td>
+                                            <td class="text-success fw-bold">Đã thanh toán</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>PHP cơ bản</td>
+                                            <td>#39976</td>
+                                            <td>10/11/2023</td>
+                                            <td>500,000 đ</td>
+                                            <td class="text-danger fw-bold">Thanh toán lỗi</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- Profile: Payment history -->
-
             </div>
-
         </div>
         <!-- End: Profile -->
 

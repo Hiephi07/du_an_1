@@ -83,12 +83,14 @@
         <div class="container-fluid w-1400 my-5" id="profile">
             <div class="row px-3">
                 <!-- Profile: Sidebar -->
-                <div class="col-3 border border-secondary py-3 px-0 rounded-1" style="height: 600px">
-                    <div class="d-flex px-3 mb-4">
-                        <img class="rounded-2" src="../Public/images/avatar.png" alt="" width="100px" />
-                        <div class="p-3">
+                <div class="col-lg-3 col-12 border border-secondary px-0 rounded-1" id="account__side-bar">
+                    <div class="d-flex px-3 pt-3 mb-4">
+                        <div>
+                            <img class="rounded-2" src="../Public/images/avatar.png" alt="" style="max-width: 80px;" />
+                        </div>
+                        <div class="px-3 align-self-center ">
                             <span>Tài khoản của</span>
-                            <span class="d-block fw-bold fs-4">Nam Nguyễn</span>
+                            <span class="d-block fw-bold fs-5">Nam Nguyễn</span>
                         </div>
                     </div>
                     <div class="list-group">
@@ -115,47 +117,45 @@
                 <!-- Profile: Sidebar -->
 
                 <!-- Profile: Account infor -->
-                <div class="col-9 px-5">
-                    <h1 class="mb-4">Thông tin tài khoản</h1>
+                <div class="col-lg-9 col-12 px-lg-5">
+                    <h1 class="mt-4 mt-lg-0 mb-lg-3">Thông tin tài khoản</h1>
                     <div class="container">
-                        <div class="row">
-                            <div class="col-3">
-                                <img class="rounded-2 w-100" src="../Public/images/avatar.png" alt="" />
-                                
-                                    <div class="mt-2">
-                                        <input class="d-none " type="file" id="form__uploadAvatar" name="form__uploadAvatar"/>
-                                        <div class="btn btn-outline-secondary rounded-0  w-100">
-                                            <i class="fa-solid fa-upload .pointer"></i>
-                                            <label class="pointer" for="form__uploadAvatar">Tải ảnh lên</label>
-                                        </div>
+                        <div class="row justify-content-center ">
+                            <div class="col-lg-3 col-12 mt-2 mb-4 my-lg-0 text-center " >
+                                <img class="rounded-2" id="avatar-img" src="../Public/images/avatar.png" alt="" />
+                                <div class="mt-2">
+                                    <input class="d-none " type="file" id="form__uploadAvatar" name="form__uploadAvatar"/>
+                                    <div class="btn btn-outline-secondary rounded-0  w-100 mb-lg-3" id="btn__upload-avatar">
+                                        <i class="fa-solid fa-upload .pointer"></i>
+                                        <label class="pointer" for="form__uploadAvatar">Tải ảnh lên</label>
                                     </div>
-                                
+                                </div>
                             </div>
 
-                            <div class="col-9 ps-5">
-                                <h4 class="mb-4">Thông tin cá nhân</h4>
+                            <div class="col-lg-9 col-12 ps-xl-5">
+                                <h4 class="mb-xl-4 mb-2 mb-lg-3">Thông tin cá nhân</h4>
                                 <form>
-                                    <div class="row mb-3">
-                                        <label for="inputEmail3" class="col-sm-3 text-end">Tên đăng nhập</label>
-                                        <div class="col-sm-9">
+                                    <div class="row mb-lg-3 mb-2">
+                                        <label for="inputEmail3" class="col-lg-4 text-lg-end mb-2 fw-semibold">Tên đăng nhập</label>
+                                        <div class="col-lg-8">
                                             <input type="text" class="form-control" id="inputEmail3" value="namng123"/>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
-                                        <label for="inputEmail3" class="col-sm-3 text-end">Tên</label>
-                                        <div class="col-sm-9">
+                                    <div class="row mb-lg-3 mb-2">
+                                        <label for="inputEmail3" class="col-lg-4 text-lg-end mb-2 fw-semibold">Tên</label>
+                                        <div class="col-lg-8">
                                             <input type="text" class="form-control" id="inputEmail3" value="Nam"/>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
-                                        <label for="inputEmail3" class="col-sm-3 text-end">Số điện thoại</label>
-                                        <div class="col-sm-9">
+                                    <div class="row mb-lg-3 mb-2">
+                                        <label for="inputEmail3" class="col-lg-4 text-lg-end mb-2 fw-semibold">Số điện thoại</label>
+                                        <div class="col-lg-8">
                                             <input type="number" class="form-control" id="inputEmail3" value="0123456789"/>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
-                                        <label for="inputEmail3" class="col-sm-3 text-end">Email</label>
-                                        <div class="col-sm-9">
+                                    <div class="row mb-lg-3 mb-3">
+                                        <label for="inputEmail3" class="col-lg-4 text-lg-end mb-2 fw-semibold">Email</label>
+                                        <div class="col-lg-8">
                                             <input type="email" class="form-control" id="inputEmail3" value="namnguyen123@gmail.com"/>
                                         </div>
                                     </div>

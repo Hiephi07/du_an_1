@@ -83,16 +83,18 @@
         <div class="container-fluid w-1400 my-5" id="profile">
             <div class="row px-3">
                 <!-- Profile: Sidebar -->
-                <div class="col-3 border border-secondary py-3 px-0 rounded-1" style="height: 600px">
-                    <div class="d-flex px-3 mb-4">
-                        <img class="rounded-2" src="../Public/images/avatar.png" alt="" width="100px" />
-                        <div class="p-3">
+                <div class="col-lg-3 col-12 border border-secondary px-0 rounded-1" id="account__side-bar">
+                    <div class="d-flex px-3 pt-3 mb-4">
+                        <div>
+                            <img class="rounded-2" src="../Public/images/avatar.png" alt="" style="max-width: 80px;" />
+                        </div>
+                        <div class="px-3 align-self-center ">
                             <span>Tài khoản của</span>
-                            <span class="d-block fw-bold fs-4">Nam Nguyễn</span>
+                            <span class="d-block fw-bold fs-5">Nam Nguyễn</span>
                         </div>
                     </div>
                     <div class="list-group">
-                        <a href="taikhoan.html" class="list-group-item list-group-item-action border-start-0 border-end-0 rounded-0" aria-current="true">
+                        <a href="taikhoan.html" class="list-group-item list-group-item-action rounded-0 border-start-0 border-end-0" aria-current="true">
                             <div class="d-inline-block text-end me-2" style="width: 25px">
                                 <i class="fa-solid fa-user fa-lg"></i>
                             </div>
@@ -104,7 +106,7 @@
                             </div>
                             <span>Đổi mật khẩu</span>
                         </a>
-                        <a href="historypayment.html" class="list-group-item list-group-item-action border-start-0 border-end-0 rounded-0">
+                        <a href="historypayment.html" class="list-group-item list-group-item-action border-start-0 border-end-0 rounded-0 ">
                             <div class="d-inline-block text-end me-2" style="width: 25px">
                                 <i class="fa-solid fa-clock-rotate-left fa-lg"></i>
                             </div>
@@ -115,35 +117,34 @@
                 <!-- Profile: Sidebar -->
 
                 <!-- Profile: Change password -->
-                <div class="col-9 px-5">
-                    <h1 class="mb-4">Đổi mật khẩu</h1>
+                <div class="col-lg-9 col-12 px-lg-5">
+                    <h1 class="mt-4 mt-lg-0 mb-3">Đổi mật khẩu</h1>
                     <div class="container">
-                        <div class="row">
+                        <div class="row ">
                             <form>
-                                <div class="row mb-3">
-                                    <label for="inputEmail3" class="col-sm-3 text-end">Mật khẩu cũ</label>
-                                    <div class="col-sm-9">
-                                        <input type="password" class="form-control" id="inputEmail3" />
+                                <div class="row mb-lg-3 mb-2">
+                                        <label for="inputEmail3" class="col-lg-4 text-lg-end mb-2 fw-semibold">Mật khẩu cũ</label>
+                                        <div class="col-lg-8">
+                                            <input type="password" class="form-control" id="inputEmail3" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="inputEmail3" class="col-sm-3 text-end">Mật khẩu mới</label>
-                                    <div class="col-sm-9">
-                                        <input type="password" class="form-control" id="inputEmail3" />
+                                    <div class="row mb-lg-3 mb-2">
+                                        <label for="inputEmail3" class="col-lg-4 text-lg-end mb-2 fw-semibold">Mật khẩu mới</label>
+                                        <div class="col-lg-8">
+                                            <input type="password" class="form-control" id="inputEmail3" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="inputEmail3" class="col-sm-3 text-end">Xác nhận mật khẩu mới</label>
-                                    <div class="col-sm-9">
-                                        <input type="password" class="form-control" id="inputEmail3" />
+                                    <div class="row mb-lg-3 mb-3">
+                                        <label for="inputEmail3" class="col-lg-4 text-lg-end mb-2 fw-semibold">Xác nhận mật khẩu mới</label>
+                                        <div class="col-lg-8">
+                                            <input type="password" class="form-control" id="inputEmail3" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <button type="button" class="btn bg__main-color rounded-0 text-light fw-bold rounded-1" data-bs-target="#modal__updateAccount" data-bs-toggle="modal">
-                                        Đổi mật khẩu
-                                    </button>
-                                </div>
-
+                                    <div class="d-flex justify-content-end">
+                                        <button type="button" class="btn bg__main-color rounded-0 text-light fw-bold rounded-1" data-bs-target="#modal__updateAccount" data-bs-toggle="modal">
+                                            Đổi mật khẩu
+                                        </button>
+                                    </div>
                                 <!-- Modal: Change password -->
                                 <div class="modal fade" id="modal__updateAccount" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                                     <div class="modal-dialog modal-dialog-centered">
