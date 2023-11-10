@@ -7,7 +7,7 @@
 
 /* Common */
 .bg__main-color {
-    background-color: #A435F0 !important;
+    background-color: #fbbd35 !important;
 }
 
 .text-justify {
@@ -85,6 +85,7 @@
     font-weight: 600;
     line-height: 1.5;
 }
+
 .login .btn-register{
     background-color: #fbbd35;
     height: 2.5rem;
