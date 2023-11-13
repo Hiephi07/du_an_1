@@ -14,7 +14,7 @@
 
     <body>
         <!-- Header -->
-        <header class="d-flex justify-content-between align-content-center flex-wrap px-4" id="header">
+        <header class="d-flex justify-content-between align-content-center flex-wrap px-4 d-none d-md-flex" id="header">
             <div class="logo d-flex align-content-center flex-wrap">
                 <a href="./home.html"><img src="../favicon.png" alt="error" width="38px" height="38px" /></a>
                 <h4 class="logoHeading">PolyUni</h4>
@@ -31,6 +31,45 @@
             </div>
         </header>
         <!-- Header -->
+
+        <!-- Header mobile -->
+        <nav class="navbar navbar-expand-lg d-block d-md-none py-3" id="header">
+            <div class="container-fluid p-0">
+                <div class="logo d-flex align-content-center flex-wrap">
+                    <a href="./home.html">
+                        <img src="../favicon.png" alt="error" width="38px" height="38px" class="ms-3" />
+                    </a>
+                    <h4 class="logoHeading">PolyUni</h4>
+                </div>
+
+                <button
+                    class="navbar-toggler me-3"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse bg-white px-3 pt-3 pb-2 mt-2 border vw-100 rounded-bottom-3" id="navbarSupportedContent">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Tìm kiếm khóa học, bài viết, video,..." aria-label="Search" />
+                        <button class="btn btn-outline-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                    <ul class="list-group list-group-flush mt-2">
+                        <li class="list-group-item p-2 border-0 ">
+                            <a href="dangnhap.html" class="text-decoration-none text-secondary ">Đăng nhập</a>
+                        </li>
+                        <li class="list-group-item p-2">
+                            <a href="dangky.html" class="text-decoration-none text-secondary ">Đăng ký</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Header mobile -->
 
         <!-- Login box -->
         <div id="login-box" class="container-fluid w-1400 my-4 d-flex justify-content-center">
