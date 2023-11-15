@@ -15,29 +15,32 @@
 
 <body>
     <!-- Header -->
-    <header class="d-flex justify-content-between align-content-center flex-wrap px-4" id="header">
-        <div class="logo d-flex align-content-center flex-wrap">
-            <a href="./home.html"><img src="../favicon.png" alt="error" width="38px" height="38px"></a>
-            <h4 class="logoHeading">PolyUni</h4>
-        </div>
-        <form action="" method="post" class="search d-flex flex-wrap align-content-center">
-            <div class="iconSearch d-flex flex-wrap align-content-center">
-                <i class="fa-solid fa-magnifying-glass"></i>
+    <nav class="navbar navbar-expand-lg bg-white px-sm-4 border-bottom fixed-top">
+        <div class="container-fluid">
+            <div class="logo d-flex align-content-center flex-wrap flex-grow-1">
+                <a href="./home.html"><img src="../favicon.png" alt="error" width="38px" height="38px"></a>
+                <h4 class="logoHeading">PolyUni</h4>
             </div>
-            <input class="searchInput" type="text" placeholder="Tìm kiếm khóa học, bài viết, video, ...">
-        </form>
-        <div class="login d-flex flex-wrap align-content-center">
-            <!-- <a href="#"><button class="btn btn-Signin">Đăng nhập</button></a>
-            <a href="#"><button class="btn btn-register">Đăng ký</button></a> -->
-            <a href="#" class="btn btn-Signin">Đăng nhập</a>
-            <a href="#" class=" btn btn-register">Đăng ký</a>
-
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarColor02">
+                <form class="d-flex my-3 my-lg-0" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-warning" type="submit">Search</button>
+                </form>
+                <div class="login d-flex flex-wrap align-content-center justify-content-between">
+                    <a href="#" class=" btn-Signin">Đăng nhập</a>
+                    <a href="#" class=" btn btn-register">Đăng ký</a>
+                </div>
+            </div>
         </div>
-    </header>
+    </nav>
     <!-- Header -->
 
     <!-- Slider -->
-    <div class="container-fluid w-1400">
+    <div class="container-fluid w-1400 mt-5">
         <div class="row ">
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
@@ -51,24 +54,12 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="../Public/images/banner1.png" class="d-block w-100" alt="..." height="400px">
-                        <!-- <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Some representative placeholder content for the first slide.</p>
-                        </div> -->
                     </div>
                     <div class="carousel-item">
                         <img src="../Public/images/banner2.png" class="d-block w-100" alt="..." height="400px">
-                        <!-- <div class="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
-                        </div> -->
                     </div>
                     <div class="carousel-item">
                         <img src="../Public/images/banner3.png" class="d-block w-100" alt="..." height="400px">
-                        <!-- <div class="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
-                        </div> -->
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
@@ -90,7 +81,7 @@
     <main class="container-fluid w-1400 mt-5" id="main">
         <div class="course row my-4">
             <h3 class="mb-3">Khóa học nổi bật</h3>
-            <div class="col-xl-3">
+            <div class="col-xl-3 col-12 col-sm-6">
                 <div class="card">
                     <a href="#">
                         <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
@@ -98,11 +89,12 @@
                     <div class="card-body">
                         <h5 class="card-title">Nhập môn lập trình C/C++</h5>
                         <p class="card-text">17.888.999 đ</p>
-                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small></p>
+                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small>
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3">
+            <div class="col-xl-3 col-12 col-sm-6">
                 <div class="card">
                     <a href="#">
                         <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
@@ -110,12 +102,13 @@
                     <div class="card-body">
                         <h5 class="card-title">Nhập môn lập trình C/C++</h5>
                         <p class="card-text">17.888.999 đ</p>
-                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small></p>
+                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small>
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-xl-3">
+            <div class="col-xl-3 col-12 col-sm-6">
                 <div class="card">
                     <a href="#">
                         <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
@@ -123,11 +116,12 @@
                     <div class="card-body">
                         <h5 class="card-title">Nhập môn lập trình C/C++</h5>
                         <p class="card-text">17.888.999 đ</p>
-                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small></p>
+                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small>
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3">
+            <div class="col-xl-3 col-12 col-sm-6">
                 <div class="card">
                     <a href="#">
                         <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
@@ -135,7 +129,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Nhập môn lập trình C/C++</h5>
                         <p class="card-text">17.888.999 đ</p>
-                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small></p>
+                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -143,7 +138,7 @@
 
         <div class="course row my-4">
             <h3 class="mb-3">Tất cả Khóa học</h3>
-            <div class="col-xl-3">
+            <div class="col-xl-3 col-12 col-sm-6">
                 <div class="card">
                     <a href="#">
                         <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
@@ -151,11 +146,12 @@
                     <div class="card-body">
                         <h5 class="card-title">Nhập môn lập trình C/C++</h5>
                         <p class="card-text">17.888.999 đ</p>
-                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small></p>
+                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small>
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3">
+            <div class="col-xl-3 col-12 col-sm-6">
                 <div class="card">
                     <a href="#">
                         <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
@@ -163,11 +159,12 @@
                     <div class="card-body">
                         <h5 class="card-title">Nhập môn lập trình C/C++</h5>
                         <p class="card-text">17.888.999 đ</p>
-                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small></p>
+                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small>
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3">
+            <div class="col-xl-3 col-12 col-sm-6">
                 <div class="card">
                     <a href="#">
                         <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
@@ -175,11 +172,12 @@
                     <div class="card-body">
                         <h5 class="card-title">Nhập môn lập trình C/C++</h5>
                         <p class="card-text">17.888.999 đ</p>
-                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small></p>
+                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small>
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3">
+            <div class="col-xl-3 col-12 col-sm-6">
                 <div class="card">
                     <a href="#">
                         <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
@@ -187,61 +185,13 @@
                     <div class="card-body">
                         <h5 class="card-title">Nhập môn lập trình C/C++</h5>
                         <p class="card-text">17.888.999 đ</p>
-                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3">
-                <div class="card">
-                    <a href="#">
-                        <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Nhập môn lập trình C/C++</h5>
-                        <p class="card-text">17.888.999 đ</p>
-                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3">
-                <div class="card">
-                    <a href="#">
-                        <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Nhập môn lập trình C/C++</h5>
-                        <p class="card-text">17.888.999 đ</p>
-                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3">
-                <div class="card">
-                    <a href="#">
-                        <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Nhập môn lập trình C/C++</h5>
-                        <p class="card-text">17.888.999 đ</p>
-                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3">
-                <div class="card">
-                    <a href="#">
-                        <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Nhập môn lập trình C/C++</h5>
-                        <p class="card-text">17.888.999 đ</p>
-                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small></p>
+                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small>
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-xl-3">
+            <div class="col-xl-3 col-12 col-sm-6">
                 <div class="card">
                     <a href="#">
                         <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
@@ -249,11 +199,12 @@
                     <div class="card-body">
                         <h5 class="card-title">Nhập môn lập trình C/C++</h5>
                         <p class="card-text">17.888.999 đ</p>
-                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small></p>
+                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small>
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3">
+            <div class="col-xl-3 col-12 col-sm-6">
                 <div class="card">
                     <a href="#">
                         <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
@@ -261,11 +212,12 @@
                     <div class="card-body">
                         <h5 class="card-title">Nhập môn lập trình C/C++</h5>
                         <p class="card-text">17.888.999 đ</p>
-                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small></p>
+                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small>
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3">
+            <div class="col-xl-3 col-12 col-sm-6">
                 <div class="card">
                     <a href="#">
                         <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
@@ -273,11 +225,12 @@
                     <div class="card-body">
                         <h5 class="card-title">Nhập môn lập trình C/C++</h5>
                         <p class="card-text">17.888.999 đ</p>
-                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small></p>
+                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small>
+                        </p>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3">
+            <div class="col-xl-3 col-12 col-sm-6">
                 <div class="card">
                     <a href="#">
                         <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
@@ -285,7 +238,61 @@
                     <div class="card-body">
                         <h5 class="card-title">Nhập môn lập trình C/C++</h5>
                         <p class="card-text">17.888.999 đ</p>
-                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small></p>
+                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-12 col-sm-6">
+                <div class="card">
+                    <a href="#">
+                        <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Nhập môn lập trình C/C++</h5>
+                        <p class="card-text">17.888.999 đ</p>
+                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-12 col-sm-6">
+                <div class="card">
+                    <a href="#">
+                        <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Nhập môn lập trình C/C++</h5>
+                        <p class="card-text">17.888.999 đ</p>
+                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-12 col-sm-6">
+                <div class="card">
+                    <a href="#">
+                        <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Nhập môn lập trình C/C++</h5>
+                        <p class="card-text">17.888.999 đ</p>
+                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-12 col-sm-6">
+                <div class="card">
+                    <a href="#">
+                        <img src="../Public/images/63e1bcbaed1dd.png" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Nhập môn lập trình C/C++</h5>
+                        <p class="card-text">17.888.999 đ</p>
+                        <p class="card-text"><small class="text-muted text-decoration-line-through">10.000.000 đ</small>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -294,11 +301,31 @@
     </main>
     <!-- Course -->
 
+    <!-- Pagination -->
+    <section class="container-fluid w-1400">
+        <nav aria-label="...">
+            <ul class="pagination text-end justify-content-end">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active">
+                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </section>
+    <!-- Pagination -->
+
     <!-- Footer -->
-    <footer class="container-fluid bg-black" id="footer">
+    <footer class="container-fluid bg-black mt-5" id="footer">
         <div class=" container w-1400">
             <div class="row py-5 text-white">
-                <div class="col-xl-3" id="address" style="color: #a9b3bb;">
+                <div class="col-xl-3 col-12 col-sm-6" id="address" style="color: #a9b3bb;">
                     <div class="logo d-flex align-content-center flex-wrap mb-3">
                         <a href="./home.html"><img src="../favicon.png" alt="error" width="38px" height="38px"></a>
                         <h4 class="logoHeading text-white">PolyUni</h4>
@@ -307,34 +334,34 @@
                     <p>Email: polyuni@fpt.edu.vn</p>
                     <p>Số 13, tòa nhà FPT, phố Trịnh Văn Bô, quận Nam Từ Liêm, TP. Hà Nội</p>
                 </div>
-                <div class="col-xl-3" id="about">
+                <div class="col-xl-3 col-12 col-sm-6" id="about">
                     <h4>Về PolyUni</h4>
                     <ul class="list-unstyled" style="color: #a9b3bb;">
-                        <li class="">An item</li>
-                        <li class="">A second item</li>
-                        <li class="">A third item</li>
-                        <li class="">A fourth item</li>
-                        <li class="">And a fifth one</li>
+                        <li class="">Giới thiệu</li>
+                        <li class="">Bảo mật</li>
+                        <li class="">Liên hệ</li>
+                        <li class="">Điều khoản</li>
+                        <li class="">Cơ hội việc làm</li>
                     </ul>
                 </div>
-                <div class="col-xl-3" id="myself">
+                <div class="col-xl-3 col-12 col-sm-6" id="myself">
                     <h4>Bảo mật</h4>
                     <ul class="list-unstyled" style="color: #a9b3bb;">
-                        <li class="">An item</li>
-                        <li class="">A second item</li>
-                        <li class="">A third item</li>
-                        <li class="">A fourth item</li>
-                        <li class="">And a fifth one</li>
+                        <li class="">Giới thiệu</li>
+                        <li class="">Bảo mật</li>
+                        <li class="">Liên hệ</li>
+                        <li class="">Điều khoản</li>
+                        <li class="">Cơ hội việc làm</li>
                     </ul>
                 </div>
-                <div class="col-xl-3" id="myself">
+                <div class="col-xl-3 col-12 col-sm-6" id="myself">
                     <h4>Chính sách</h4>
                     <ul class="list-unstyled" style="color: #a9b3bb;">
-                        <li class="">An item</li>
-                        <li class="">A second item</li>
-                        <li class="">A third item</li>
-                        <li class="">A fourth item</li>
-                        <li class="">And a fifth one</li>
+                        <li class="">Giới thiệu</li>
+                        <li class="">Bảo mật</li>
+                        <li class="">Liên hệ</li>
+                        <li class="">Điều khoản</li>
+                        <li class="">Cơ hội việc làm</li>
                     </ul>
                 </div>
             </div>
