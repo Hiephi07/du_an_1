@@ -15,33 +15,36 @@
 
 <body>
     <!-- Header -->
-    <header class="d-flex justify-content-between align-content-center flex-wrap px-4" id="header">
-        <div class="logo d-flex align-content-center flex-wrap">
-            <a href="./home.html"><img src="../favicon.png" alt="error" width="38px" height="38px"></a>
-            <h4 class="logoHeading">PolyUni</h4>
-        </div>
-        <form action="" method="post" class="search d-flex flex-wrap align-content-center">
-            <div class="iconSearch d-flex flex-wrap align-content-center">
-                <i class="fa-solid fa-magnifying-glass"></i>
+    <nav class="navbar navbar-expand-lg bg-white px-sm-4 border-bottom fixed-top">
+        <div class="container-fluid">
+            <div class="logo d-flex align-content-center flex-wrap flex-grow-1">
+                <a href="./home.html"><img src="../favicon.png" alt="error" width="38px" height="38px"></a>
+                <h4 class="logoHeading">PolyUni</h4>
             </div>
-            <input class="searchInput" type="text" placeholder="Tìm kiếm khóa học, bài viết, video, ...">
-        </form>
-        <div class="login d-flex flex-wrap align-content-center">
-            <!-- <a href="#"><button class="btn btn-Signin">Đăng nhập</button></a>
-            <a href="#"><button class="btn btn-register">Đăng ký</button></a> -->
-            <a href="#" class="btn btn-Signin">Đăng nhập</a>
-            <a href="#" class=" btn btn-register">Đăng ký</a>
-
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarColor02">
+                <form class="d-flex my-3 my-lg-0" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-warning" type="submit">Search</button>
+                </form>
+                <div class="login d-flex flex-wrap align-content-center justify-content-between">
+                    <a href="#" class=" btn-Signin">Đăng nhập</a>
+                    <a href="#" class=" btn btn-register">Đăng ký</a>
+                </div>
+            </div>
         </div>
-    </header>
+    </nav>
     <!-- Header -->
 
     <!-- Cart -->
-    <main class="container-fluid w-1400 mt-5 height-100" id="main">
+    <main class="container-fluid w-1400 mt-5" id="main" style="min-height: 100vh;">
         <div class="row mt-4">
             <h3 class="my-3">Giỏ hàng của tôi</h3>
-            <div class="col-xl-9">
-                <table class="table align-middle">
+            <div class="col-md-9 col-12  text-wrap">
+                <table class="table align-middle table-responsive">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -54,46 +57,46 @@
                         <tr>
                             <th scope="row" class=" " ><input class="form-check-input" type="checkbox" name="nameCourse"></th>
                             <td>
-                                <div class="card">
-                                    <div class="d-flex">
-                                        <img src="../Public/images/63e1bcbaed1dd.png" class="img-fluid rounded-start" alt="error" width="120px" height="68px">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Nhập môn lập trình C/C++</h5>
+                                <!-- <div > -->
+                                    <div class="card d-flex flex-wrap ">
+                                        <img src="../Public/images/63e1bcbaed1dd.png" class="" alt="error"  width="120px" height="68px">
+                                        <div class="mt-2">
+                                            <h6 class="card-title fs-lg">Nhập môn lập trình</h6>
                                         </div>
                                     </div>
-                                </div>
+                                <!-- </div> -->
                             </td>
-                            <td class="fw-bold">10.000.000 đ</td>
+                            <td class="fw-bold h6">9.000.000đ</td>
                             <td><button type="button" class="btn btn-link text-danger">Xóa</button></td>
                         </tr>
                         <tr>
-                            <th scope="row"><input class="form-check-input" type="checkbox" name="nameCourse"></th>
+                            <th scope="row" class=" " ><input class="form-check-input" type="checkbox" name="nameCourse"></th>
                             <td>
-                                <div class="card">
-                                    <div class="d-flex">
-                                        <img src="../Public/images/63e1bcbaed1dd.png" class="img-fluid rounded-start" alt="error" width="120px" height="68px">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Nhập môn lập trình C/C++</h5>
+                                <div class="card d-flex flex-wrap ">
+                                    <!-- <div class=""> -->
+                                        <img src="../Public/images/63e1bcbaed1dd.png" class="" alt="error"  width="120px" height="68px">
+                                        <div class="mt-2">
+                                            <h6 class="card-title fs-lg">Nhập môn lập trình</h6>
                                         </div>
-                                    </div>
+                                    <!-- </div> -->
                                 </div>
                             </td>
-                            <td class="fw-bold">10.000.000 đ</td>
+                            <td class="fw-bold h6">9.000.000đ</td>
                             <td><button type="button" class="btn btn-link text-danger">Xóa</button></td>
                         </tr>
                         <tr>
-                            <th scope="row"><input class="form-check-input" type="checkbox" name="nameCourse"></th>
+                            <th scope="row" class=" " ><input class="form-check-input" type="checkbox" name="nameCourse"></th>
                             <td>
-                                <div class="card">
-                                    <div class="d-flex">
-                                        <img src="../Public/images/63e1bcbaed1dd.png" class="img-fluid rounded-start" alt="error" width="120px" height="68px">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Nhập môn lập trình C/C++</h5>
+                                <div class="card d-flex flex-wrap ">
+                                    <!-- <div class=""> -->
+                                        <img src="../Public/images/63e1bcbaed1dd.png" class="" alt="error"  width="120px" height="68px">
+                                        <div class="mt-2">
+                                            <h6 class="card-title fs-lg">Nhập môn lập trình</h6>
                                         </div>
-                                    </div>
+                                    <!-- </div> -->
                                 </div>
                             </td>
-                            <td class="fw-bold">10.000.000 đ</td>
+                            <td class="fw-bold h6">9.000.000đ</td>
                             <td><button type="button" class="btn btn-link text-danger">Xóa</button></td>
                         </tr>
 
@@ -101,7 +104,7 @@
                 </table>
 
             </div>
-            <div class="col-xl-3">
+            <div class="col-md-3 col-12 ">
                 <div class="card">
                     <h5 class="card-header">Tổng</h5>
                     <div class="card-body">
@@ -118,7 +121,7 @@
     <footer class="container-fluid bg-black mt-5" id="footer">
         <div class=" container w-1400">
             <div class="row py-5 text-white">
-                <div class="col-xl-3" id="address" style="color: #a9b3bb;">
+                <div class="col-xl-3 col-12 col-sm-6" id="address" style="color: #a9b3bb;">
                     <div class="logo d-flex align-content-center flex-wrap mb-3">
                         <a href="./home.html"><img src="../favicon.png" alt="error" width="38px" height="38px"></a>
                         <h4 class="logoHeading text-white">PolyUni</h4>
@@ -127,7 +130,7 @@
                     <p>Email: polyuni@fpt.edu.vn</p>
                     <p>Số 13, tòa nhà FPT, phố Trịnh Văn Bô, quận Nam Từ Liêm, TP. Hà Nội</p>
                 </div>
-                <div class="col-xl-3" id="about">
+                <div class="col-xl-3 col-12 col-sm-6" id="about">
                     <h4>Về PolyUni</h4>
                     <ul class="list-unstyled" style="color: #a9b3bb;">
                         <li class="">Giới thiệu</li>
@@ -137,7 +140,7 @@
                         <li class="">Cơ hội việc làm</li>
                     </ul>
                 </div>
-                <div class="col-xl-3" id="myself">
+                <div class="col-xl-3 col-12 col-sm-6" id="myself">
                     <h4>Bảo mật</h4>
                     <ul class="list-unstyled" style="color: #a9b3bb;">
                         <li class="">Giới thiệu</li>
@@ -147,7 +150,7 @@
                         <li class="">Cơ hội việc làm</li>
                     </ul>
                 </div>
-                <div class="col-xl-3" id="myself">
+                <div class="col-xl-3 col-12 col-sm-6" id="myself">
                     <h4>Chính sách</h4>
                     <ul class="list-unstyled" style="color: #a9b3bb;">
                         <li class="">Giới thiệu</li>
