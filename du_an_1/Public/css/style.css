@@ -5,6 +5,27 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Common */
+.bg__main-color {
+    background-color: #fbbd35 !important;
+}
+
+.text__main-color {
+    color: #fbbd35 !important
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.active__list-item {
+    background-color: #b9b9b9;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
 /* header */
 #header{
     height: 4rem;
@@ -53,6 +74,7 @@
     outline: none;
     padding: 0 4px;
     flex: 1 1;
+    font-size: 13px;
 }
 
 .login .btn{
@@ -69,6 +91,7 @@
     font-weight: 600;
     line-height: 1.5;
 }
+
 .login .btn-register{
     background-color: #fbbd35;
     height: 2.5rem;
@@ -81,7 +104,6 @@
 }
 
 /* header */
-
 .w-1400{
     max-width: 1400px;
 }
@@ -89,3 +111,40 @@
 .card{
     border: none !important;
 }
+
+
+
+/* Responsive */
+@media (min-width: 480px) {
+    #avatar-img, #btn__upload-avatar {
+        width: 50% !important;
+    }
+}
+
+@media (min-width: 576px) {
+    
+}
+
+@media (min-width: 768px) {
+    
+}
+
+@media (min-width: 992px) {
+    #avatar-img, #btn__upload-avatar{
+        width: 100% !important;
+    }
+
+    #account__side-bar {
+        height: 600px;
+    }   
+}
+
+@media (min-width: 1200px) {
+    
+}
+
+
+@media (min-width: 1400px) {
+
+}
+

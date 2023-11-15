@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../Public/css/css_bootstrap.min.css" />
+        <link rel="stylesheet" href="../Public/css/style.css" />
+        <script src="../Public/js/js_bootstrap.bundle.min.js" defer></script>
+        <script src="../Public/js/jquery-3.7.1.min.js" defer></script>
+        <link rel="stylesheet" href="../Public/fontawesome-free-6.4.2-web/css/all.css" />
+        <link rel="shortcut icon" type="image/png" href="../favicon.png" />
+        <title>PolyUni</title>
+    </head>
+    <body>
+        <!-- Header -->
+        <header class="d-flex justify-content-between align-content-center flex-wrap px-4 d-none d-md-flex" id="header">
+            <div class="logo d-flex align-content-center flex-wrap">
+                <a href="./home.html"><img src="../favicon.png" alt="error" width="38px" height="38px" /></a>
+                <h4 class="logoHeading">PolyUni</h4>
+            </div>
+            <form action="" method="post" class="search d-flex flex-wrap align-content-center">
+                <div class="iconSearch d-flex flex-wrap align-content-center">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input class="searchInput" type="text" placeholder="Tìm kiếm khóa học, bài viết, video, ..." />
+            </form>
+            <div class="login dropdown">
+                <i class="fa-regular fa-circle-user fa-xl p-3" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                <!-- Dropdown box -->
+                <div class="dropdown-menu p-0 rounded-0" style="top: 30px">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="d-flex bg-body-secondary p-3">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="../Public/images/avatar.png" width="40px" alt="" />
+                                </div>
+                                <div class="ps-3">
+                                    <h5 class="mb-1">Nam Nguyễn</h5>
+                                    <p class="mb-0" style="font-size: 14px">namnguyen@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="list-group">
+                                <a href="#" class="list-group-item list-group-item-action border-0 p-2">
+                                    <div class="d-inline-block text-end me-2" style="width: 25px">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                    </div>
+                                    <span>Giỏ hàng</span>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action rounded-0 border-0 p-2" aria-current="true">
+                                    <div class="d-inline-block text-end me-2" style="width: 25px">
+                                        <i class="fa-solid fa-video"></i>
+                                    </div>
+                                    <span>Khóa học của tôi</span>
+                                </a>
+                                <a href="taikhoan.html" class="list-group-item list-group-item-action border-0 p-2">
+                                    <div class="d-inline-block text-end me-2" style="width: 25px">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </div>
+                                    <span>Chỉnh sửa hồ sơ</span>
+                                </a>
+                                <a href="baomattaikhoan.html" class="list-group-item list-group-item-action border-0 p-2">
+                                    <div class="d-inline-block text-end me-2" style="width: 25px">
+                                        <i class="fa-solid fa-key"></i>
+                                    </div>
+                                    <span>Đổi mật khẩu</span>
+                                </a>
+                                <a href="historypayment.html" class="list-group-item list-group-item-action rounded-0 border-0 p-2">
+                                    <div class="d-inline-block text-end me-2" style="width: 25px">
+                                        <i class="fa-solid fa-clock-rotate-left"></i>
+                                    </div>
+                                    <span>Lịch sử thanh toán</span>
+                                </a>
+                                <a href="home.html" class="list-group-item list-group-item-action rounded-0 border-0 p-2">
+                                    <div class="d-inline-block text-end me-2" style="width: 25px">
+                                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                    </div>
+                                    <span>Đăng xuất</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dropdown box -->
+            </div>
+        </header>
+        <!-- Header -->
+
+        <!-- Header mobile -->
+        <nav class="navbar navbar-expand-lg d-block d-md-none py-3" id="header">
+            <div class="container-fluid p-0">
+                <div class="logo d-flex align-content-center flex-wrap">
+                    <a href="./home.html">
+                        <img src="../favicon.png" alt="error" width="38px" height="38px" class="ms-3" />
+                    </a>
+                    <h4 class="logoHeading">PolyUni</h4>
+                </div>
+
+                <button
+                    class="navbar-toggler me-3"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse bg-white px-3 pt-3 pb-2 mt-2 border vw-100 rounded-bottom-3 " id="navbarSupportedContent">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Tìm kiếm khóa học, bài viết, video,..." aria-label="Search"/>
+                        <button class="btn btn-outline-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 mt-2">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img class="rounded-3 " src="../Public/images/avatar.png" alt="" width="40px">
+                                <strong class="ms-2">Nam Nguyễn</strong>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <div class="d-inline-block text-end me-2" style="width: 25px">
+                                            <i class="fa-solid fa-cart-shopping"></i>
+                                        </div>
+                                        <span>Giỏ hàng</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <div class="d-inline-block text-end me-2" style="width: 25px">
+                                            <i class="fa-solid fa-video"></i>
+                                        </div>
+                                        <span>Khóa học của tôi</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="taikhoan.html">
+                                        <div class="d-inline-block text-end me-2" style="width: 25px">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </div>
+                                        <span>Chỉnh sửa hồ sơ</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="baomattaikhoan.html">
+                                        <div class="d-inline-block text-end me-2" style="width: 25px">
+                                            <i class="fa-solid fa-key"></i>
+                                        </div>
+                                        <span>Đổi mật khẩu</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="historypayment.html">
+                                        <div class="d-inline-block text-end me-2" style="width: 25px">
+                                            <i class="fa-solid fa-clock-rotate-left"></i>
+                                        </div>
+                                        <span>Lịch sử thanh toán</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="home.html">
+                                        <div class="d-inline-block text-end me-2" style="width: 25px">
+                                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                        </div>
+                                        <span>Đăng xuất</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Header mobile -->
+
+        <!-- Profile -->
+        <div class="container-fluid w-1400 my-5" id="profile">
+            <div class="row px-3">
+                <!-- Profile: Sidebar -->
+                <div class="col-lg-3 col-12 border border-secondary px-0 rounded-1" id="account__side-bar">
+                    <div class="d-flex px-3 pt-3 mb-4">
+                        <div>
+                            <img class="rounded-2" src="../Public/images/avatar.png" alt="" style="max-width: 80px;" />
+                        </div>
+                        <div class="px-3 align-self-center ">
+                            <span>Tài khoản của</span>
+                            <span class="d-block fw-bold fs-5">Nam Nguyễn</span>
+                        </div>
+                    </div>
+                    <div class="list-group">
+                        <a href="taikhoan.html" class="list-group-item list-group-item-action rounded-0 border-start-0 border-end-0" aria-current="true">
+                            <div class="d-inline-block text-end me-2" style="width: 25px">
+                                <i class="fa-solid fa-user fa-lg"></i>
+                            </div>
+                            <span>Thông tin tài khoản</span>
+                        </a>
+                        <a href="baomattaikhoan.html" class="list-group-item list-group-item-action border-start-0 border-end-0 active__list-item">
+                            <div class="d-inline-block text-end me-2" style="width: 25px">
+                                <i class="fa-solid fa-key fa-lg"></i>
+                            </div>
+                            <span>Đổi mật khẩu</span>
+                        </a>
+                        <a href="historypayment.html" class="list-group-item list-group-item-action border-start-0 border-end-0 rounded-0 ">
+                            <div class="d-inline-block text-end me-2" style="width: 25px">
+                                <i class="fa-solid fa-clock-rotate-left fa-lg"></i>
+                            </div>
+                            <span>Lịch sử thanh toán</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Profile: Sidebar -->
+
+                <!-- Profile: Change password -->
+                <div class="col-lg-9 col-12 px-lg-5">
+                    <h1 class="mt-4 mt-lg-0 mb-3">Đổi mật khẩu</h1>
+                    <div class="container">
+                        <div class="row ">
+                            <form>
+                                <div class="row mb-lg-3 mb-2">
+                                        <label for="inputEmail3" class="col-lg-4 text-lg-end mb-2 fw-semibold">Mật khẩu cũ</label>
+                                        <div class="col-lg-8">
+                                            <input type="password" class="form-control" id="inputEmail3" />
+                                        </div>
+                                    </div>
+                                    <div class="row mb-lg-3 mb-2">
+                                        <label for="inputEmail3" class="col-lg-4 text-lg-end mb-2 fw-semibold">Mật khẩu mới</label>
+                                        <div class="col-lg-8">
+                                            <input type="password" class="form-control" id="inputEmail3" />
+                                        </div>
+                                    </div>
+                                    <div class="row mb-lg-3 mb-3">
+                                        <label for="inputEmail3" class="col-lg-4 text-lg-end mb-2 fw-semibold">Xác nhận mật khẩu mới</label>
+                                        <div class="col-lg-8">
+                                            <input type="password" class="form-control" id="inputEmail3" />
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="button" class="btn bg__main-color rounded-0 text-light fw-bold rounded-1" data-bs-target="#modal__updateAccount" data-bs-toggle="modal">
+                                            Đổi mật khẩu
+                                        </button>
+                                    </div>
+                                <!-- Modal: Change password -->
+                                <div class="modal fade" id="modal__updateAccount" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <p class="fw-semibold fs-3 text-center">Thay đổi mật khẩu thành công</p>
+                                                <div class="text-center mb-3">
+                                                    <i class="fa-solid fa-circle-check" style="color: #149f42; font-size: 50px"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal: Change password -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Profile: Change password -->
+            </div>
+        </div>
+        <!-- Profile -->
+
+        <!-- Footer -->
+        <footer class="container-fluid bg-black" id="footer">
+            <div class="container w-1400">
+                <div class="row py-5 text-white">
+                    <div class="col-xl-3" id="address" style="color: #a9b3bb">
+                        <div class="logo d-flex align-content-center flex-wrap mb-3">
+                            <a href="./home.html"><img src="../favicon.png" alt="error" width="38px" height="38px" /></a>
+                            <h4 class="logoHeading text-white">PolyUni</h4>
+                        </div>
+                        <p>Điện thoại: 0246.329.1102</p>
+                        <p>Email: polyuni@fpt.edu.vn</p>
+                        <p>Số 13, tòa nhà FPT, phố Trịnh Văn Bô, quận Nam Từ Liêm, TP. Hà Nội</p>
+                    </div>
+                    <div class="col-xl-3" id="about">
+                        <h4>Về PolyUni</h4>
+                        <ul class="list-unstyled" style="color: #a9b3bb">
+                            <li class="">An item</li>
+                            <li class="">A second item</li>
+                            <li class="">A third item</li>
+                            <li class="">A fourth item</li>
+                            <li class="">And a fifth one</li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3" id="myself">
+                        <h4>Bảo mật</h4>
+                        <ul class="list-unstyled" style="color: #a9b3bb">
+                            <li class="">An item</li>
+                            <li class="">A second item</li>
+                            <li class="">A third item</li>
+                            <li class="">A fourth item</li>
+                            <li class="">And a fifth one</li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3" id="myself">
+                        <h4>Chính sách</h4>
+                        <ul class="list-unstyled" style="color: #a9b3bb">
+                            <li class="">An item</li>
+                            <li class="">A second item</li>
+                            <li class="">A third item</li>
+                            <li class="">A fourth item</li>
+                            <li class="">And a fifth one</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer -->
+    </body>
+</html>
