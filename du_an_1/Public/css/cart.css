@@ -96,3 +96,8 @@
 .text-orange{
     color: #FF6347;
 }
+
+.tb-name-course{
+    display: flex;
+    align-items: center;
+}
