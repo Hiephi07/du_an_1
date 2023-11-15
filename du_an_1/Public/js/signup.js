@@ -1,7 +1,6 @@
 
 var username = document.querySelector('input[name=username]');
 var usernameNotice = document.querySelector('.username-notice');
-var usernameBorderNotice = document.querySelector('.username-notice:focus');
 
 var email = document.querySelector('input[name=email]');
 var emailNotice = document.querySelector('.email-notice');
@@ -21,15 +20,16 @@ var specialCharsRegex = /[!@#$%^&*(),.?":{}|<>]/;
 var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 
-var usernameCheck = 0;
+var usernameCheck;
 username.addEventListener('input', function() {
+    usernameCheck = 0;
     if (username.value === "") {
         usernameNotice.innerText = "Không được để trống";
         usernameNotice.classList.add("text-danger");
     } else if (specialCharsRegex.test(username.value)) { 
         usernameNotice.innerText = "Tên đăng nhập không được chứa ký tự đặc biệt";
         usernameNotice.classList.add("text-danger");
-    } else if ((username.value).length <= 6 ) {
+    } else if ((username.value).length <= 6) {
         usernameNotice.innerText = 'Tên đăng nhập phải lớn hơn 6 ký tự';
         usernameNotice.classList.add('text-danger');
     } else {
@@ -38,10 +38,12 @@ username.addEventListener('input', function() {
         usernameNotice.classList.add('text-success');
         usernameCheck = 1;
     }
+    formNotice.innerText = '';
 });
 
-var emailCheck = 0;
+var emailCheck;
 email.addEventListener('input', function () {
+    emailCheck = 0;
     if (email.value === '') {
         emailNotice.innerText = 'Không được để trống';
         emailNotice.classList.add('text-danger');
@@ -54,10 +56,12 @@ email.addEventListener('input', function () {
         emailNotice.classList.add('text-success');
         var emailCheck = 1;
     }
+    formNotice.innerText = '';
 });
 
-var passwordCheck = 0;
+var passwordCheck;
 password.addEventListener('input', function () {
+    passwordCheck = 0;
     if (password.value === '') {
         passwordNotice.innerText = 'Không được để trống';
         passwordNotice.classList.add('text-danger');
@@ -70,10 +74,12 @@ password.addEventListener('input', function () {
         passwordNotice.classList.add('text-success');
         passwordCheck = 1;
     }
+    formNotice.innerText = '';
 });
 
-var repasswordCheck = 0;
+var repasswordCheck;
 repassword.addEventListener('input', function () {
+    repasswordCheck = 0;
     if (repassword.value === '') {
         rePasswordNotice.innerText = 'Không được để trống';
         rePasswordNotice.classList.add('text-danger');
@@ -86,15 +92,36 @@ repassword.addEventListener('input', function () {
         rePasswordNotice.classList.add('text-success');
         repasswordCheck = 1;
     }
+    formNotice.innerText = '';
 });
 
 
 signUpForm.addEventListener('submit', (e) => {
-    if (!(usernameCheck && emailCheck && passwordCheck && repasswordCheck)) {
+    if (!(usernameCheck || emailCheck || passwordCheck || repasswordCheck)) {
         e.preventDefault();
+        if (username.value === '') {
+            usernameNotice.innerText = 'Không được để trống';
+            usernameNotice.classList.add('text-danger');
+        }
+
+        if (email.value === '') {
+            emailNotice.innerText = 'Không được để trống';
+            emailNotice.classList.add('text-danger');
+        }
+
+        if (password.value === '') {
+            passwordNotice.innerText = 'Không được để trống';
+            passwordNotice.classList.add('text-danger');
+        }
+
+        if (repassword.value === '') {
+            rePasswordNotice.innerText = 'Không được để trống';
+            rePasswordNotice.classList.add('text-danger');
+        }        
+        
         formNotice.innerText = 'Thông tin đăng ký không hợp lệ';
         formNotice.classList.add('text-danger');
-    } {
+    } else {
         formNotice.innerText = 'Thông tin đăng ký hợp lệ';
         formNotice.classList.remove('text-danger');
         formNotice.classList.add('text-success');
