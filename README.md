@@ -17,6 +17,7 @@
             + Phân quyền
 
 `Giai đoạn 1 (1/11 - 5/11): Chọn đề tài, Khảo sát, xây dựng cấu trúc dự án (User Flow, Flow Admin, Design DB, Struct Folder Project)
+
  Giai đoạn 2 (6/11 - 12/11): Xây dựng giao diện User & Admin (có responsive)
  Giai đoạn 3 (13/11 - 19/11): Xây dựng chức năng người dùng (70%)
  Giai đoạn 4 (20/11 - 26/11): Xây dựng chức năng người dùng (30%) và Admin (100%)
