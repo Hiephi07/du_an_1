@@ -1,0 +1,1 @@
+<!-- Các hàm dùng chung sẽ được viết ở đây -->

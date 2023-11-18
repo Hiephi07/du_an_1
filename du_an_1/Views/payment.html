@@ -14,36 +14,69 @@
 </head>
 
 <body>
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg bg-white px-sm-4 border-bottom fixed-top">
-        <div class="container-fluid">
-            <div class="logo d-flex align-content-center flex-wrap flex-grow-1">
-                <a href="./home.html"><img src="../favicon.png" alt="error" width="38px" height="38px"></a>
+        <!-- Header -->
+        <header class="d-flex justify-content-between align-content-center flex-wrap px-4 d-none d-md-flex" id="header">
+            <div class="logo d-flex align-content-center flex-wrap">
+                <a href="../index.html"><img src="../favicon.png" alt="error" width="38px" height="38px" /></a>
                 <h4 class="logoHeading">PolyUni</h4>
             </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
-                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarColor02">
-                <form class="d-flex my-3 my-lg-0" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-warning" type="submit">Search</button>
-                </form>
-                <div class="login d-flex flex-wrap align-content-center justify-content-between">
-                    <a href="#" class=" btn-Signin">Đăng nhập</a>
-                    <a href="#" class=" btn btn-register">Đăng ký</a>
+            <form action="" method="post" class="search d-flex flex-wrap align-content-center">
+                <div class="iconSearch d-flex flex-wrap align-content-center">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input class="searchInput" type="text" placeholder="Tìm kiếm khóa học, bài viết, video, ..." />
+            </form>
+            <div class="login d-flex flex-wrap align-content-center">
+                <a href="dangnhap.html" class="btn btn-Signin">Đăng nhập</a>
+                <a href="dangky.html" class=" btn btn-register">Đăng ký</a>
+            </div>
+        </header>
+        <!-- Header -->
+
+        <!-- Header mobile -->
+        <nav class="navbar navbar-expand-lg d-block d-md-none py-3" id="header">
+            <div class="container-fluid p-0">
+                <div class="logo d-flex align-content-center flex-wrap">
+                    <a href="../index.html">
+                        <img src="../favicon.png" alt="error" width="38px" height="38px" class="ms-3" />
+                    </a>
+                    <h4 class="logoHeading">PolyUni</h4>
+                </div>
+
+                <button
+                    class="navbar-toggler me-3"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse bg-white px-3 pt-3 pb-2 mt-2 border vw-100 rounded-bottom-3" id="navbarSupportedContent">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Tìm kiếm khóa học, bài viết, video,..." aria-label="Search" />
+                        <button class="btn btn-outline-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                    <ul class="list-group list-group-flush mt-2">
+                        <li class="list-group-item p-2 border-0 ">
+                            <a href="dangnhap.html" class="text-decoration-none text-secondary ">Đăng nhập</a>
+                        </li>
+                        <li class="list-group-item p-2">
+                            <a href="dangky.html" class="text-decoration-none text-secondary ">Đăng ký</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </nav>
-    <!-- Header -->
+        </nav>
+        <!-- Header mobile -->
 
     <!-- Payment -->
-    <section class="container-fluid w-1400 mt-5 border-5">
-        <div class="row mt-4 justify-content-center align-content-center">
+    <section class="container-fluid w-1400 mt-4">
+        <div class="row justify-content-center align-content-center">
 
-            <h3 class="mt-3">Thanh toán đơn hàng</h3>
+            <h3 class="">Thanh toán đơn hàng</h3>
 
             <div class="col-xl-4 col-10 col-md-6 mt-4">
                 <div class="card">
@@ -66,8 +99,8 @@
                             <p class="h6 mb-0">1001122667755</p>
                         </li>
                         <li class="list-group-item">
-                            <p><small class="text-body-secondary">Mã đơn hàng</small></p>
-                            <p class="h6 mb-0">104384752</p>
+                            <p><small class="text-body-secondary">Tên khóa học</small></p>
+                            <p class="h6 mb-0">Nhập môn lập trình</p>
                         </li>
                         <li class="list-group-item">
                             <p><small class="text-body-secondary">Số tiền</small></p>

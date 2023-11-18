@@ -51,7 +51,6 @@
 <!-- + Delete account: ẩn tk, trong DB có 2 cột userDel (user tự del acc) sẽ bị ẩn
                     AdminHide: admin sẽ ẩn tk đấy -->
 Page Liên hệ(F8): cho người dùng gửi phản ánh (Email,tiêu đề,họ tên,sdt, nội dung)
-<!-- DB thêm bảng liên hệ (id, email, tieude, noidung, datraloi(yes/no) )-->
 <!-- Search: thanh tìm kiếm chỉ để ở trang Home -->
 
 - Admin:
@@ -63,6 +62,7 @@ Page Liên hệ(F8): cho người dùng gửi phản ánh (Email,tiêu đề,h�
 + Thống kê theo biểu đồ miền: total user, User new / tháng; sl User mua khóa học , sl user mua khóa học mới theo tháng; doanh thu, doanh thu/tháng
 + Comment: delete, hide
 + Quản lý: Header, Slider, Footer, Khóa học nổi bật(tự chọn), Tất cả khóa học sắp xếp theo ngày tạo mới nhất/cũ nhất/nhiều lượt mua nhất.
++ DB thêm bảng liên hệ (id, email, tieude, noidung, datraloi(yes/no) )
 
 <!-- Thêm trong trang phương thức thanh toán(VNPay, Mono, ZaloPay, Bank(checked)) -> new Page Xác 
 nhận thanh toán(5p không nhấn Xác nhận ) -> Done/Cancelled -->
