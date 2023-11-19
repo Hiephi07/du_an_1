@@ -1,4 +1,3 @@
-
 var username = document.querySelector('input[name=username]');
 var usernameNotice = document.querySelector('.username-notice');
 
@@ -15,25 +14,27 @@ var signUpForm = document.querySelector('#signup-form');
 var formNotice = document.querySelector('.form-notice');
 var signUpBtn = document.querySelector('#signUpBtn');
 
+var acceptedTerms = document.querySelector('input[name=accepted-terms]');
+
 var emailRegrex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 var specialCharsRegex = /[!@#$%^&*(),.?":{}|<>]/;
+var specialCharsAndSpaceRegex = /[!@#$%^&*(),.?":{}|<>\s]/;
 var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-
 var usernameCheck;
-username.addEventListener('input', function() {
+username.addEventListener('input', function () {
     usernameCheck = 0;
-    if (username.value === "") {
-        usernameNotice.innerText = "Không được để trống";
-        usernameNotice.classList.add("text-danger");
-    } else if (specialCharsRegex.test(username.value)) { 
-        usernameNotice.innerText = "Tên đăng nhập không được chứa ký tự đặc biệt";
-        usernameNotice.classList.add("text-danger");
-    } else if ((username.value).length <= 6) {
+    if (username.value === '') {
+        usernameNotice.innerText = 'Không được để trống';
+        usernameNotice.classList.add('text-danger');
+    } else if (specialCharsAndSpaceRegex.test(username.value)) {
+        usernameNotice.innerText = 'Tên đăng nhập không được chứa ký tự đặc biệt hoặc khoảng trắng';
+        usernameNotice.classList.add('text-danger');
+    } else if (username.value.length <= 6) {
         usernameNotice.innerText = 'Tên đăng nhập phải lớn hơn 6 ký tự';
         usernameNotice.classList.add('text-danger');
     } else {
-        usernameNotice.innerText = "Tên đăng nhập hợp lệ";
+        usernameNotice.innerText = 'Tên đăng nhập hợp lệ';
         usernameNotice.classList.remove('text-danger');
         usernameNotice.classList.add('text-success');
         usernameCheck = 1;
@@ -66,7 +67,7 @@ password.addEventListener('input', function () {
         passwordNotice.innerText = 'Không được để trống';
         passwordNotice.classList.add('text-danger');
     } else if (!passwordRegex.test(password.value)) {
-        passwordNotice.innerText = 'Mật khẩu tối thiểu 8 ký tự, ít nhất một chữ cái viết hoa, một chữ cái viết thường và một số';
+        passwordNotice.innerText = 'Mật khẩu gồm 8 ký tự, một chữ cái viết hoa, một chữ cái viết thường và một số';
         passwordNotice.classList.add('text-danger');
     } else {
         passwordNotice.innerText = 'Mật khẩu hợp lệ';
@@ -95,6 +96,13 @@ repassword.addEventListener('input', function () {
     formNotice.innerText = '';
 });
 
+acceptedTerms.addEventListener('click', function () {
+    if (acceptedTerms.checked) {
+        signUpBtn.removeAttribute('disabled');
+    } else {
+        signUpBtn.setAttribute('disabled', '');
+    }
+});
 
 signUpForm.addEventListener('submit', (e) => {
     if (!(usernameCheck || emailCheck || passwordCheck || repasswordCheck)) {
@@ -117,21 +125,21 @@ signUpForm.addEventListener('submit', (e) => {
         if (repassword.value === '') {
             rePasswordNotice.innerText = 'Không được để trống';
             rePasswordNotice.classList.add('text-danger');
-        }        
-        
-        formNotice.innerText = 'Thông tin đăng ký không hợp lệ';
-        formNotice.classList.add('text-danger');
-    } else {
-        formNotice.innerText = 'Thông tin đăng ký hợp lệ';
-        formNotice.classList.remove('text-danger');
-        formNotice.classList.add('text-success');
+        }
+
+        // formNotice.innerText = 'Thông tin đăng ký không hợp lệ';
+        // formNotice.classList.add('text-danger');
     }
+    // else {
+    //     formNotice.innerText = 'Thông tin đăng ký hợp lệ';
+    //     formNotice.classList.remove('text-danger');
+    //     formNotice.classList.add('text-success');
+    // }
 });
 
-
 function checkEmpty(input) {
-    if (input.value == "") {
-        return "Không được để trống"
+    if (input.value == '') {
+        return 'Không được để trống';
     }
 }
 
@@ -140,4 +148,3 @@ function checkLength(inputField, inputName, length) {
         return `${inputName} phải lớn hơn ${legnth} ký tự`;
     }
 }
-

@@ -15,29 +15,104 @@
 
 <body>
     <!-- Header -->
-    <nav class="navbar navbar-expand-lg bg-white px-sm-4 border-bottom fixed-top">
-        <div class="container-fluid">
-            <div class="logo d-flex align-content-center flex-wrap flex-grow-1">
-                <a href="./home.html"><img src="../favicon.png" alt="error" width="38px" height="38px"></a>
+        <header class="d-flex justify-content-between align-items-center flex-wrap px-2 d-none d-md-flex" id="header">
+            <div class="logo d-flex align-content-center flex-wrap">
+                <a href="./home.html">
+                    <img src="../favicon.png" alt="error" width="38px" height="38px" class="ms-3" />
+                </a>
                 <h4 class="logoHeading">PolyUni</h4>
             </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
-                aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarColor02">
-                <form class="d-flex my-3 my-lg-0" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-warning" type="submit">Search</button>
+            <div class="d-flex flex-row align-items-center">
+                <div class="dropdown bg-light position-relative bg-white d-flex ">
+                    <button class="dropdown-toggle p-1 fw-bold text-secondary me-2 bg-white border-0 " style="font-size: 14px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-bars me-2"></i>
+                        Danh mục
+                    </button>
+                    <ul class="dropdown-menu p-0 mt-2 rounded-1">
+                        <li><a class="dropdown-item rounded-top-2 " href="#">IT</a></li>
+                        <li><a class="dropdown-item" href="#">Thiết kế đồ họa</a></li>
+                        <li><a class="dropdown-item rounded-bottom-2" href="#">Marketing</a></li>
+                    </ul>
+                </div>
+                <form action="">
+                    <div class="input-group position-relative">
+                        <i class="fa-solid fa-magnifying-glass fa-sm text-secondary position-absolute top-50 translate-middle" style="left: 20px; z-index: 100"></i>
+                        <input
+                            type="email"
+                            class="form-control rounded-4"
+                            style="width: 350px; font-size: 14px; padding-left: 38px"
+                            id="exampleFormControlInput1"
+                            placeholder="Tìm kiếm khóa học..."
+                        />
+                    </div>
                 </form>
-                <div class="login d-flex flex-wrap align-content-center justify-content-between">
-                    <a href="#" class=" btn-Signin">Đăng nhập</a>
-                    <a href="#" class=" btn btn-register">Đăng ký</a>
+            </div>
+            <!-- <form action="" method="post" class="search d-flex flex-wrap align-content-center">
+                <div class="iconSearch d-flex flex-wrap align-content-center">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input class="searchInput" type="text" placeholder="Tìm kiếm khóa học, bài viết, video, ..." />
+            </form> -->
+            <div class="login d-flex flex-wrap align-content-center">
+                <i class="fa-solid fa-cart-shopping fa-lg p-2 me-1 position-relative pointer">
+                    <span class="position-absolute bg-danger text-white fw-bold rounded-2" style="font-size: 10px; padding: 8px 6px; top: -15px; left: 22px">10</span>
+                </i>
+                <i class="fa-regular fa-circle-user fa-lg p-2 ms-1 pointer" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                <ul class="dropdown-menu dropdown-menu-end mt-2 me-2 rounded-1 py-0">
+                    <li>
+                        <a href="dangnhap.html" class="dropdown-item rounded-top-2">Đăng nhập</a>
+                    </li>
+                    <li>
+                        <a href="dangky.html" class="dropdown-item rounded-bottom-2">Đăng ký</a>
+                    </li>
+                </ul>
+                <!-- <a href="dangnhap.html" class="btn btn-Signin">Đăng nhập</a>
+                <a href="dangky.html" class="btn btn-register">Đăng ký</a> -->
+            </div>
+        </header>
+        <!-- Header -->
+
+        <!-- Header mobile -->
+        <header class="navbar navbar-expand-lg d-block d-md-none" id="header">
+            <div class="container-fluid p-0 pt-1">
+                <div class="logo d-flex align-content-center flex-wrap">
+                    <a href="./home.html">
+                        <img src="../favicon.png" alt="error" width="38px" height="38px" class="ms-3" />
+                    </a>
+                    <h4 class="logoHeading">PolyUni</h4>
+                </div>
+
+                <button
+                    class="navbar-toggler me-3"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse bg-white px-3 pt-2 pb-2 mt-2 border vw-100 rounded-bottom-3 border-top-0" id="navbarSupportedContent">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Tìm kiếm khóa học..." aria-label="Search" />
+                        <button class="btn btn-outline-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                    <ul class="list-group list-group-flush mt-2">
+                        <li class="list-group-item p-2 border-0">
+                            <a href="#" class="text-decoration-none text-secondary">Giỏ hàng <span class="bg-danger py-1 px-2 fw-bold text-white rounded-2 ms-1">10</span></a>
+                        </li>
+                        <li class="list-group-item p-2 border-0">
+                            <a href="dangnhap.html" class="text-decoration-none text-secondary">Đăng nhập</a>
+                        </li>
+                        <li class="list-group-item p-2">
+                            <a href="dangky.html" class="text-decoration-none text-secondary">Đăng ký</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </nav>
-    <!-- Header -->
+        </header>
+        <!-- Header mobile -->
 
     <!-- Cart -->
     <main class="container-fluid w-1400 mt-5" id="main" style="min-height: 100vh;">

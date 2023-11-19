@@ -18,29 +18,68 @@
 
     <body>
         <!-- Header -->
-        <header class="d-flex justify-content-between align-content-center flex-wrap px-4 d-none d-md-flex" id="header">
+        <header class="d-flex justify-content-between align-items-center flex-wrap px-2 d-none d-md-flex" id="header">
             <div class="logo d-flex align-content-center flex-wrap">
-                <a href="../index.html"><img src="../favicon.png" alt="error" width="38px" height="38px" /></a>
+                <a href="./home.html">
+                    <img src="../favicon.png" alt="error" width="38px" height="38px" class="ms-3" />
+                </a>
                 <h4 class="logoHeading">PolyUni</h4>
             </div>
-            <form action="" method="post" class="search d-flex flex-wrap align-content-center">
+            <div class="d-flex flex-row align-items-center">
+                <div class="dropdown bg-light position-relative bg-white d-flex ">
+                    <button class="dropdown-toggle p-1 fw-bold text-secondary me-2 bg-white border-0 " style="font-size: 14px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-bars me-2"></i>
+                        Danh mục
+                    </button>
+                    <ul class="dropdown-menu p-0 mt-2 rounded-1">
+                        <li><a class="dropdown-item rounded-top-2 " href="#">IT</a></li>
+                        <li><a class="dropdown-item" href="#">Thiết kế đồ họa</a></li>
+                        <li><a class="dropdown-item rounded-bottom-2" href="#">Marketing</a></li>
+                    </ul>
+                </div>
+                <form action="">
+                    <div class="input-group position-relative">
+                        <i class="fa-solid fa-magnifying-glass fa-sm text-secondary position-absolute top-50 translate-middle" style="left: 20px; z-index: 100"></i>
+                        <input
+                            type="email"
+                            class="form-control rounded-4"
+                            style="width: 350px; font-size: 14px; padding-left: 38px"
+                            id="exampleFormControlInput1"
+                            placeholder="Tìm kiếm khóa học..."
+                        />
+                    </div>
+                </form>
+            </div>
+            <!-- <form action="" method="post" class="search d-flex flex-wrap align-content-center">
                 <div class="iconSearch d-flex flex-wrap align-content-center">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
                 <input class="searchInput" type="text" placeholder="Tìm kiếm khóa học, bài viết, video, ..." />
-            </form>
+            </form> -->
             <div class="login d-flex flex-wrap align-content-center">
-                <a href="dangnhap.html" class="btn btn-Signin">Đăng nhập</a>
-                <a href="dangky.html" class=" btn btn-register">Đăng ký</a>
+                <i class="fa-solid fa-cart-shopping fa-lg p-2 me-1 position-relative pointer">
+                    <span class="position-absolute bg-danger text-white fw-bold rounded-2" style="font-size: 10px; padding: 8px 6px; top: -15px; left: 22px">10</span>
+                </i>
+                <i class="fa-regular fa-circle-user fa-lg p-2 ms-1 pointer" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                <ul class="dropdown-menu dropdown-menu-end mt-2 me-2 rounded-1 py-0">
+                    <li>
+                        <a href="dangnhap.html" class="dropdown-item rounded-top-2">Đăng nhập</a>
+                    </li>
+                    <li>
+                        <a href="dangky.html" class="dropdown-item rounded-bottom-2">Đăng ký</a>
+                    </li>
+                </ul>
+                <!-- <a href="dangnhap.html" class="btn btn-Signin">Đăng nhập</a>
+                <a href="dangky.html" class="btn btn-register">Đăng ký</a> -->
             </div>
         </header>
         <!-- Header -->
 
         <!-- Header mobile -->
-        <nav class="navbar navbar-expand-lg d-block d-md-none py-3" id="header">
-            <div class="container-fluid p-0">
+        <header class="navbar navbar-expand-lg d-block d-md-none" id="header">
+            <div class="container-fluid p-0 pt-1">
                 <div class="logo d-flex align-content-center flex-wrap">
-                    <a href="../index.html">
+                    <a href="./home.html">
                         <img src="../favicon.png" alt="error" width="38px" height="38px" class="ms-3" />
                     </a>
                     <h4 class="logoHeading">PolyUni</h4>
@@ -57,22 +96,25 @@
                 >
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse bg-white px-3 pt-3 pb-2 mt-2 border vw-100 rounded-bottom-3" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse bg-white px-3 pt-2 pb-2 mt-2 border vw-100 rounded-bottom-3 border-top-0" id="navbarSupportedContent">
                     <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Tìm kiếm khóa học, bài viết, video,..." aria-label="Search" />
+                        <input class="form-control me-2" type="search" placeholder="Tìm kiếm khóa học..." aria-label="Search" />
                         <button class="btn btn-outline-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
                     <ul class="list-group list-group-flush mt-2">
-                        <li class="list-group-item p-2 border-0 ">
-                            <a href="dangnhap.html" class="text-decoration-none text-secondary ">Đăng nhập</a>
+                        <li class="list-group-item p-2 border-0">
+                            <a href="#" class="text-decoration-none text-secondary">Giỏ hàng <span class="bg-danger py-1 px-2 fw-bold text-white rounded-2 ms-1">10</span></a>
+                        </li>
+                        <li class="list-group-item p-2 border-0">
+                            <a href="dangnhap.html" class="text-decoration-none text-secondary">Đăng nhập</a>
                         </li>
                         <li class="list-group-item p-2">
-                            <a href="dangky.html" class="text-decoration-none text-secondary ">Đăng ký</a>
+                            <a href="dangky.html" class="text-decoration-none text-secondary">Đăng ký</a>
                         </li>
                     </ul>
                 </div>
             </div>
-        </nav>
+        </header>
         <!-- Header mobile -->
 
         <!-- Signup box -->
@@ -81,36 +123,33 @@
                 <div class="border border-1 rounded-2 p-4" style="max-width: 460px">
                     <h1 class="text__main-color text-center mb-3 ">Đăng ký</h1>
                     <form id="signup-form">
-                        <div class="mb-2">
+                        <div class="mb-3 position-relative ">
                             <label for="username" class="form-label fw-semibold  mb-1">Tên đăng nhập</label>
                             <input type="text" class="form-control" id="username" name="username"/>
-                            <div class="form-text username-notice"></div>
+                            <div class="form-text username-notice position-absolute ms-2" style="bottom: -18px; font-size: 11px;"></div>
                         </div>
-                        <div class="mb-2">
+                        <div class="mb-3 position-relative">
                             <label for="exampleInputPassword1" class="form-label fw-semibold mb-1">Email</label>
                             <input type="email" class="form-control" id="email" name="email"/>
-                            <div class="form-text email-notice"></div>
+                            <div class="form-text email-notice position-absolute ms-2" style="bottom: -18px; font-size: 11px;"></div>
                         </div>
-                        <div class="mb-2">
+                        <div class="mb-3 position-relative">
                             <label for="exampleInputPassword1" class="form-label fw-semibold mb-1">Mật khẩu</label>
                             <input type="password" class="form-control" id="password" name="password"/>
-                            <div class="form-text password-notice"></div>
+                            <div class="form-text password-notice position-absolute ms-2" style="bottom: -18px; font-size: 11px;"></div>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-4 position-relative">
                             <label for="repassword" class="form-label fw-semibold mb-1">Nhập lại mật khẩu</label>
                             <input type="password" class="form-control" id="repassword" name="repassword"/>
-                            <div class="form-text repassword-notice"></div>
+                            <div class="form-text repassword-notice position-absolute ms-2" style="bottom: -18px; font-size: 11px;"></div>
                         </div>
                         <div class="mb-3">
-                            <div class="form-text form-notice"></div>
-                        </div>
-                        <div class="mb-3">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="accepted-terms"/>
                             <label class="form-check-label" for="exampleCheck1">Tôi đồng ý với những <a href="#" class="text-decoration-none">điều khoản sử dụng</a> </label>
                             
                         </div>
                         <div class="d-grid gap-2">
-                            <button class="btn bg__main-color fw-bold text-white" type="submit" name="signUpBtn" id="signUpBtn">Đăng ký</button>
+                            <button class="btn bg__main-color fw-bold text-white pointer" type="submit" name="signUpBtn" id="signUpBtn" disabled >Đăng ký</button>
                         </div>
                     </form>
                     <hr>
@@ -120,7 +159,7 @@
                 </div>
             </div>
         </div>
-        <!-- Login box -->
+        <!-- Signup box -->
 
         <!-- Footer -->
         <footer class="container-fluid bg-black" id="footer">
