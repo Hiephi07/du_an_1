@@ -50,12 +50,13 @@
 + Search: Autocompalte (Sử dụng Ajax)
 <!-- + Delete account: ẩn tk, trong DB có 2 cột userDel (user tự del acc) sẽ bị ẩn
                     AdminHide: admin sẽ ẩn tk đấy -->
-Page Liên hệ(F8): cho người dùng gửi phản ánh (Email,tiêu đề,họ tên,sdt, nội dung)
++ Page Liên hệ(F8): cho người dùng gửi phản ánh (Email,tiêu đề,họ tên,sdt, nội dung)
++ User mua khóa học đó rồi thì chuyển hướng sang xem khóa học đó.
 <!-- Search: thanh tìm kiếm chỉ để ở trang Home -->
 
 - Admin:
-+ Lịch sử login của Admin, User
-+ Info User
+<!-- + Lịch sử login của Admin, User -->
++ Info User(số KH đã mua => Chi tiết lịch sử học User - số bài đã học/tổng số bài)
 + CRUD và ẩn danh mục khóa học
 + CRUD và ẩn khóa học
 + CRUD và ẩn bài học trong khóa học

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../Public/css/css_bootstrap.min.css" />
+        <link rel="stylesheet" href="../Public/css/style.css" />
+        <script src="../Public/js/js_bootstrap.bundle.min.js" defer></script>
+        <script src="../Public/js/jquery-3.7.1.min.js" defer></script>
+        <link rel="stylesheet" href="../Public/fontawesome-free-6.4.2-web/css/all.css" />
+        <link rel="shortcut icon" type="image/png" href="../favicon.png" />
+        <title>PolyUni</title>
+    </head>
+
+    <body>
+        <!-- Header -->
+        <header class="d-flex justify-content-between align-content-center flex-wrap px-2 d-none d-md-flex" id="header">
+            <div class="logo d-flex align-content-center flex-wrap">
+                <a href="./home.html">
+                    <img src="../favicon.png" alt="error" width="38px" height="38px" class="ms-3" />
+                </a>
+                <h4 class="logoHeading">PolyUni</h4>
+            </div>
+            <div class="d-flex flex-row align-items-center">
+                <div class="dropdown bg-light position-relative bg-white d-flex">
+                    <button class="dropdown-toggle p-1 fw-bold text-secondary me-2 bg-white border-0" style="font-size: 14px" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-bars me-2"></i>
+                        Danh mục
+                    </button>
+                    <ul class="dropdown-menu p-0 mt-2 rounded-1">
+                        <li><a class="dropdown-item rounded-top-2" href="#">IT</a></li>
+                        <li><a class="dropdown-item" href="#">Thiết kế đồ họa</a></li>
+                        <li><a class="dropdown-item rounded-bottom-2" href="#">Marketing</a></li>
+                    </ul>
+                </div>
+                <form action="">
+                    <div class="input-group position-relative">
+                        <i class="fa-solid fa-magnifying-glass fa-sm text-secondary position-absolute top-50 translate-middle" style="left: 20px; z-index: 100"></i>
+                        <input type="email" class="form-control rounded-4" style="width: 350px; font-size: 14px; padding-left: 38px" id="exampleFormControlInput1" placeholder="Tìm kiếm khóa học..." />
+                    </div>
+                </form>
+            </div>
+            <div class="login d-flex flex-wrap align-content-center">
+                <i class="fa-solid fa-cart-shopping fa-lg p-2 me-1 position-relative pointer">
+                    <span class="position-absolute bg-danger text-white fw-bold rounded-2" style="font-size: 10px; padding: 8px 6px; top: -15px; left: 22px">10</span>
+                </i>
+                <i class="fa-regular fa-circle-user fa-lg p-2 ms-1 pointer" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                <!-- <i class="fa-regular fa-circle-user fa-lg p-2 ms-1" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i> -->
+                <!-- Dropdown box -->
+                <div class="dropdown-menu p-0 rounded-0 mt-2 me-2">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="d-flex bg-body-secondary p-3">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="../Public/images/avatar.png" width="40px" alt="" />
+                                </div>
+                                <div class="ps-3">
+                                    <h5 class="mb-1">Nam Nguyễn</h5>
+                                    <p class="mb-0" style="font-size: 14px">namnguyen@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="list-group">
+                                <a href="#" class="list-group-item list-group-item-action rounded-0 border-0 p-2" aria-current="true">
+                                    <div class="d-inline-block text-end me-2" style="width: 25px">
+                                        <i class="fa-solid fa-video"></i>
+                                    </div>
+                                    <span>Khóa học của tôi</span>
+                                </a>
+                                <a href="taikhoan.html" class="list-group-item list-group-item-action border-0 p-2">
+                                    <div class="d-inline-block text-end me-2" style="width: 25px">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </div>
+                                    <span>Chỉnh sửa hồ sơ</span>
+                                </a>
+                                <a href="baomattaikhoan.html" class="list-group-item list-group-item-action border-0 p-2">
+                                    <div class="d-inline-block text-end me-2" style="width: 25px">
+                                        <i class="fa-solid fa-key"></i>
+                                    </div>
+                                    <span>Đổi mật khẩu</span>
+                                </a>
+                                <a href="historypayment.html" class="list-group-item list-group-item-action rounded-0 border-0 p-2">
+                                    <div class="d-inline-block text-end me-2" style="width: 25px">
+                                        <i class="fa-solid fa-clock-rotate-left"></i>
+                                    </div>
+                                    <span>Lịch sử thanh toán</span>
+                                </a>
+                                <a href="home.html" class="list-group-item list-group-item-action rounded-0 border-0 p-2">
+                                    <div class="d-inline-block text-end me-2" style="width: 25px">
+                                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                    </div>
+                                    <span>Đăng xuất</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dropdown box -->
+            </div>
+        </header>
+        <!-- Header -->
+
+        <!-- Header mobile -->
+        <nav class="navbar navbar-expand-lg d-block d-md-none" id="header">
+            <div class="container-fluid p-0 pt-1">
+                <div class="logo d-flex align-content-center flex-wrap">
+                    <a href="./home.html">
+                        <img src="../favicon.png" alt="error" width="38px" height="38px" class="ms-3" />
+                    </a>
+                    <h4 class="logoHeading">PolyUni</h4>
+                </div>
+
+                <button
+                    class="navbar-toggler me-3"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse bg-white px-3 pt-3 pb-2 mt-2 border vw-100 rounded-bottom-3 border-top-0" id="navbarSupportedContent">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Tìm kiếm khóa học..." aria-label="Search" />
+                        <button class="btn btn-outline-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 mt-2">
+                        <li class="list-group-item p-2 border-0">
+                            <a href="#" class="text-decoration-none text-secondary">Giỏ hàng <span class="bg-danger py-1 px-2 fw-bold text-white rounded-2 ms-1">10</span></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img class="rounded-3" src="../Public/images/avatar.png" alt="" width="40px" />
+                                <strong class="ms-2">Nam Nguyễn</strong>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <div class="d-inline-block text-end me-2" style="width: 25px">
+                                            <i class="fa-solid fa-video"></i>
+                                        </div>
+                                        <span>Khóa học của tôi</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="taikhoan.html">
+                                        <div class="d-inline-block text-end me-2" style="width: 25px">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </div>
+                                        <span>Chỉnh sửa hồ sơ</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="baomattaikhoan.html">
+                                        <div class="d-inline-block text-end me-2" style="width: 25px">
+                                            <i class="fa-solid fa-key"></i>
+                                        </div>
+                                        <span>Đổi mật khẩu</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="historypayment.html">
+                                        <div class="d-inline-block text-end me-2" style="width: 25px">
+                                            <i class="fa-solid fa-clock-rotate-left"></i>
+                                        </div>
+                                        <span>Lịch sử thanh toán</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="home.html">
+                                        <div class="d-inline-block text-end me-2" style="width: 25px">
+                                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                        </div>
+                                        <span>Đăng xuất</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Header mobile -->
+
+        <!-- Watch Lesson -->
+        <section class="container-fluid w-1400 mt-5 border-5">
+            <div class="row mt-4">
+                <div class="col-lg-8 col-12 col-sm-12 mt-4">
+                    <video width="100%" height="400" controls>
+                        <source src="../Public/video/2023-11-17 14-35-51.mp4" type="video/mp4" />
+                    </video>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="font-monospace mt-3">Nhập môn lập trình</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-12 col-sm-12 mt-4">
+                    <div class="accordion overflow-y-scroll" id="accordionPanelsStayOpenExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button
+                                    class="accordion-button"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapseOne"
+                                    aria-expanded="true"
+                                    aria-controls="panelsStayOpen-collapseOne"
+                                >
+                                    Accordion Item #1
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                                <div class="accordion-body">
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item list-group-item-action">
+                                            <a href="#" class="text-black text-decoration-none text-decoration-none">A second link item</a>
+                                        </li>
+                                        <li class="list-group-item list-group-item-action">
+                                            <a href="#" class="text-black text-decoration-none">A second link item</a>
+                                        </li>
+                                        <li class="list-group-item list-group-item-action">
+                                            <a href="#" class="text-black text-decoration-none">A second link item</a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button
+                                    class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapseTwo"
+                                    aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseTwo"
+                                >
+                                    Accordion Item #2
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item list-group-item-action">
+                                            <a href="#" class="text-black text-decoration-none">A second link item</a>
+                                        </li>
+                                        <li class="list-group-item list-group-item-action">
+                                            <a href="#" class="text-black text-decoration-none">A second link item</a>
+                                        </li>
+                                        <li class="list-group-item list-group-item-action">
+                                            <a href="#" class="text-black text-decoration-none">A second link item</a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button
+                                    class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapseThree"
+                                    aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseThree"
+                                >
+                                    Accordion Item #3
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item list-group-item-action">
+                                            <a href="#" class="text-black text-decoration-none">A second link item</a>
+                                        </li>
+                                        <li class="list-group-item list-group-item-action">
+                                            <a href="#" class="text-black text-decoration-none">A second link item</a>
+                                        </li>
+                                        <li class="list-group-item list-group-item-action">
+                                            <a href="#" class="text-black text-decoration-none">A second link item</a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button
+                                    class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapse4"
+                                    aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapse4"
+                                >
+                                    Accordion Item #4
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapse4" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item list-group-item-action">
+                                            <a href="#" class="text-black text-decoration-none">A second link item</a>
+                                        </li>
+                                        <li class="list-group-item list-group-item-action">
+                                            <a href="#" class="text-black text-decoration-none">A second link item</a>
+                                        </li>
+                                        <li class="list-group-item list-group-item-action">
+                                            <a href="#" class="text-black text-decoration-none">A second link item</a>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Watch Lesson -->
+
+        <!-- Footer -->
+        <footer class="container-fluid bg-black mt-5" id="footer">
+            <div class="container w-1400">
+                <div class="row py-5 text-white">
+                    <div class="col-xl-3 col-12 col-sm-6" id="address" style="color: #a9b3bb">
+                        <div class="logo d-flex align-content-center flex-wrap mb-3">
+                            <a href="./home.html"><img src="../favicon.png" alt="error" width="38px" height="38px" /></a>
+                            <h4 class="logoHeading text-white">PolyUni</h4>
+                        </div>
+                        <p>Điện thoại: 0246.329.1102</p>
+                        <p>Email: polyuni@fpt.edu.vn</p>
+                        <p>Số 13, tòa nhà FPT, phố Trịnh Văn Bô, quận Nam Từ Liêm, TP. Hà Nội</p>
+                    </div>
+                    <div class="col-xl-3 col-12 col-sm-6" id="about">
+                        <h4>Về PolyUni</h4>
+                        <ul class="list-unstyled" style="color: #a9b3bb">
+                            <li class="">Giới thiệu</li>
+                            <li class="">Bảo mật</li>
+                            <li class="">Liên hệ</li>
+                            <li class="">Điều khoản</li>
+                            <li class="">Cơ hội việc làm</li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-12 col-sm-6" id="myself">
+                        <h4>Bảo mật</h4>
+                        <ul class="list-unstyled" style="color: #a9b3bb">
+                            <li class="">Giới thiệu</li>
+                            <li class="">Bảo mật</li>
+                            <li class="">Liên hệ</li>
+                            <li class="">Điều khoản</li>
+                            <li class="">Cơ hội việc làm</li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-12 col-sm-6" id="myself">
+                        <h4>Chính sách</h4>
+                        <ul class="list-unstyled" style="color: #a9b3bb">
+                            <li class="">Giới thiệu</li>
+                            <li class="">Bảo mật</li>
+                            <li class="">Liên hệ</li>
+                            <li class="">Điều khoản</li>
+                            <li class="">Cơ hội việc làm</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer -->
+    </body>
+</html>
