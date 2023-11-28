@@ -31,7 +31,7 @@ function load_sanpham_cungloai($category_id){
 function myCourse($user_id){
     $sql = "SELECT courses.course_name, courses.course_id, courses.course_image 
             FROM `orders` JOIN `courses` on orders.course_id = courses.course_id
-            WHERE user_id = $user_id";
+            WHERE user_id = $user_id AND order_status = 1";
     return pdo_query($sql);
 }
 

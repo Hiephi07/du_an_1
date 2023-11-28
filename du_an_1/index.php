@@ -174,13 +174,10 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include './Views/historypayment.php';
             break;
         case "myCourse":
-            // $_SESSION['course_of_user'] = course_of_user($_SESSION['user']['user_id']);
-            // var_dump($_SESSION['course_of_user'] = $courses);
             $courses = myCourse($_SESSION['user']['user_id']);
             include './Views/myCourse.php';
             break;
         case "watchLesson":
-            // $courses = myCourse($_SESSION['user']['user_id']);
             include './Views/watchLesson.php';
             break;
     }
