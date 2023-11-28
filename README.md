@@ -64,7 +64,7 @@
 + Comment: delete, hide
 + Quản lý: Header, Slider, Footer, Khóa học nổi bật(tự chọn), Tất cả khóa học sắp xếp theo ngày tạo mới nhất/cũ nhất/nhiều lượt mua nhất.
 + DB thêm bảng liên hệ (id, email, tieude, noidung, datraloi(yes/no) )
-
++ Super Admin.
 <!-- Thêm trong trang phương thức thanh toán(VNPay, Mono, ZaloPay, Bank(checked)) -> new Page Xác 
 nhận thanh toán(5p không nhấn Xác nhận ) -> Done/Cancelled -->
 <!--  -->

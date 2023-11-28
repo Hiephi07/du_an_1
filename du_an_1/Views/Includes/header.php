@@ -86,6 +86,12 @@ ob_start(); // Start output buffering
                                         </div>
                                     </div>
                                     <div class='list-group'>
+                                        <a href='index.php?act=cart' class='list-group-item list-group-item-action rounded-0 border-0 p-2' aria-current='true'>
+                                            <div class='d-inline-block text-end me-2' style='width: 25px'>
+                                                <i class='fa-solid fa-cart-arrow-down'></i>
+                                            </div>
+                                            <span>Giỏ hàng của tôi</span>
+                                        </a>
                                         <a href='index.php?act=myCourse' class='list-group-item list-group-item-action rounded-0 border-0 p-2' aria-current='true'>
                                             <div class='d-inline-block text-end me-2' style='width: 25px'>
                                                 <i class='fa-solid fa-video'></i>

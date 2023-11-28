@@ -48,4 +48,20 @@ function course_of_user($user_id){
     }
     return $uniqueCourseIds;
 }
+
+// add cart
+function add_cart($user_id, $course_id){
+    $sql = "INSERT INTO carts(user_id, course_id) 
+            VALUES($user_id, $course_id)";
+    pdo_execute($sql);
+}
+
+//load cart
+function load_cart($user_id){
+    $sql = "SELECT * FROM carts 
+            JOIN `courses` on carts.course_id = courses.course_id
+            WHERE user_id = $user_id";
+    $courses =  pdo_query($sql);
+    return $courses;
+}
 ?>
