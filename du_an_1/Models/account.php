@@ -18,9 +18,9 @@ function signUp($email, $user, $pass, $user_name) {
     }
 }
 
-//Đăng nhập
+//Đăng nhập User
 function signIn($user, $pass){
-    $sql = "SELECT * FROM users WHERE (username = '$user' OR user_email = '$user') AND user_password = '$pass'";
+    $sql = "SELECT * FROM users WHERE (username = '$user' OR user_email = '$user') AND user_password = '$pass' AND roles = 1";
     $reslut = pdo_query_one($sql);
     return $reslut;
 }
@@ -111,5 +111,18 @@ function sendMailPass($email, $username, $pass) {
 }
 // End Forget Password
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//ADMIN//
+
+//login
+function loginAdmin($user, $pass){
+    $sql = "SELECT * FROM users WHERE (username = '$user' OR user_email = '$user') AND user_password = '$pass' AND roles = 2";
+    $reslut = pdo_query_one($sql);
+    return $reslut;
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ?>

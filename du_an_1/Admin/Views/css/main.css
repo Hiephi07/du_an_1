@@ -14814,6 +14814,23 @@ be a descendant of the grid when it is being dragged.
   border-radius: .375rem;
 }
 
+.widget-small.yellow {
+  background-color: #ffc107;
+}
+
+.widget-small.yellow.coloured-icon {
+  background-color: #fff;
+  color: #2a2a2a;
+  border-radius: .375rem;
+  padding:10px;
+}
+
+.widget-small.yellow.coloured-icon .icon {
+  background-color: #ffd43b !important;
+  color: #fff;
+  border-radius: .375rem;
+}
+
 .widget-small.info {
   background-color: #17a2b8;
 }

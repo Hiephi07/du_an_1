@@ -44,7 +44,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 
                     header('location:index.php');
                 } else {
-                    $thongbao_dn = 'Tài khoản không tồn tại vui lòng kiểm tra hoặc đăng ký';
+                    $thongbao_dn = 'Tài khoản hoặc mật khẩu không chính xác!';
                 }
             }
             include "./Views/signin.php";
