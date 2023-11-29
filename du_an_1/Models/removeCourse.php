@@ -23,7 +23,7 @@ if (isset($_POST['course_id']) && $_POST['user_id']) {
             $course_price = number_format($course_price, 0, ',', '.');
             $output .= "
             <tr>
-                <th scope='row'><input class='form-check-input' type='checkbox' name='nameCourse'></th>
+                <th scope='row'><input class='form-check-input' type='radio' name='nameCourse' value='$course_price' onclick='getValue()'></th>
                 <td>
                     <div class='card d-flex flex-wrap '>
                         <img src='$img' alt='error' width='120px' height='68px'>
@@ -33,7 +33,7 @@ if (isset($_POST['course_id']) && $_POST['user_id']) {
                     </div>
                 </td>
                 <td class='fw-bold h6'>$course_price đ</td>
-                <td><button value='$course_id' id='removeCourse' onclick='removeCourse(this.value)' type='button' class='btn btn-outline-danger'>Xóa</button></td>
+                <td><button value='$course_id' onclick='removeCourse(this.value)' type='button' class='btn btn-outline-danger'>Xóa</button></td>
             </tr>";
         }
 

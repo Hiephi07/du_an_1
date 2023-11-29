@@ -1,6 +1,6 @@
     <!-- Cart -->
     <main class="container-fluid w-1400 mt-5" id="main" style="min-height: 100vh;">
-        <div class="row mt-4">
+        <form method="post" action="index?act=" class="row mt-4">
             <h3 class="my-3">Giỏ hàng của tôi</h3>
             <div class="col-md-9 col-12  text-wrap">
                 <table class="table align-middle table-responsive">
@@ -21,7 +21,7 @@
                             $course_price = number_format($course_price, 0, ',', '.');
                             echo"
                             <tr>
-                                <th scope='row'><input class='form-check-input' type='checkbox' name='nameCourse'></th>
+                                <th scope='row'><input class='form-check-input' type='radio' name='nameCourse' value='$course_price' onclick='getValue(this.value, $course_id)'></th>
                                 <td>
                                     <div class='card d-flex flex-wrap '>
                                         <img src='$img' alt='error' width='120px' height='68px'>
@@ -31,7 +31,7 @@
                                     </div>
                                 </td>
                                 <td class='fw-bold h6'>$course_price đ</td>
-                                <td><button value='$course_id' id='removeCourse' onclick='removeCourse(this.value, $user_id)' type='button' class='btn btn-outline-danger'>Xóa</button></td>
+                                <td><button value='$course_id' onclick='removeCourse(this.value)' type='button' class='btn btn-outline-danger'>Xóa</button></td>
                             </tr>
                             ";
                         }
@@ -84,12 +84,13 @@
                 <div class="card">
                     <h5 class="card-header">Tổng</h5>
                     <div class="card-body">
-                        <h5 class="card-title my-3">0 đ</h5>
-                        <a href="./payment.html" class="btn btn-warning text-white">Thanh toán</a>
+                        <h5 class="card-title my-3" ><span id="totalPrice">0</span> đ</h5>
+                        <a id="payment" href="#" 
+                            class="btn btn-warning text-white">Thanh toán</a>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </main>
     <!-- Cart -->
 
@@ -97,7 +98,7 @@
         // 8h
         // console.log("ok");
         let showCourse = document.getElementById('showCourse');
-        function removeCourse(value, user_id) {
+        function removeCourse(value) {
                 let xmlHttp = new XMLHttpRequest();
                 xmlHttp.onload = function () {
                     showCourse.innerHTML = xmlHttp.responseText;
@@ -107,5 +108,19 @@
                 xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlHttp.send(`course_id=${value}&user_id=${<?= $_SESSION['user']['user_id']?>}`);
         }
-        console.log(showCourse);
+        // console.log(showCourse);
     </script>
+    <script>
+    function getValue(value, course_id) {
+        // let radios = document.querySelectorAll('input[name="nameCourse"]');
+        let payment = document.querySelector('#payment');
+        let totalPrice = document.querySelector('#totalPrice');
+        // radios.forEach(function(radio) {
+        //     if (radio.checked) {
+                totalPrice.innerHTML = value;
+                payment.href = "index.php?act=payment&course_id=" + course_id;
+        //     }
+        // });
+    
+    }
+</script>

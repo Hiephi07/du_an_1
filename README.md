@@ -41,7 +41,7 @@
 + Lưu trữ tk cho lần đăng nhập sau: cookie
 + comment: bắt buộc phải đăng nhập, thêm, sửa, xóa
 + My learning: sau khi đăng nhập mới hiển thị
-+ Watch video: sử dụng kỹ thuật load video 1 phần, xem quá 80% mới đc next video
+<!-- + Watch video: sử dụng kỹ thuật load video 1 phần, xem quá 80% mới đc next video -->
 + lesson list: hiển thị danh sách video trong khóa học đó.
 <!-- + *note in video: ghi chú kiến thức. -->
 + Ưu đãi: giá gốc(thẻ del), giá ưu đãi

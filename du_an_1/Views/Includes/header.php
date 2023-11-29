@@ -221,7 +221,7 @@ ob_start(); // Start output buffering
 
     <script>
         // 8h
-        console.log("ok");
+        // console.log("ok");
         function timKiem() {
             let category_id = document.getElementById('category').value;
             console.log(category_id);

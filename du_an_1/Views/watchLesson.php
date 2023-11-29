@@ -6,7 +6,9 @@
                         <source src="../Public/video/2023-11-17 14-35-51.mp4" type="video/mp4" />
                     </video> -->
                     <div class="ratio ratio-16x9">
-                        <iframe src="./Public/video/one_million.mp4" allowfullscreen></iframe>
+                        <video id="myVideo" controls>
+                            <source src="./Public/video/one_million.mp4" type="video/mp4">
+                        </video>
                     </div>
 
                     <div class="card">
@@ -35,10 +37,11 @@
                                 <div class="accordion-body">
                                     <ol class="list-group list-group-numbered">
                                         <li class="list-group-item list-group-item-action">
+                                        <!-- <button onclick="playNextVideo()">Next Video</button> -->
                                             <a href="#" class="text-black text-decoration-none text-decoration-none">Mô hình Client - Server là gì?</a>
                                         </li>
                                         <li class="list-group-item list-group-item-action">
-                                            <a href="#" class="text-black text-decoration-none">Domain là gì? Tên miền là gì?</a>
+                                            <a href="hi" onclick="playNextVideo()" class="text-black text-decoration-none">Domain là gì? Tên miền là gì?</a>
                                         </li>
                                         <li class="list-group-item list-group-item-action">
                                             <a href="#" class="text-black text-decoration-none">Hosting là gì?</a>
@@ -142,3 +145,23 @@
             </div>
         </section>
         <!-- Watch Lesson -->
+
+        <script>
+            var video = document.getElementById('myVideo');
+            var isVideoCompleted = false;
+
+            video.addEventListener('ended', function() {
+                isVideoCompleted = true;
+            });
+
+            function playNextVideo() {
+                if (isVideoCompleted) {
+                    // Chuyển sang video tiếp theo hoặc thực hiện các hành động khác
+                    alert('Chuyển sang video tiếp theo');
+                    // Reset trạng thái xem video
+                    isVideoCompleted = false;
+                } else {
+                    confirm('Bạn cần xem hết video trước!');
+                }
+            }
+        </script>
