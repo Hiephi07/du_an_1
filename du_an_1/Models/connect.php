@@ -31,6 +31,23 @@ function pdo_execute($sql){
         unset($conn);
     }
 }
+
+
+function pdo_checkStatusSql($sql){
+    $sql_args = array_slice(func_get_args(), 1);
+    try{
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        return $stmt->execute($sql_args);
+    }
+    catch(PDOException $e){
+        throw $e;
+    }
+    finally{
+        unset($conn);
+    }
+}
+
 /**
  * Thực thi câu lệnh sql truy vấn dữ liệu (SELECT)
  * @param string $sql câu lệnh sql
@@ -44,7 +61,7 @@ function pdo_query($sql){
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
-        $rows = $stmt->fetchAll();
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
     }
     catch(PDOException $e){
@@ -92,6 +109,41 @@ function pdo_query_value($sql){
         $stmt->execute($sql_args);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return array_values($row)[0];
+    }
+    catch(PDOException $e){
+        throw $e;
+    }
+    finally{
+        unset($conn);
+    }
+}
+
+
+function pdo_get_rows($sql){
+    $sql_args = array_slice(func_get_args(), 1);
+    try{
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($sql_args);
+        $rows = $stmt->rowCount();
+        return $rows;
+    }
+    catch(PDOException $e){
+        throw $e;
+    }
+    finally{
+        unset($conn);
+    }
+}
+
+
+function pdo_showSQL($sql){
+    $sql_args = array_slice(func_get_args(), 1);
+    try{
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($sql_args);
+        return $stmt->debugDumpParams();
     }
     catch(PDOException $e){
         throw $e;
