@@ -3,6 +3,7 @@ session_start();
 include '../Models/connect.php';
 include '../Models/account.php';
 include '../Models/thong_ke.php';
+include '../Models/course.php';
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
@@ -46,6 +47,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             $category = countCategoty();
             include './Views/dashboard.php';
             break;
+        case'baoCao':
+            $courses = featured_course();
+            include './Views/baoCao.php';
     }
 } else {
     include "./Views/login.php";

@@ -47,13 +47,13 @@
     </div>
     <hr>
     <ul class="app-menu">
-      <li><a class="app-menu__item haha" href="phan-mem-ban-hang.html"><i class='app-menu__icon bx bx-film'></i>
+      <li><a class="app-menu__item haha" href="#"><i class='app-menu__icon bx bx-film'></i>
           <span class="app-menu__label">Quản lý Slide</span></a></li>
-      <li><a class="app-menu__item active" href="index.html"><i class='app-menu__icon bx bx-tachometer'></i><span
+      <li><a class="app-menu__item active" href="index.php?act=dashboard"><i class='app-menu__icon bx bx-tachometer'></i><span
             class="app-menu__label">Bảng điều khiển</span></a></li>
-      <li><a class="app-menu__item " href="table-data-user.html"><i class='app-menu__icon bx bx-id-card'></i> <span
+      <li><a class="app-menu__item " href="index.php?act=userList"><i class='app-menu__icon bx bx-id-card'></i> <span
             class="app-menu__label">Quản lý khách hàng</span></a></li>
-      <li><a class="app-menu__item" href="table-data-product.html"><i class='app-menu__icon bx bx-purchase-tag-alt'></i><span 
+      <li><a class="app-menu__item" href="index.php?act=listCourses"><i class='app-menu__icon bx bx-purchase-tag-alt'></i><span 
             class="app-menu__label">Quản lý khóa học</span></a>
       </li>
       <li><a class="app-menu__item" href="table-data-oder.html"><i class='app-menu__icon bx bx-task'></i><span
@@ -61,7 +61,7 @@
       <li><a class="app-menu__item" href="table-data-banned.html"><i class='app-menu__icon bx bx-run'></i><span
             class="app-menu__label">Quản lý bình luận
           </span></a></li>
-      <li><a class="app-menu__item" href="quan-ly-bao-cao.html"><i
+      <li><a class="app-menu__item" href="index.php?act=baoCao"><i
             class='app-menu__icon bx bx-pie-chart-alt-2'></i><span class="app-menu__label">Báo cáo số thu</span></a>
       </li>
     </ul>

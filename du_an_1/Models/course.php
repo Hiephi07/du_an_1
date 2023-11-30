@@ -1,14 +1,29 @@
 <?php
-// 
+// khóa học nổi bật
 function featured_course(){
-    $sql = "SELECT * FROM courses WHERE 1 AND course_status = 1 ORDER BY course_members DESC LIMIT 0,4";
+    $sql = "SELECT *,
+                COUNT(orders.course_id) AS course_members
+            FROM 
+                courses
+            LEFT JOIN 
+                orders ON courses.course_id = orders.course_id
+            LEFT JOIN
+                category ON category.category_id = courses.category_id
+            WHERE 
+                orders.order_status = 1
+            GROUP BY 
+                courses.course_id
+            ORDER BY
+                course_members DESC
+            LIMIT
+                0, 4";
     $courses =  pdo_query($sql);
     return $courses;
 }
 
-// 
+// tất cả khóa học
 function all_course(){
-    $sql = "SELECT * FROM courses WHERE 1 AND course_status = 1 ORDER BY created_at DESC LIMIT 0,12";
+    $sql = "SELECT * FROM courses WHERE course_status = 1 ORDER BY created_at DESC LIMIT 0,12";
     $courses =  pdo_query($sql);
     return $courses;
 }
