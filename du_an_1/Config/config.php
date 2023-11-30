@@ -1,1 +1,0 @@
-<!-- Nơi lưu trữ các giá trị HẰNG -->
