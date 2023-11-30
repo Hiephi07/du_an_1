@@ -1,14 +1,29 @@
 <?php
-// 
+// khóa học nổi bật
 function featured_course(){
-    $sql = "SELECT * FROM courses WHERE 1 AND course_status = 1 ORDER BY course_members DESC LIMIT 0,4";
+    $sql = "SELECT *,
+                COUNT(orders.course_id) AS course_members
+            FROM 
+                courses
+            LEFT JOIN 
+                orders ON courses.course_id = orders.course_id
+            LEFT JOIN
+                category ON category.category_id = courses.category_id
+            WHERE 
+                orders.order_status = 1
+            GROUP BY 
+                courses.course_id
+            ORDER BY
+                course_members DESC
+            LIMIT
+                0, 4";
     $courses =  pdo_query($sql);
     return $courses;
 }
 
-// 
+// tất cả khóa học
 function all_course(){
-    $sql = "SELECT * FROM courses WHERE 1 AND course_status = 1 ORDER BY created_at DESC LIMIT 0,12";
+    $sql = "SELECT * FROM courses WHERE course_status = 1 ORDER BY created_at DESC LIMIT 0,12";
     $courses =  pdo_query($sql);
     return $courses;
 }
@@ -37,7 +52,7 @@ function load_sanpham_cungloai($category_id){
 function myCourse($user_id){
     $sql = "SELECT courses.course_name, courses.course_id, courses.course_image 
             FROM `orders` JOIN `courses` on orders.course_id = courses.course_id
-            WHERE user_id = $user_id";
+            WHERE user_id = $user_id AND order_status = 1";
     return pdo_query($sql);
 }
 
@@ -54,6 +69,7 @@ function course_of_user($user_id){
     }
     return $uniqueCourseIds;
 }
+
 
 
 /** Function for COURSE */
@@ -228,5 +244,22 @@ function editLesson($lessonOrder, $lessonName, $lessonPath, $lesson_id) {
     return pdo_checkStatusSql($sql);
 }
 
+
+
+// add cart
+function add_cart($user_id, $course_id){
+    $sql = "INSERT INTO carts(user_id, course_id) 
+            VALUES($user_id, $course_id)";
+    pdo_execute($sql);
+}
+
+//load cart
+function load_cart($user_id){
+    $sql = "SELECT * FROM carts 
+            JOIN `courses` on carts.course_id = courses.course_id
+            WHERE user_id = $user_id";
+    $courses =  pdo_query($sql);
+    return $courses;
+}
 
 ?>

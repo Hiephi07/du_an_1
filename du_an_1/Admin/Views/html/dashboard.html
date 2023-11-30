@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Main CSS-->
-  <link rel="stylesheet" type="text/css" href="./Views/css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <!-- or -->
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -47,13 +47,13 @@
     </div>
     <hr>
     <ul class="app-menu">
-      <li><a class="app-menu__item haha" href="#"><i class='app-menu__icon bx bx-film'></i>
+      <li><a class="app-menu__item haha" href="phan-mem-ban-hang.html"><i class='app-menu__icon bx bx-film'></i>
           <span class="app-menu__label">Quản lý Slide</span></a></li>
-      <li><a class="app-menu__item active" href="index.php?act=dashboard"><i class='app-menu__icon bx bx-tachometer'></i><span
+      <li><a class="app-menu__item active" href="index.html"><i class='app-menu__icon bx bx-tachometer'></i><span
             class="app-menu__label">Bảng điều khiển</span></a></li>
-      <li><a class="app-menu__item " href="index.php?act=userList"><i class='app-menu__icon bx bx-id-card'></i> <span
+      <li><a class="app-menu__item " href="table-data-user.html"><i class='app-menu__icon bx bx-id-card'></i> <span
             class="app-menu__label">Quản lý khách hàng</span></a></li>
-      <li><a class="app-menu__item" href="index.php?act=listCourses"><i class='app-menu__icon bx bx-purchase-tag-alt'></i><span 
+      <li><a class="app-menu__item" href="table-data-product.html"><i class='app-menu__icon bx bx-purchase-tag-alt'></i><span 
             class="app-menu__label">Quản lý khóa học</span></a>
       </li>
       <li><a class="app-menu__item" href="table-data-oder.html"><i class='app-menu__icon bx bx-task'></i><span
@@ -61,7 +61,7 @@
       <li><a class="app-menu__item" href="table-data-banned.html"><i class='app-menu__icon bx bx-run'></i><span
             class="app-menu__label">Quản lý bình luận
           </span></a></li>
-      <li><a class="app-menu__item" href="index.php?act=baoCao"><i
+      <li><a class="app-menu__item" href="quan-ly-bao-cao.html"><i
             class='app-menu__icon bx bx-pie-chart-alt-2'></i><span class="app-menu__label">Báo cáo số thu</span></a>
       </li>
     </ul>
@@ -85,14 +85,14 @@
           <div class="col-md-6">
             <div class="widget-small primary coloured-icon"><i class='icon bx bxs-user-account fa-3x'></i>
               <div class="info">
-                <h4>Tổng số User</h4>
-                <p><b><?= $totalUser['totalUser'] ?> khách hàng</b></p>
-                <p class="info-tong">Tổng số khách hàng.</p>
+                <h4>Tổng số khách hàng</h4>
+                <p><b>56 khách hàng</b></p>
+                <p class="info-tong">Tổng số khách hàng được quản lý.</p>
               </div>
             </div>
           </div>
           <!-- col-6 -->
-          <!-- <div class="col-md-6">
+          <div class="col-md-6">
             <div class="widget-small primary coloured-icon"><i class='icon bx bxs-user-account fa-3x'></i>
               <div class="info">
                 <h4>Tổng khách hàng / tháng</h4>
@@ -100,19 +100,19 @@
                 <p class="info-tong">Tổng số khách hàng đăng ký mới / tháng.</p>
               </div>
             </div>
-          </div> -->
+          </div>
           <!-- col-6 -->
           <div class="col-md-6">
             <div class="widget-small info coloured-icon"><i class='icon bx bxs-data fa-3x'></i>
               <div class="info">
-                <h4>Khóa học đã bán</h4>
-                <p><b><?= $soldCourse['sold']?> khóa học</b></p>
-                <p class="info-tong">Số khóa học được bán ra.</p>
+                <h4>Tổng khóa học đã bán</h4>
+                <p><b>1850 khóa học</b></p>
+                <p class="info-tong">Tổng số khóa học được bán ra.</p>
               </div>
             </div>
           </div>
           <!-- col-6 -->
-          <!-- <div class="col-md-6">
+          <div class="col-md-6">
             <div class="widget-small info coloured-icon"><i class='icon bx bxs-data fa-3x'></i>
               <div class="info">
                 <h4>Tổng khóa học đã bán / tháng</h4>
@@ -120,19 +120,19 @@
                 <p class="info-tong">Tổng số khóa học được bán ra / tháng.</p>
               </div>
             </div>
-          </div> -->
+          </div>
           <!-- col-6 -->
           <div class="col-md-6">
             <div class="widget-small warning coloured-icon"><i class='icon bx bxs-shopping-bags fa-3x'></i>
               <div class="info">
                 <h4>Doanh thu</h4>
-                <p><b><?= number_format($totalRevenue['totalRevenue']) ?> đ</b></p>
-                <p class="info-tong">Doanh thu bán khóa học.</p>
+                <p><b>247.000.000 đ</b></p>
+                <p class="info-tong">Tổng số doanh thu khóa học được bán.</p>
               </div>
             </div>
           </div>
           <!-- col-6 -->
-          <!-- <div class="col-md-6">
+          <div class="col-md-6">
             <div class="widget-small warning coloured-icon"><i class='icon bx bxs-shopping-bags fa-3x'></i>
               <div class="info">
                 <h4>Doanh thu / tháng</h4>
@@ -140,19 +140,19 @@
                 <p class="info-tong">Tổng số doanh thu khóa học được bán / tháng.</p>
               </div>
             </div>
-          </div> -->
+          </div>
           <!-- col-6 -->
           <div class="col-md-6">
             <div class="widget-small danger coloured-icon"><i class='icon bx bxs-shopping-bags fa-3x'></i>
               <div class="info">
-                <h4>Số Khóa học</h4>
-                <p><b><?= $allCourse['courses'] ?></b></p>
-                <p class="info-tong">Tổng số khóa học.</p>
+                <h4>Khóa học</h4>
+                <p><b>247.000.000 đ</b></p>
+                <p class="info-tong">Tổng số doanh thu khóa học được bán.</p>
               </div>
             </div>
           </div>
           <!-- col-6 -->
-          <!-- <div class="col-md-6">
+          <div class="col-md-6">
             <div class="widget-small danger coloured-icon"><i class='icon bx bxs-shopping-bags fa-3x'></i>
               <div class="info">
                 <h4>Khóa học / tháng</h4>
@@ -160,14 +160,14 @@
                 <p class="info-tong">Tổng số doanh thu khóa học được bán / tháng.</p>
               </div>
             </div>
-          </div> -->
+          </div>
           <!-- col-6 -->
           <div class="col-md-6">
-            <div class="widget-small yellow coloured-icon"><i class='icon bx bxs-shopping-bags fa-3x'></i>
+            <div class="widget-small purple coloured-icon"><i class='icon bx bxs-shopping-bags fa-3x'></i>
               <div class="info">
-                <h4>ĐH chờ xác nhận</h4>
-                <p><b><?= $orderAwaiting['awating'] ?></b></p>
-                <p class="info-tong">Số đơn hàng cần xác nhận.</p>
+                <h4>Truy cập</h4>
+                <p><b>7.060.756</b></p>
+                <p class="info-tong">Tổng số lượt truy cập website.</p>
               </div>
             </div>
           </div>
@@ -175,9 +175,9 @@
           <div class="col-md-6">
             <div class="widget-small purple coloured-icon"><i class='icon bx bxs-shopping-bags fa-3x'></i>
               <div class="info">
-                <h4>Danh mục khóa học</h4>
-                <p><b><?= $category['countCategoty'] ?></b></p>
-                <p class="info-tong">Tổng số danh mục khóa học.</p>
+                <h4>Truy cập / tháng</h4>
+                <p><b>585.987</b></p>
+                <p class="info-tong">Tổng số lượt truy cập website trong tháng.</p>
               </div>
             </div>
           </div>
@@ -219,18 +219,18 @@
         </b></p>
     </div>
   </main>
-  <script src="./Views/js/jquery-3.2.1.min.js"></script>
+  <script src="js/jquery-3.2.1.min.js"></script>
   <!--===============================================================================================-->
-  <script src="./Views/js/popper.min.js"></script>
+  <script src="js/popper.min.js"></script>
   <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
   <!--===============================================================================================-->
-  <script src="./Views/js/bootstrap.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   <!--===============================================================================================-->
-  <script src="./Views/js/main.js"></script>
+  <script src="js/main.js"></script>
   <!--===============================================================================================-->
-  <script src="./Views/js/plugins/pace.min.js"></script>
+  <script src="js/plugins/pace.min.js"></script>
   <!--===============================================================================================-->
-  <script type="text/javascript" src="./Views/js/plugins/chart.js"></script>
+  <script type="text/javascript" src="js/plugins/chart.js"></script>
   <!--===============================================================================================-->
   <script type="text/javascript">
     var data = {

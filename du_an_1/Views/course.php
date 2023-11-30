@@ -3,21 +3,22 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div>
-                        <img class="w-100" src="<?php echo "./Public/images/imgCourse/$course_image"?>" alt="" />
+                        <img class="w-100" src="<?= "./Public/images/imgCourse/$course_image"?>" alt="" />
                     </div>
 
                     <div class="row my-3">
                         <div class="col-sm pe-sm-2 mb-2">
                             <a class="btn btn-primary btn-lg w-100 rounded-0 border-black border-2 bg__main-color fw-bold" 
-                                href="<?php echo "index.php?act=payment&course_id=".$course_id ?>">Mua ngay</a>
+                                href="<?= "index.php?act=payment&course_id=".$course_id ?>">Mua ngay</a>
                         </div>
                         <div class="col-sm ps-sm-2">
-                            <a class="btn btn-primary btn-lg w-100 rounded-0 border-black border-2 bg-light text-dark fw-bold" href="./cart.html">Thêm vào giỏ hàng</a>
+                            <a class="btn btn-primary btn-lg w-100 rounded-0 border-black border-2 bg-light text-dark fw-bold" 
+                                href="<?= "index.php?act=add_cart&course_id=".$course_id ?>">Thêm vào giỏ hàng</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <h1 class="fw-bolder pt-lg-3"><?php echo "$course_name"?></h1>
+                    <h1 class="fw-bolder pt-lg-3"><?= "$course_name"?></h1>
                     <p class="text-danger fw-bold fs-3 mt-3 h3"><?= number_format($course_price, 0, ',', '.')?> đ</p>
                     <p class='card-text h5 mt-3 text-decoration-line-through'><?= number_format($course_price_sale, 0, ',', '.') ?> đ</p>
                     <!-- <div>

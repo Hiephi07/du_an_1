@@ -41,7 +41,7 @@
 + Lưu trữ tk cho lần đăng nhập sau: cookie
 + comment: bắt buộc phải đăng nhập, thêm, sửa, xóa
 + My learning: sau khi đăng nhập mới hiển thị
-+ Watch video: sử dụng kỹ thuật load video 1 phần, xem quá 80% mới đc next video
+<!-- + Watch video: sử dụng kỹ thuật load video 1 phần, xem quá 80% mới đc next video -->
 + lesson list: hiển thị danh sách video trong khóa học đó.
 <!-- + *note in video: ghi chú kiến thức. -->
 + Ưu đãi: giá gốc(thẻ del), giá ưu đãi
@@ -64,7 +64,7 @@
 + Comment: delete, hide
 + Quản lý: Header, Slider, Footer, Khóa học nổi bật(tự chọn), Tất cả khóa học sắp xếp theo ngày tạo mới nhất/cũ nhất/nhiều lượt mua nhất.
 + DB thêm bảng liên hệ (id, email, tieude, noidung, datraloi(yes/no) )
-
++ Super Admin.
 <!-- Thêm trong trang phương thức thanh toán(VNPay, Mono, ZaloPay, Bank(checked)) -> new Page Xác 
 nhận thanh toán(5p không nhấn Xác nhận ) -> Done/Cancelled -->
 <!--  -->

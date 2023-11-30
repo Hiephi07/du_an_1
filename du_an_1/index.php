@@ -14,7 +14,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 
     switch ($act) {
         case 'signup':
-            if(isset($_POST['signUpBtn'])){
+            if (isset($_POST['signUpBtn'])) {
                 $email = $_POST['email'];
                 $username = $_POST['username'];
                 $password = sha1($_POST['password']);
@@ -25,22 +25,32 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "./Views/signup.php";
             break;
         case 'signin':
-            if(isset($_POST['signinBtn'])){
+            if (isset($_POST['signinBtn'])) {
                 $username = $_POST['username'];
                 $password = sha1($_POST['password']);
-                $check_account = signIn($username, $password);
-                if (is_array($check_account)) {
-                    $_SESSION['user'] = $check_account;
+                $account = signIn($username, $password);
+                if (is_array($account)) {
+                    $_SESSION['user'] = $account;
+
+                    session_regenerate_id();
+                    $user_session_id = session_id();
+
+                    $query = "UPDATE users SET user_session_id = '$user_session_id' 
+                            WHERE user_id = " . $account['user_id'];
+                    pdo_query($query);
+
+                    $_SESSION['user_id'] = $account['user_id'];
+                    $_SESSION['user_session_id'] = $user_session_id;
+
                     header('location:index.php');
                 } else {
-                    // header('location:index.php');
-                    $thongbao_dn = 'Tài khoản không tồn tại vui lòng kiểm tra hoặc đăng ký';
+                    $thongbao_dn = 'Tài khoản hoặc mật khẩu không chính xác!';
                 }
             }
             include "./Views/signin.php";
             break;
         case 'forget':
-            if(isset($_POST['sendEmail'])){
+            if (isset($_POST['sendEmail'])) {
                 $email = $_POST['email'];
                 $messEmail = sendMail($email);
             }
@@ -56,10 +66,10 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'course':
             if (isset($_GET['course_id']) && ($_GET['course_id'] > 0)) {
                 //kiểm tra xem khóa học đã được mua chưa
-                if(isset($_SESSION['user']['user_id'])){
+                if (isset($_SESSION['user']['user_id'])) {
                     $_SESSION['course_of_user'] = course_of_user($_SESSION['user']['user_id']);
                     if (in_array($_GET['course_id'], $_SESSION['course_of_user'])) {
-                        header('location: index.php?act=watchLesson&course_id'.$_GET['course_id']);
+                        header('location: index.php?act=watchLesson&course_id' . $_GET['course_id']);
                     }
                 }
 
@@ -73,7 +83,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             break;
         case "payment":
-            if(!isset($_SESSION['user'])){
+            if (!isset($_SESSION['user'])) {
                 header('location: index.php?act=signin&mess');
             }
             if (isset($_GET['course_id']) && ($_GET['course_id'] > 0)) {
@@ -84,8 +94,25 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 include './Views/payment.php';
             }
             break;
+        case "add_cart":
+            if (!isset($_SESSION['user'])) {
+                header('location: index.php?act=signin&mess');
+            }
+            if (isset($_GET['course_id']) && ($_GET['course_id'] > 0)) {
+                $course_id = $_GET['course_id'];
+                add_cart($_SESSION['user'], $course_id);
+                header('location: index.php?act=cart');
+            }
+            break;
+        case "cart":
+            if (!isset($_SESSION['user'])) {
+                header('location: index.php?act=signin&mess');
+            }
+            $load_cart = load_cart($_SESSION['user']['user_id']);
+            include './Views/cart.php';
+            break;
         case "order":
-            if(isset($_POST['success'])){
+            if (isset($_POST['success'])) {
                 $order_id = $_POST['order_id'];
                 $user_id = $_SESSION['user']['user_id'];
                 $course_id = $_POST['course_id'];
@@ -94,7 +121,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 header('location: index.php');
             }
 
-            if(isset($_POST['cancel'])){
+            if (isset($_POST['cancel'])) {
                 $order_id = $_POST['order_id'];
                 $user_id = $_SESSION['user']['user_id'];
                 $course_id = $_POST['course_id'];
@@ -104,7 +131,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             break;
         case "profile":
-            if(isset($_POST['updateAccount'])){
+            if (isset($_POST['updateAccount'])) {
                 $user_id = $_POST['user_id'];
                 $user_email = $_POST['user_email'];
                 $user_name = $_POST['user_name'];
@@ -112,7 +139,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 
                 $user_avatar = $_FILES['user_avatar']['name'];
                 $tmp_anh = $_FILES['user_avatar']['tmp_name'];
-                move_uploaded_file($tmp_anh, './Public/images/avatar/'.$user_avatar);
+                move_uploaded_file($tmp_anh, './Public/images/avatar/' . $user_avatar);
 
                 update_account($user_id, $user_email, $user_name, $user_phone, $user_avatar);
                 $_SESSION['user'] = update_session($_SESSION['user']['user_id']);
@@ -120,18 +147,18 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include './Views/profile.php';
             break;
         case "changePassword":
-            if(isset($_POST['changePw'])){
+            if (isset($_POST['changePw'])) {
                 $user_id = $_POST['user_id'];
                 $newPw = sha1($_POST['newPw']);
                 $re_newPw = sha1($_POST['re_newPw']);
                 $oldPw = sha1($_POST['oldPw']);
 
-                if($newPw !== $re_newPw){
+                if ($newPw !== $re_newPw) {
                     $messPw = "Mật khẩu không trùng khớp, hãy thử lại!";
                     include './Views/changePassword.php';
                     break;
                 }
-                if($oldPw !== $_SESSION['user']['user_password']){
+                if ($oldPw !== $_SESSION['user']['user_password']) {
                     $messPwFalse = "Mật khẩu cũ không đúng, hãy thử lại!";
                     include './Views/changePassword.php';
                     break;
@@ -147,13 +174,10 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include './Views/historypayment.php';
             break;
         case "myCourse":
-            // $_SESSION['course_of_user'] = course_of_user($_SESSION['user']['user_id']);
-            // var_dump($_SESSION['course_of_user'] = $courses);
             $courses = myCourse($_SESSION['user']['user_id']);
             include './Views/myCourse.php';
             break;
         case "watchLesson":
-            // $courses = myCourse($_SESSION['user']['user_id']);
             include './Views/watchLesson.php';
             break;
     }
@@ -161,4 +185,3 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
     include "./Views/Includes/home.php";
 }
 include "./Views/Includes/footer.php";
-include "./Core/conn.php";
