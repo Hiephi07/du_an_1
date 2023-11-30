@@ -1,1 +1,0 @@
-<h1 class="text-center my-5">Đây là Dashboard</h1>

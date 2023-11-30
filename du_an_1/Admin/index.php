@@ -3,11 +3,14 @@
 ?>
 <?php
 session_start();
+$_SESSION['user']['role'] = 2;
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 include "../Models/connect.php";
 include "../Models/course.php";
 include "../Models/account.php";
 include "../Models/payment.php";
+include "../Models/user.php";
+include "../Models/order.php";
 
 include "Views/layouts/header.php";
 include "Views/layouts/navbar.php";
@@ -16,7 +19,6 @@ include "Views/layouts/sidebar.php";
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
-
     switch ($act) {
         case 'listCourses':
             $listCourses = all_course2();
@@ -477,10 +479,194 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             $chapterId = $lesson['chapter_id'];
             include 'Views/edit-lesson.php';
             break;
+        case 'userList':
+            $allUser = getAllUser();
+            include 'Views/list-user.php';
+            break;
+        case 'deleteUser':
+            if (isset($_GET['userId'])) {
+                $userId = $_GET['userId'];
+                $userName = getUser($userId)['user_name'];
+                if (deleteUser($userId)) {
+                    $_SESSION['notice__userAction']['state'] = "alert-success";
+                    $_SESSION['notice__userAction']['msg'] = "Xóa người dùng '$userName' thành công";
+                } else {
+                    $_SESSION['notice__userAction']['state'] = "alert-danger";
+                    $_SESSION['notice__userAction']['msg'] = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                }
+            }
+            header('Location: index.php?act=userList');
+            break;
+        case 'addUser':
+            $checkSuccess;
+            if (isset($_POST['insertUserBtn'])) {
+                if ($_POST['user_role'] == 0 || $_POST['loginName'] == "" || $_POST['user_password'] =="" || $_POST['user_name'] == "" || $_POST['user_email'] == "") {
+                    $_SESSION['notice__insertUser']['state'] = "alert-danger";
+                    $_SESSION['notice__insertUser']['msg'] = "Bạn phải điền đầy đủ thông tin";
+                } else {
+                    if (checkLoginName($_POST['loginName'])) {
+                        $_SESSION['notice__insertUser']['state'] = "alert-danger";
+                        $_SESSION['notice__insertUser']['msg'] = "Tên đăng nhập đã tồn tại";
+                    } else {
+                        if (strlen($_POST['user_password']) <= 8) {
+                            $_SESSION['notice__insertUser']['state'] = "alert-danger";
+                            $_SESSION['notice__insertUser']['msg'] = "Mật khẩu phải lớn hơn 8 ký tự";
+                        } else {
+                            if ($_POST['user_repassword'] != $_POST['user_password']) {
+                                $_SESSION['notice__insertUser']['state'] = "alert-danger";
+                                $_SESSION['notice__insertUser']['msg'] = "Mật khẩu nhập lại không khớp";
+                            } else {
+                                if (checkEmail($_POST['user_email'])) {
+                                    $_SESSION['notice__insertUser']['state'] = "alert-danger";
+                                    $_SESSION['notice__insertUser']['msg'] = "Email đã tồn tại";
+                                } else {
+                                    $userRole = $_POST['user_role'];
+                                    $loginName = $_POST['loginName'];
+                                    $userPassword = $_POST['user_password'];
+                                    $userAvatar = $_FILES['user_avatar']['name'];
+                                    $tmp_userAvatar = $_FILES['user_avatar']['tmp_name'];
+                                    $userName = $_POST['user_name'];
+                                    $userEmail = $_POST['user_email'];
+
+                                    if ($userAvatar != "") {
+                                        if (insertUser($loginName, $userName, $userPassword, $userAvatar, $userEmail, $userRole) && move_uploaded_file($tmp_userAvatar, "../Public/images/Avatar/".$userAvatar)) {
+                                            $_SESSION['notice__insertUser']['state'] = "alert-success";
+                                            $_SESSION['notice__insertUser']['msg'] = "Thêm tài khoản thành công";
+                                            unset($_POST);
+                                        } else {
+                                            $_SESSION['notice__insertUser']['state'] = "alert-danger";
+                                            $_SESSION['notice__insertUser']['msg'] = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                                        }
+                                    } else {
+                                        if (insertUser($loginName, $userName, $userPassword, 'avatar_default.png', $userEmail, $userRole)) {
+                                            $_SESSION['notice__insertUser']['state'] = "alert-success";
+                                            $_SESSION['notice__insertUser']['msg'] = "Thêm tài khoản thành công";
+                                            unset($_POST);
+                                        } else {
+                                            $_SESSION['notice__insertUser']['state'] = "alert-danger";
+                                            $_SESSION['notice__insertUser']['msg'] = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            include "Views/add-user.php";
+            break;
+        case 'editUser':
+            $userToEdit;
+            if (isset($_GET['userId'])) {
+                $userToEdit = getUser($_GET['userId']);
+            }
+
+            if (isset($_POST['editUserBtn'])) {
+                if ($_POST['user_name'] == "") {
+                    $_SESSION['notice__editUser']['state'] = "alert-danger";
+                    $_SESSION['notice__editUser']['msg'] = "Tên người dùng không được bỏ trống";
+                } else {
+                    $userId = $userToEdit['user_id'];
+                    $userName = $_POST['user_name'];
+                    $userAvatar = $_FILES['user_avatar']['name'];
+                    $tmp_userAvatar = $_FILES['user_avatar']['tmp_name'];
+
+                    if ($userAvatar != "") {
+                        if (editUser($userName, $userAvatar, $userId) && move_uploaded_file($tmp_userAvatar, "../Public/images/Avatar/".$userAvatar)) {
+                            $_SESSION['notice__editUser']['state'] = "alert-success";
+                            $_SESSION['notice__editUser']['msg'] = "Cập nhật thông tin tài khoản thành công";
+                            unset($_POST);
+                        } else {
+                            $_SESSION['notice__editUser']['state'] = "alert-danger";
+                            $_SESSION['notice__editUser']['msg'] = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                        }
+                    } else {
+                        if (editUser($userName, $userAvatar, $userId)) {
+                            $_SESSION['notice__editUser']['state'] = "alert-success";
+                            $_SESSION['notice__editUser']['msg'] = "Cập nhật thông tin tài khoản thành công";
+                            unset($_POST);
+                        } else {
+                            $_SESSION['notice__editUser']['state'] = "alert-danger";
+                            $_SESSION['notice__editUser']['msg'] = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                        }
+                    }
+                }
+            }
+            $userToEdit = getUser($_GET['userId']);
+            include "Views/edit-user.php";
+            break;
+        case 'changeUserStatus';
+            $userId;
+            $userStatus;
+            $userName;
+            if (isset($_GET['userId'])) {
+                $userId = $_GET['userId'];
+                $userStatus = $_POST['user_status'];
+                $userName = getUser($userId)['user_name'];
+            }
+
+            if (changeUserStatus($userStatus, $userId)) {
+                $_SESSION['notice__userAction']['state'] = "alert-success";
+                $_SESSION['notice__userAction']['msg'] = "Cập nhật trạng thái người dùng '$userName' thành công";
+            } else {
+                $_SESSION['notice__userAction']['state'] = "alert-danger";
+                $_SESSION['notice__userAction']['msg'] = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+            }
+            unset($_POST);
+            header('Location: index.php?act=userList');
+            break;
+        case 'listOrder':
+            $listOrder = getAllOrder();
+            include "Views/list-order.php"; 
+            break;
+        case 'changeOrderStatus':
+            $orderId;
+            $orderStatus;
+            $userId;
+            $courseId;
+            if (isset($_GET['orderId'])) {
+                $orderId = $_GET['orderId'];
+                $orderStatus = $_POST['order_status'];
+                $userId = $_GET['userId'];
+                $courseId = getOrder($orderId)['course_id'];
+            }
+
+            if ($orderStatus == 0 || $orderStatus == 2) {
+                if (checkUserCourseAvailable($userId, $courseId)) {
+                    if (removeCourseUser($userId, $courseId) && changeOrderStatus($orderStatus, $orderId)) {
+                        $_SESSION['notice__orderAction']['state'] = "alert-success";
+                        $_SESSION['notice__orderAction']['msg'] = "Cập nhật trạng thái đơn hàng '$orderId' thành công";
+                    } else {
+                        $_SESSION['notice__userAction']['state'] = "alert-danger";
+                        $_SESSION['notice__userAction']['msg'] = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                    }
+                } else {
+                    if (changeOrderStatus($orderStatus, $orderId)) {
+                        $_SESSION['notice__orderAction']['state'] = "alert-success";
+                        $_SESSION['notice__orderAction']['msg'] = "Cập nhật trạng thái đơn hàng '$orderId' thành công";
+                    } else {
+                        $_SESSION['notice__userAction']['state'] = "alert-danger";
+                        $_SESSION['notice__userAction']['msg'] = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                    }
+                }
+            } else {
+                if (!checkUserCourseAvailable($userId, $courseId)) {
+                    if (activeCourse($userId, $courseId) && changeOrderStatus($orderStatus, $orderId)) {
+                        $_SESSION['notice__orderAction']['state'] = "alert-success";
+                        $_SESSION['notice__orderAction']['msg'] = "Cập nhật trạng thái đơn hàng '$orderId' thành công";
+                    } else {
+                        $_SESSION['notice__userAction']['state'] = "alert-danger";
+                        $_SESSION['notice__userAction']['msg'] = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                    }
+                }
+            }
+            header('Location: index.php?act=listOrder');
+            break;
+        case 'deleteOrder':
+            break;
         default:
             include "Views/dashboard.php";
             break;
-        
     }
 } else {
     include "Views/dashboard.php";
