@@ -13,7 +13,7 @@ include "../Models/user.php";
 include "../Models/order.php";
 include "../Models/category.php";
 
-include "../Models/thong_ke.php"
+include "../Models/thong_ke.php";
 
 include "Views/layouts/header.php";
 include "Views/layouts/navbar.php";
@@ -818,6 +818,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
         case'baoCao':
             $courses = featured_course();
+            $doanhThu = loadDoanhThu();
             include './Views/baoCao.php';
     }
 } else {

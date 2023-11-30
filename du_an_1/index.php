@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+date_default_timezone_set('Asia/Ho_Chi_Minh');
+
 include "./Models/connect.php";
 include "./Views/Includes/header.php";
 include "./Models/course.php";
@@ -100,7 +103,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             if (isset($_GET['course_id']) && ($_GET['course_id'] > 0)) {
                 $course_id = $_GET['course_id'];
-                add_cart($_SESSION['user'], $course_id);
+                add_cart($_SESSION['user']['user_id'], $course_id);
                 header('location: index.php?act=cart');
             }
             break;

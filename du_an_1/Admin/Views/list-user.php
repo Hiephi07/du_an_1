@@ -33,8 +33,8 @@
               <thead>
                 <tr>
                   <th class="text-center" >ID khách hàng</th>
-                  <th class="text-center" >Username</th>
                   <th class="text-center" >Họ và tên</th>
+                  <th class="text-center" >Username</th>
                   <th class="text-center" >Avatar</th>
                   <th class="text-center" >Email</th>
                   <th class="text-center" >Vai trò</th>

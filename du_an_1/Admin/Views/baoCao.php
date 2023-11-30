@@ -12,7 +12,7 @@
   <!-- or -->
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
   <!-- Font-icon css-->
-  <link rel="stylesheet" href="../../Public/fontawesome-free-6.4.2-web/css/all.css" />
+  <link rel="stylesheet" href="../Public/fontawesome-free-6.4.2-web/css/all.css" />
   <link rel="stylesheet" type="text/css"
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
@@ -50,16 +50,16 @@
     <ul class="app-menu">
       <li><a class="app-menu__item haha" href="phan-mem-ban-hang.html"><i class='app-menu__icon bx bx-film'></i>
           <span class="app-menu__label">Quản lý Slide</span></a></li>
-      <li><a class="app-menu__item active" href="#"><i class='app-menu__icon bx bx-tachometer'></i><span
+      <li><a class="app-menu__item active" href="index.php?act=dashboard"><i class='app-menu__icon bx bx-tachometer'></i><span
             class="app-menu__label">Bảng điều khiển</span></a></li>
       <li><a class="app-menu__item" href="index.php?act=listCategory"><i class=" app-menu__icon fa-solid fa-list fa-lg"></i><span
             class="app-menu__label">Quản lý danh mục</span></a></li>
-      <li><a class="app-menu__item " href="index.php?act=listCategory"><i class='app-menu__icon bx bx-id-card'></i> <span
+      <li><a class="app-menu__item " href="index.php?act=userList"><i class='app-menu__icon bx bx-id-card'></i> <span
             class="app-menu__label">Quản lý khách hàng</span></a></li>
       <li><a class="app-menu__item" href="index.php?act=listCourses"><i class='app-menu__icon bx bx-purchase-tag-alt'></i><span 
             class="app-menu__label">Quản lý khóa học</span></a>
       </li>
-      <li><a class="app-menu__item" href="table-data-oder.html"><i class='app-menu__icon bx bx-task'></i><span
+      <li><a class="app-menu__item" href="index.php?act=listOrder"><i class='app-menu__icon bx bx-task'></i><span
             class="app-menu__label">Quản lý đơn hàng</span></a></li>
       <li><a class="app-menu__item" href="index.php?act=listComment"><i class='app-menu__icon bx bx-run'></i><span
             class="app-menu__label">Quản lý bình luận
@@ -119,74 +119,66 @@
             </div>
         </div>
         <div class="row">
-                <div class="col-md-12">
+                <form action="../Models/exportExcel.php" method="post" class="col-md-12">
                     <div class="tile">
                         <div>
-                            <h3 class="tile-title">TỔNG ĐƠN HÀNG</h3>
+                            <h3 class="tile-title">DOANH THU KHOÁ HỌC</h3>
+                        </div>
+                        <div class="row element-button d-flex justify-content-between">
+                            <div class="col-sm-2">
+                                <button type="submit" name="exportExcel" class="btn btn-excel btn-xl" title="Xuất Excel">
+                                <i class="fas fa-file-excel">
+                                </i> Xuất Excel</button>
+                            </div>
+                            <div style="width: auto;">
+                                <div class="input-group">
+                                    <input type="date" name="dateStart" id="dateStart" class="form-control" placeholder="Username"
+                                        aria-label="Username">
+                                    <span class="input-group-text">Đến ngày</span>
+                                    <input type="date" name="dateEnd" id="dateEnd" class="form-control" placeholder="Server" aria-label="Server">
+                                    <button type="button" name="" onclick="searchDate()" class="btn btn-primary">Xem</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="tile-body">
                             <table class="table table-hover table-bordered" id="sampleTable">
                                 <thead>
-                                    <tr>
+                                    <tr>    
+                                            <th>STT</th>
                                             <th>ID đơn hàng</th>
                                             <th>Khách hàng</th>
-                                            <th>Đơn hàng</th>
-                                            <th>Số lượng</th>
-                                            <th>Tổng tiền</th>
+                                            <th>Tên khóa học</th>
+                                            <th>Ngày mua</th>
+                                            <th>Giá</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="showDate">
+                                    <?php
+                                    $i = 0;
+                                    foreach ($doanhThu as $dt){
+                                        extract($dt);
+                                        ++$i;
+                                        echo"
+                                        <tr>
+                                            <td>{$i}</td>
+                                            <td>#$order_id</td>
+                                            <td>$user_name</td>
+                                            <td>$course_name</td>
+                                            <td>$order_date</td>
+                                            <td>$course_price đ</td>
+                                        </tr>
+                                        ";
+                                    }
+                                    ?>
                                     <tr>
-                                            <td>MD0837</td>
-                                            <td>Triệu Thanh Phú</td>
-                                            <td>Ghế làm việc Zuno, Bàn ăn gỗ Theresa</td>
-                                            <td>2 sản phẩm</td>
-                                            <td>9.400.000 đ</td>
-                                    </tr>
-                                    <tr>
-                                            <td>MĐ8265</td>
-                                            <td>Nguyễn Thị Ngọc Cẩm</td>
-                                            <td>Ghế ăn gỗ Lucy màu trắng</td>
-                                            <td>1 sản phẩm</td>
-                                            <td>3.800.000 đ</td>   
-                                    </tr>
-                                    <tr>
-                                            <td>MT9835</td>
-                                            <td>Đặng Hoàng Phúc</td>
-                                            <td>Giường ngủ Jimmy, Bàn ăn mở rộng cao cấp Dolas, Ghế làm việc Zuno</td>
-                                            <td>3 sản phẩm</td>
-                                            <td>40.650.000 đ</td>
-                                    </tr>
-                                    <tr>
-                                            <td>ER3835</td>
-                                            <td>Nguyễn Thị Mỹ Yến</td>
-                                            <td>Bàn ăn mở rộng Gepa</td>
-                                            <td>1 sản phẩm</td>
-                                            <td>16.770.000 đ</td>
-                                    </tr>
-                                    <tr>
-                                            <td>AL3947</td>
-                                            <td>Phạm Thị Ngọc</td>
-                                            <td>Bàn ăn Vitali mặt đá, Ghế ăn gỗ Lucy màu trắng</td>
-                                            <td>2 sản phẩm</td>
-                                            <td>19.770.000 đ</td>
-                                    </tr>
-                                    <tr>
-                                            <td>QY8723</td>
-                                            <td>Ngô Thái An</td>
-                                            <td>Giường ngủ Kara 1.6x2m</td>
-                                            <td>1 sản phẩm</td>
-                                            <td>14.500.000 đ</td>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="4">Tổng cộng:</th>
+                                        <th colspan="5">Tổng cộng:</th>
                                         <td>104.890.000 đ</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         <div class="row">
             <div class="col-md-6">
@@ -209,6 +201,29 @@
 
         
     </main>
+    <script>
+        function searchDate() {
+            let dateStart = document.getElementById('dateStart').value;
+            console.log(dateStart);
+            let dateEnd = document.getElementById('dateEnd').value;
+            let showDate = document.getElementById('showDate');
+            console.log(dateEnd);
+
+            if(dateStart != "" && dateEnd != ""){
+                let xmlHttp = new XMLHttpRequest();
+                xmlHttp.onload = function () {
+                    showDate.innerHTML = xmlHttp.responseText;
+                }
+
+                xmlHttp.open('POST', '../Models/doanhThu.php');
+                xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlHttp.send(`dateStart=${dateStart}&dateEnd=${dateEnd}`);
+            }else{
+                showDate.innerHTML = "";
+            }
+        }
+    </script>
+
     <!-- Essential javascripts for application to work-->
     <script src="./views/js/jquery-3.2.1.min.js"></script>
     <script src="./views/js/popper.min.js"></script>

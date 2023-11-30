@@ -43,7 +43,7 @@ function load_one_sanpham($course_id){
 
 //
 function load_sanpham_cungloai($category_id){
-    $sql = "SELECT * FROM courses WHERE category_id = $category_id ORDER BY course_members DESC LIMIT 0,8";
+    $sql = "SELECT * FROM courses WHERE category_id = $category_id LIMIT 0,8";
     $dssanpham_cungloai =  pdo_query($sql);
     return $dssanpham_cungloai;
 }
@@ -257,7 +257,7 @@ function add_cart($user_id, $course_id){
 function load_cart($user_id){
     $sql = "SELECT * FROM carts 
             JOIN `courses` on carts.course_id = courses.course_id
-            WHERE user_id = $user_id";
+            WHERE user_id = $user_id ORDER BY carts.created_at DESC";
     $courses =  pdo_query($sql);
     return $courses;
 }

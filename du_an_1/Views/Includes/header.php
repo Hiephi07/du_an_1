@@ -243,10 +243,6 @@ ob_start(); // Start output buffering
             }
         }
 
-        // document.getElementById('search').addEventListener('blur',function() {
-        //     document.getElementById('showData').style.display = "none";
-        // })
-
         document.getElementById('search').addEventListener('focus',function() {
             document.getElementById('showData').style.display = "block";
         })

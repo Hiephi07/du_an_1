@@ -51,6 +51,8 @@
           <span class="app-menu__label">Quản lý Slide</span></a></li>
       <li><a class="app-menu__item active" href="index.php?act=dashboard"><i class='app-menu__icon bx bx-tachometer'></i><span
             class="app-menu__label">Bảng điều khiển</span></a></li>
+      <li><a class="app-menu__item" href="index.php?act=listCategory"><i class=" app-menu__icon fa-solid fa-list fa-lg"></i><span
+            class="app-menu__label">Quản lý danh mục</span></a></li>
       <li><a class="app-menu__item " href="index.php?act=userList"><i class='app-menu__icon bx bx-id-card'></i> <span
             class="app-menu__label">Quản lý khách hàng</span></a></li>
       <li><a class="app-menu__item" href="index.php?act=listCourses"><i class='app-menu__icon bx bx-purchase-tag-alt'></i><span 
@@ -125,7 +127,7 @@
           <div class="col-md-6">
             <div class="widget-small warning coloured-icon"><i class='icon bx bxs-shopping-bags fa-3x'></i>
               <div class="info">
-                <h4>Doanh thu</h4>
+                <h4>Tổng doanh thu</h4>
                 <p><b><?= number_format($totalRevenue['totalRevenue']) ?> đ</b></p>
                 <p class="info-tong">Doanh thu bán khóa học.</p>
               </div>
