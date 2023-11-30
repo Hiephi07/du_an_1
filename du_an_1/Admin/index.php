@@ -11,6 +11,7 @@ include "../Models/account.php";
 include "../Models/payment.php";
 include "../Models/user.php";
 include "../Models/order.php";
+include "../Models/category.php";
 
 include "Views/layouts/header.php";
 include "Views/layouts/navbar.php";
@@ -112,13 +113,13 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
         case 'deleteManyCourse':
             if (isset($_POST['deleteSelectedCourseBtn']) && isset($_POST['checkbox'])) {
-                    $deleteList = [];
-                    $deleteList = $_POST['checkbox'];
-                    foreach ($deleteList as $deleteItem) {
-                        deleteCourse($deleteItem);
-                    }
+                $deleteList = [];
+                $deleteList = $_POST['checkbox'];
+                foreach ($deleteList as $deleteItem) {
+                    deleteCourse($deleteItem);
                 }
-                header("Location: index.php?act=listCourses");
+            }
+            header("Location: index.php?act=listCourses");
             break;
         case 'editCourse':
             $courseId;
@@ -662,7 +663,118 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             header('Location: index.php?act=listOrder');
             break;
-        case 'deleteOrder':
+        case 'listCategory':
+            $listCategory = getAllCategories();
+            include "Views/list-category.php";
+            break;
+        case 'addCategory':
+            if (isset($_POST['insertCategoryBtn'])) {
+                $categoryName = $_POST['category_name'];
+
+                if ($categoryName == "") {
+                    $_SESSION['notice__insertCategory']['state'] = "alert-danger";
+                    $_SESSION['notice__insertCategory']['msg'] = "Không được để trống tên danh mục";
+                } else {
+                    if (checkCategoryNameAvailable($categoryName)) {
+                        $_SESSION['notice__insertCategory']['state'] = "alert-danger";
+                        $_SESSION['notice__insertCategory']['msg'] = "Tên danh mục đã tồn tại";
+                    } else {
+                        if (insertCategory($categoryName)) {
+                            $_SESSION['notice__insertCategory']['state'] = "alert-success";
+                            $_SESSION['notice__insertCategory']['msg'] = "Thêm danh mục thành công";
+                            unset($_POST);
+                        } else {
+                            $_SESSION['notice__insertCategory']['state'] = "alert-danger";
+                            $_SESSION['notice__insertCategory']['msg'] = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                        }
+                    }
+                }
+            }
+            include "Views/add-category.php";
+            break;
+        case 'editCategory':
+            $category;
+            $categoryId;
+            if (isset($_GET['categoryId'])) {
+                $categoryId = $_GET['categoryId'];
+                $category = getCategory($categoryId);
+            }
+
+            if (isset($_POST['editCategoryBtn'])) {
+                $categoryName = $_POST['category_name'];
+                if ($categoryName == "") {
+                    $_SESSION['notice__editCategory']['state'] = "alert-danger";
+                    $_SESSION['notice__editCategory']['msg'] = "Không được để trống tên danh mục";
+                } else {
+                    if (checkCategoryNameAvailable($categoryName) && $category['category_name'] != $categoryName) {
+                        $_SESSION['notice__editCategory']['state'] = "alert-danger";
+                        $_SESSION['notice__editCategory']['msg'] = "Tên danh mục đã tồn tại";
+                    } else {
+                        if (editCategory($categoryName, $categoryId)) {
+                            $_SESSION['notice__editCategory']['state'] = "alert-success";
+                            $_SESSION['notice__editCategory']['msg'] = "Cập nhật danh mục thành công";
+                        } else {
+                            $_SESSION['notice__editCategory']['state'] = "alert-danger";
+                            $_SESSION['notice__editCategory']['msg'] = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                        }
+                    }
+                }
+            }
+            $category = getCategory($categoryId);
+            include "Views/edit-category.php";
+            break;
+        case 'deleteCategory':
+            if (isset($_GET['categoryId'])) {
+                $categoryId = $_GET['categoryId'];
+                $categoryname = getCategory($categoryId)['category_name'];
+                if (deleteCategory($categoryId)) {
+                    $_SESSION['notice__categoryAction']['state'] = "alert-success";
+                    $_SESSION['notice__categoryAction']['msg'] = "Xóa danh mục '$categoryname' thành công";
+                } else {
+                    $_SESSION['notice__categoryAction']['state'] = "alert-danger";
+                    $_SESSION['notice__categoryAction']['msg'] = "Đã xảy ra lỗi, vui lòng thử lại sau";
+                }
+
+            }
+            header("Location: index.php?act=listCategory");
+            break;
+        case 'deleteManyCategory':
+            if (isset($_POST['deleteSelectedCategoryBtn']) && isset($_POST['checkbox'])) {
+                $deleteList = [];
+                $deleteList = $_POST['checkbox'];
+                foreach ($deleteList as $deleteItem) {
+                    deleteCategory($deleteItem);
+                }
+            }
+            header("Location: index.php?act=listCategory");
+        break;
+        case 'hideCategory':
+            if (isset($_GET['categoryId'])) {
+                $categoryId = $_GET['categoryId'];
+                $categoryname = getCategory($categoryId)['category_name'];
+                if (changeCategoryStatus($categoryId, 0)) {
+                    $_SESSION['notice__categoryAction']['state'] = "alert-success";
+                    $_SESSION['notice__categoryAction']['msg'] = "Danh mục '$categoryname' đã được ẩn";
+                } else {
+                    $_SESSION['notice__categoryAction']['state'] = "alert-danger";
+                    $_SESSION['notice__categoryAction']['msg'] = "Đã xảy ra lỗi, vui lòng thử lại sau";
+                } 
+            }
+            header("Location: index.php?act=listCategory");
+            break;
+        case 'showCategory':
+            if (isset($_GET['categoryId'])) {
+                $categoryId = $_GET['categoryId'];
+                $categoryname = getCategory($categoryId)['category_name'];
+                if (changeCategoryStatus($categoryId, 1)) {
+                    $_SESSION['notice__categoryAction']['state'] = "alert-success";
+                    $_SESSION['notice__categoryAction']['msg'] = "Danh mục '$categoryname' đã được hiển thị";
+                } else {
+                    $_SESSION['notice__categoryAction']['state'] = "alert-danger";
+                    $_SESSION['notice__categoryAction']['msg'] = "Đã xảy ra lỗi, vui lòng thử lại sau";
+                } 
+            }
+            header("Location: index.php?act=listCategory");
             break;
         default:
             include "Views/dashboard.php";
