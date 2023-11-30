@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 26, 2023 lúc 03:03 PM
+-- Thời gian đã tạo: Th12 01, 2023 lúc 12:36 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -39,9 +39,7 @@ CREATE TABLE `carts` (
 --
 
 INSERT INTO `carts` (`cart_id`, `user_id`, `course_id`, `created_at`) VALUES
-(1, 3, 0, '2023-11-15 04:08:30'),
-(2, 4, 0, '2023-11-15 04:08:30'),
-(3, 5, 0, '2023-11-15 04:08:30');
+(36, 12, 14, '2023-11-30 19:59:26');
 
 -- --------------------------------------------------------
 
@@ -51,17 +49,18 @@ INSERT INTO `carts` (`cart_id`, `user_id`, `course_id`, `created_at`) VALUES
 
 CREATE TABLE `category` (
   `category_id` int(11) NOT NULL,
-  `category_name` varchar(50) NOT NULL
+  `category_name` varchar(50) NOT NULL,
+  `category_status` varchar(50) NOT NULL DEFAULT '1' COMMENT '1: Hiển thị danh mục; 2: Ẩn danh mục	'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `category`
 --
 
-INSERT INTO `category` (`category_id`, `category_name`) VALUES
-(1, 'Backend'),
-(2, 'Frontend'),
-(3, 'Devops');
+INSERT INTO `category` (`category_id`, `category_name`, `category_status`) VALUES
+(1, 'Backend', ''),
+(2, 'Frontend', ''),
+(3, 'Devops', '');
 
 -- --------------------------------------------------------
 
@@ -98,7 +97,6 @@ CREATE TABLE `courses` (
   `course_name` varchar(255) NOT NULL,
   `course_price_sale` int(11) NOT NULL,
   `course_price` int(11) NOT NULL,
-  `course_members` int(11) NOT NULL,
   `course_image` varchar(50) NOT NULL,
   `course_desc` text NOT NULL,
   `course_status` tinyint(1) NOT NULL DEFAULT 1,
@@ -110,20 +108,20 @@ CREATE TABLE `courses` (
 -- Đang đổ dữ liệu cho bảng `courses`
 --
 
-INSERT INTO `courses` (`course_id`, `course_name`, `course_price_sale`, `course_price`, `course_members`, `course_image`, `course_desc`, `course_status`, `category_id`, `created_at`) VALUES
-(6, 'HTML CSS Pro', 2800000, 1299000, 1, 'HTML CSS Pro.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 1, '2023-11-21 21:45:46'),
-(7, 'Ngôn ngữ tiền xử lý Sass', 2500000, 1299000, 1, 'Ngôn ngữ tiền xử lý Sass.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 1, '2023-11-21 22:00:28'),
-(8, 'Kiến Thức Nhập Môn IT', 2200000, 500000, 1, 'Kiến Thức Nhập Môn IT.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 3, '2023-11-21 22:00:28'),
-(9, 'Lập trình C++ cơ bản, nâng cao', 3000000, 700000, 1, 'Lập trình C++ cơ bản, nâng cao.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 2, '2023-11-21 22:00:28'),
-(10, 'HTML CSS từ Zero đến Hero', 2400000, 300000, 10, 'HTML CSS từ Zero đến Hero.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 1, '2023-11-21 22:00:28'),
-(11, 'Responsive Với Grid System', 4200000, 750000, 98, 'Responsive Với Grid System.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 2, '2023-11-21 22:00:28'),
-(12, 'Lập Trình JavaScript Cơ Bản', 1100000, 200000, 55, 'Lập Trình JavaScript Cơ Bản.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 2, '2023-11-21 22:00:28'),
-(13, 'Lập Trình JavaScript Nâng Cao', 5420000, 880000, 785, 'Lập Trình JavaScript Nâng Cao.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 1, '2023-11-21 22:00:28'),
-(14, 'Làm việc với Terminal & Ubuntu', 4700000, 600000, 154, 'Làm việc với Terminal & Ubuntu.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 1, '2023-11-21 22:00:28'),
-(15, 'Xây Dựng Website với ReactJS', 6320000, 1500000, 365, 'Xây Dựng Website với ReactJS.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 2, '2023-11-21 22:00:28'),
-(16, 'Node & ExpressJS', 6700000, 2300000, 327, 'Node & ExpressJS.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 1, '2023-11-21 22:00:28'),
-(17, 'Git & Github', 1700000, 150000, 123, 'Git & Github.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 3, '2023-11-21 22:05:49'),
-(18, 'Webpack with ES6 & ReactJs', 1800000, 210000, 451, 'ES6 & ReactJs.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 2, '2023-11-21 22:05:49');
+INSERT INTO `courses` (`course_id`, `course_name`, `course_price_sale`, `course_price`, `course_image`, `course_desc`, `course_status`, `category_id`, `created_at`) VALUES
+(6, 'HTML CSS Pro', 2800000, 1299000, 'HTML CSS Pro.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 1, '2023-11-21 21:45:46'),
+(7, 'Ngôn ngữ tiền xử lý Sass', 2500000, 1299000, 'Ngôn ngữ tiền xử lý Sass.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 1, '2023-11-21 22:00:28'),
+(8, 'Kiến Thức Nhập Môn IT', 2200000, 500000, 'Kiến Thức Nhập Môn IT.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 3, '2023-11-21 22:00:28'),
+(9, 'Lập trình C++ cơ bản, nâng cao', 3000000, 700000, 'Lập trình C++ cơ bản, nâng cao.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 2, '2023-11-21 22:00:28'),
+(10, 'HTML CSS từ Zero đến Hero', 2400000, 300000, 'HTML CSS từ Zero đến Hero.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 1, '2023-11-21 22:00:28'),
+(11, 'Responsive Với Grid System', 4200000, 750000, 'Responsive Với Grid System.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 2, '2023-11-21 22:00:28'),
+(12, 'Lập Trình JavaScript Cơ Bản', 1100000, 200000, 'Lập Trình JavaScript Cơ Bản.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 2, '2023-11-21 22:00:28'),
+(13, 'Lập Trình JavaScript Nâng Cao', 5420000, 880000, 'Lập Trình JavaScript Nâng Cao.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 1, '2023-11-21 22:00:28'),
+(14, 'Làm việc với Terminal & Ubuntu', 4700000, 600000, 'Làm việc với Terminal & Ubuntu.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 1, '2023-11-21 22:00:28'),
+(15, 'Xây Dựng Website với ReactJS', 6320000, 1500000, 'Xây Dựng Website với ReactJS.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 2, '2023-11-21 22:00:28'),
+(16, 'Node & ExpressJS', 6700000, 2300000, 'Node & ExpressJS.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 1, '2023-11-21 22:00:28'),
+(17, 'Git & Github', 1700000, 150000, 'Git & Github.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 3, '2023-11-21 22:05:49'),
+(18, 'Webpack with ES6 & ReactJs', 1800000, 210000, 'ES6 & ReactJs.png', 'Khóa học dành cho mọi đối tượng, từ chưa biết nhiều về Docker đến những người đã làm việc với Docker nhưng cần hệ thống lại kiến thức một cách khoa học và hiểu sâu về cách Docker hoạt động\r\n\r\n\r\n\r\nKhóa học bao gồm toàn diện các khía cạnh về Docker như: container, image, volume, network, compose,... Nó cung cấp cho người học nền tảng kiến thức vững chắc để có thể xử lý các công việc liên quan đến Docker.\r\n\r\n\r\n\r\nNội dung mỗi bài giảng sẽ chia làm hai phần: lý thuyết (40%) và thực hành (60%), đảm bảo bám sát với thực tế và dễ nhớ, dễ hiểu nhất.\r\n\r\n\r\n\r\nCác ví dụ trong khóa học được lựa chọn để người học có thể làm quen được với các công nghệ phổ biến nhất như: NodeJS, Java SpringBoot, Python Django, Nginx, MySQL, Redis,... Và nội dung sẽ được cập nhật liên tục trong suốt quá trình update khóa học dựa theo ý kiến đóng góp của người học\r\n\r\n\r\n\r\nViệc làm chủ các kiến thức trong khóa học giúp người học có thể dễ dàng học tiếp các công nghệ nâng cao khác như Kubernetes. Từ đó giúp lộ trình nghề nghiệp được rộng mở và nhiều cơ hội hơn.', 1, 2, '2023-11-21 22:05:49');
 
 -- --------------------------------------------------------
 
@@ -134,17 +132,11 @@ INSERT INTO `courses` (`course_id`, `course_name`, `course_price_sale`, `course_
 CREATE TABLE `course_chapters` (
   `chapter_id` int(11) NOT NULL,
   `chapter_name` varchar(255) NOT NULL,
+  `chapter_desc` text NOT NULL,
+  `chapter_order` int(2) NOT NULL,
+  `chapter_status` int(11) NOT NULL DEFAULT 1,
   `course_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Đang đổ dữ liệu cho bảng `course_chapters`
---
-
-INSERT INTO `course_chapters` (`chapter_id`, `chapter_name`, `course_id`) VALUES
-(4, 'Chương 1: Thiết lập và tổng quan', 1),
-(5, 'Chương 2: Lý thuyết', 1),
-(6, 'Chương 3: Thực hiện dự án', 1);
 
 -- --------------------------------------------------------
 
@@ -181,17 +173,9 @@ CREATE TABLE `course_lessons` (
   `lesson_thumbnail` varchar(50) NOT NULL,
   `lesson_path` varchar(50) NOT NULL,
   `lesson_document` varchar(50) DEFAULT NULL,
+  `lesson_status` tinyint(1) NOT NULL DEFAULT 1,
   `chapter_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Đang đổ dữ liệu cho bảng `course_lessons`
---
-
-INSERT INTO `course_lessons` (`lesson_id`, `lesson_name`, `lesson_thumbnail`, `lesson_path`, `lesson_document`, `chapter_id`) VALUES
-(1, 'Bài 1: Giới thiệu khóa học', 'lesson_thumbnail', 'lesson_path', NULL, 4),
-(2, 'Bài 2: Cài đặt các công cụ', 'lesson_thumbnail', 'lesson_path', NULL, 4),
-(3, 'Bài 3: Các thiết lập quan trọng', 'lesson_thumbnail', 'lesson_path', NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -239,21 +223,20 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `user_id`, `course_id`, `order_date`, `order_status`) VALUES
-(1, 3, 0, '2023-11-14 17:10:32', 0),
-(2, 4, 0, '2023-11-14 17:10:32', 0),
-(3, 5, 0, '2023-11-14 17:12:08', 0),
-(13, 12, 13, '2023-11-22 23:40:42', 1),
 (10107043, 20, 13, '2023-11-25 21:08:26', 2),
 (10277613, 19, 13, '2023-11-24 16:40:30', 2),
 (18159864, 12, 11, '2023-11-23 05:51:41', 0),
 (22456323, 12, 16, '2023-11-23 05:50:40', 1),
 (55822647, 12, 18, '2023-11-22 23:48:40', 1),
+(60825333, 17, 14, '2023-12-01 04:06:13', 1),
 (60980120, 12, 13, '2023-11-22 23:36:25', 1),
-(69672745, 12, 7, '2023-11-23 05:56:20', 2),
-(75961066, 12, 18, '2023-11-23 06:01:02', 2),
-(79632507, 12, 7, '2023-11-23 05:56:28', 2),
-(83297076, 18, 13, '2023-11-24 15:28:14', 2),
+(69672745, 12, 7, '2023-11-23 05:56:20', 1),
+(75961066, 12, 18, '2023-11-23 06:01:02', 1),
+(79632507, 12, 7, '2023-11-23 05:56:28', 1),
+(83297076, 18, 13, '2023-11-24 15:28:14', 1),
+(83764081, 17, 18, '2023-12-01 04:09:55', 1),
 (96674360, 16, 9, '2023-11-24 15:18:11', 2),
+(97982110, 12, 10, '2023-11-28 15:52:43', 1),
 (98143750, 12, 13, '2023-11-22 23:44:49', 1),
 (98439682, 18, 6, '2023-11-24 15:27:07', 2);
 
@@ -294,28 +277,30 @@ CREATE TABLE `users` (
   `user_phone` varchar(10) NOT NULL,
   `user_status` tinyint(1) NOT NULL DEFAULT 1,
   `roles` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0: admin, 1; user',
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `user_session_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `user_name`, `user_password`, `user_avatar`, `user_email`, `user_phone`, `user_status`, `roles`, `created_at`) VALUES
-(1, 'user1', 'user1', '123456', 'avatar_default.png', 'user1@gmail.com', '', 1, 1, '2023-11-22 09:45:19'),
-(2, 'user2', 'user2', '123456', 'avatar_default.png', 'user2@gmail.com', '', 1, 1, '2023-11-22 09:45:19'),
-(3, 'user3', 'user3', '123', 'avatar_default.png', 'user3@gmail.com', '', 1, 1, '2023-11-22 09:45:19'),
-(4, 'user4', 'user4', '123', 'avatar_default.png', 'user4@gmail.com', '', 1, 1, '2023-11-22 09:45:19'),
-(5, 'user5', 'user5', '123', 'avatar_default.png', 'user5@gmail.com', '', 1, 1, '2023-11-22 10:11:08'),
-(11, 'user6', '', '123456', 'avatar_default.png', 'user6@gmail.com', '', 1, 1, '2023-11-22 16:29:26'),
-(12, 'user7', 'Trần Quang Hiệp', '0e3bbd26f46012ccec4776d171f314a00c022d98', 'dangky.png', 'user7@gmail.com', '098356789', 1, 1, '2023-11-22 16:34:33'),
-(13, 'user8', '', '0e3bbd26f46012ccec4776d171f314a00c022d98', 'avatar_default.png', 'user8@gmail.com', '', 1, 1, '2023-11-22 17:20:00'),
-(15, 'hieptqph43210', 'Tran Quang Hiep', '0e3bbd26f46012ccec4776d171f314a00c022d98', 'avatar_default.png', 'hieptqph43210@fpt.edu.vn', '', 1, 1, '2023-11-23 21:52:54'),
-(16, 'hiep', 'hiep1', 'de2281d00751accb1ec5913cad20fc7037992a5f', 'dangky.png', 'hiephidata123@gmail.com', '0981234567', 1, 1, '2023-11-23 23:01:35'),
-(17, 'user9', 'Quang Hiệp', '9b418a3f3e09018fc4274e596d455a3c286699d0', 'avatar_default.png', 'hiephidata@gmail.com', '', 1, 1, '2023-11-24 08:12:22'),
-(18, 'hiepdz', 'Nguyen Công Hiệp', '5c2e7a6fa0a6a182056a1e85b8397d4f0b4f7269', 'Ảnh chụp màn hình 2023-03-28 120944.png', 'hiepooo94@gmail.com', '0981234567', 1, 1, '2023-11-24 08:25:12'),
-(19, 'willTu', 'will gay Tu', 'b6a2050b23be98eb7df658d12b829af244bdd97d', 'Ảnh chụp màn hình 2023-03-28 120944.png', 'ducldph43245@fpt.edu.vn', '0981234567', 1, 1, '2023-11-24 09:36:50'),
-(20, 'user10', 'Quang Hiệp', 'b207a02ba972decfeb671d4733e7850ddce263df', 'nhin-nguoi-chuan.png', 'quyntph31502@fpt.edu.vn', '0981234567', 1, 1, '2023-11-25 14:06:54');
+INSERT INTO `users` (`user_id`, `username`, `user_name`, `user_password`, `user_avatar`, `user_email`, `user_phone`, `user_status`, `roles`, `created_at`, `user_session_id`) VALUES
+(1, 'user1', 'user1', '123456', 'avatar_default.png', 'user1@gmail.com', '', 1, 1, '2023-11-22 09:45:19', ''),
+(2, 'user2', 'user2', '0e3bbd26f46012ccec4776d171f314a00c022d98', 'avatar_default.png', 'user2@gmail.com', '', 1, 1, '2023-11-22 09:45:19', ''),
+(3, 'user3', 'user3', '123', 'avatar_default.png', 'user3@gmail.com', '', 1, 1, '2023-11-22 09:45:19', ''),
+(4, 'user4', 'user4', '123', 'avatar_default.png', 'user4@gmail.com', '', 1, 1, '2023-11-22 09:45:19', ''),
+(5, 'user5', 'user5', '123', 'avatar_default.png', 'user5@gmail.com', '', 1, 1, '2023-11-22 10:11:08', ''),
+(11, 'user6', '', '123456', 'avatar_default.png', 'user6@gmail.com', '', 1, 1, '2023-11-22 16:29:26', ''),
+(12, 'user7', 'Trần Quang Hiệp', '0e3bbd26f46012ccec4776d171f314a00c022d98', 'Screenshot (118).png', 'user7@gmail.com', '098356789', 1, 1, '2023-11-22 16:34:33', 'i7reul42qck238s71re7afngg1'),
+(13, 'user8', '', '0e3bbd26f46012ccec4776d171f314a00c022d98', 'avatar_default.png', 'user8@gmail.com', '', 1, 1, '2023-11-22 17:20:00', ''),
+(15, 'hieptqph43210', 'Tran Quang Hiep', '0e3bbd26f46012ccec4776d171f314a00c022d98', 'avatar_default.png', 'hieptqph43210@fpt.edu.vn', '', 1, 1, '2023-11-23 21:52:54', ''),
+(16, 'hiep', 'hiep1', 'de2281d00751accb1ec5913cad20fc7037992a5f', 'dangky.png', 'hiephidata123@gmail.com', '0981234567', 1, 1, '2023-11-23 23:01:35', ''),
+(17, 'user9', 'Quang Hiệp', 'a36dc4e726ba6529b5d4d9e3c156944d15def5fd', 'avatar_default.png', 'hiephidata@gmail.com', '', 1, 1, '2023-11-24 08:12:22', 'lukgf658d7g6f4lpi9e0c3145e'),
+(18, 'hiepdz', 'Nguyen Công Hiệp', '5c2e7a6fa0a6a182056a1e85b8397d4f0b4f7269', 'Ảnh chụp màn hình 2023-03-28 120944.png', 'hiepooo94@gmail.com', '0981234567', 1, 1, '2023-11-24 08:25:12', ''),
+(19, 'willTu', 'will gay Tu', 'b6a2050b23be98eb7df658d12b829af244bdd97d', 'Ảnh chụp màn hình 2023-03-28 120944.png', 'ducldph43245@fpt.edu.vn', '0981234567', 1, 1, '2023-11-24 09:36:50', ''),
+(20, 'user10', 'Quang Hiệp', 'b207a02ba972decfeb671d4733e7850ddce263df', 'nhin-nguoi-chuan.png', 'quyntph31502@fpt.edu.vn', '0981234567', 1, 1, '2023-11-25 14:06:54', ''),
+(21, 'admin', 'Name Admin', '0e3bbd26f46012ccec4776d171f314a00c022d98', 'avatar_default.png', 'admin@polyuni.fpt.vn', '', 1, 2, '2023-11-29 08:14:37', '');
 
 -- --------------------------------------------------------
 
@@ -334,9 +319,8 @@ CREATE TABLE `user_courses` (
 --
 
 INSERT INTO `user_courses` (`user_id`, `course_id`, `brought_at`) VALUES
-(3, 1, '2023-11-14 10:20:52'),
-(3, 2, '2023-11-14 10:20:52'),
-(4, 3, '2023-11-14 10:20:52');
+(17, 14, '2023-11-30 21:09:33'),
+(17, 18, '2023-11-30 21:10:51');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -431,7 +415,7 @@ ALTER TABLE `user_courses`
 -- AUTO_INCREMENT cho bảng `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT cho bảng `category`
@@ -479,7 +463,7 @@ ALTER TABLE `sliders`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
