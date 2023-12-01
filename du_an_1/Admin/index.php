@@ -820,6 +820,10 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             $courses = featured_course();
             $doanhThu = loadDoanhThu();
             include './Views/baoCao.php';
+            break;
+        default:
+            // header('location: index.php?act=dashboard');
+            break;
     }
 } else {
     include "./Views/login.php";

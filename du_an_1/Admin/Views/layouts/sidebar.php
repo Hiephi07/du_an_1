@@ -11,14 +11,22 @@
     <hr>
 
     <ul class="app-menu">
-      <li><a class="app-menu__item haha" href="phan-mem-ban-hang.html"><i class='app-menu__icon bx bx-film'></i>
-          <span class="app-menu__label">Quản lý Slide</span></a></li>
-      <li><a class="app-menu__item" href="index.php?act=dashboard"><i class='app-menu__icon bx bx-tachometer'></i><span
+      <li><a class="app-menu__item
+        <?php
+          switch ($_GET['act']) {
+            case 'dashboard':
+              echo 'active';
+              break;
+            default:
+              break;
+          }
+        ?>
+      " href="index.php?act=dashboard"><i class='app-menu__icon bx bx-tachometer'></i><span
             class="app-menu__label">Bảng điều khiển</span></a></li>
       <li><a class="app-menu__item
         <?php
           switch ($_GET['act']) {
-            case 'listCategory';
+            case 'listCategory':
               echo 'active';
               break;
             default:
@@ -31,16 +39,16 @@
       <li><a class="app-menu__item 
         <?php
           switch ($_GET['act']) {
-            case 'listCourses';
-            case 'add-course';
-            case 'editCourse';
-            case 'listChapters';
-            case 'addChapter';
-            case 'editChapter';
-            case 'listLessons';
-            case 'addLessonToCourse';
-            case 'addLesson';
-            case 'editLesson';
+            case 'listCourses':
+            case 'add-course':
+            case 'editCourse':
+            case 'listChapters':
+            case 'addChapter':
+            case 'editChapter':
+            case 'listLessons':
+            case 'addLessonToCourse':
+            case 'addLesson':
+            case 'editLesson':
               echo 'active';
               break;
             default:
@@ -48,7 +56,7 @@
           }
         ?>
       " href="index.php?act=listCourses"><i
-            class='app-menu__icon bx bx-purchase-tag-alt'></i><span class="app-menu__label">Quản lý khóa học</span></a>
+            class='app-menu__icon fa-solid fa-film fa-lg'></i><span class="app-menu__label">Quản lý khóa học</span></a>
       <div class="ml-5">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
@@ -64,8 +72,8 @@
       <li><a class="app-menu__item 
         <?php
           switch ($_GET['act']) {
-            case 'userList';
-            case 'addUser';
+            case 'userList':
+            case 'addUser':
               echo 'active';
               break;
             default:
@@ -82,7 +90,7 @@
       <li><a class="app-menu__item
           <?php
           switch ($_GET['act']) {
-              case 'listOrder';
+              case 'listOrder':
                 echo 'active';
                 break;
               default:
@@ -91,12 +99,46 @@
           ?>
       " href="index.php?act=listOrder"><i class='app-menu__icon bx bx-task'></i><span
             class="app-menu__label">Quản lý đơn hàng</span></a></li>
-      <li><a class="app-menu__item" href="index.php?act=listComment"><i class='app-menu__icon bx bx-run'></i><span
+      <li><a class="app-menu__item
+            <?php
+              switch ($_GET['act']) {
+                  case 'listComment':
+                    echo 'active';
+                    break;
+                  default:
+                    break;
+                }
+            ?>
+      " href="index.php?act=listComment"><i class='app-menu__icon fa-regular fa-comment fa-lg'></i><span
             class="app-menu__label">Quản lý bình luận
           </span></a></li>
-      <li><a class="app-menu__item" href="index.php?act=baoCao"><i
+      <li><a class="app-menu__item 
+            <?php
+              switch ($_GET['act']) {
+                  case 'listSlide':
+                    echo 'active';
+                    break;
+                  default:
+                    break;
+                }
+            ?>
+      " href="index.php?act=listSlide"><i class='app-menu__icon fa-regular fa-images fa-lg'></i>
+          <span class="app-menu__label">Quản lý Slide</span></a></li>
+
+      <li><a class="app-menu__item  
+            <?php
+            switch ($_GET['act']) {
+                case 'baocao':
+                  echo 'active';
+                  break;
+                default:
+                  break;
+              }
+            ?>
+      " href="index.php?act=baoCao"><i
             class='app-menu__icon bx bx-pie-chart-alt-2'></i><span class="app-menu__label">Báo cáo số thu</span></a>
       </li>
+      
     </ul>
 
   </aside>
