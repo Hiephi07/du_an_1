@@ -3,7 +3,7 @@
 ?>
 <?php
 session_start();
-$_SESSION['user']['role'] = 2;
+$_SESSION['admin']['role'] = 2;
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 include "../Models/connect.php";
 include "../Models/course.php";

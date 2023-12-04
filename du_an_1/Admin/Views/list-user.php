@@ -74,7 +74,7 @@
                                 </td>
                                 <td class="text-center">
                                   <?php
-                                      if ($_SESSION['user']['role'] == 2) {
+                                      if ($_SESSION['admin']['role'] == 2) {
                                         if ($user['roles'] == 3) {
                                             ?>
                                               <form action="index.php?act=changeUserStatus&userId=<?=$user['user_id']?>" method="post">
@@ -102,7 +102,7 @@
                                 </td>
                                 <td class="text-center">
                                   <?php
-                                      if ($_SESSION['user']['role'] == 2) {
+                                      if ($_SESSION['admin']['role'] == 2) {
                                         if ($user['roles'] == 3) {
                                             ?>
                                               <a href="index.php?act=deleteUser&userId=<?=$user['user_id']?>" class="btn btn-primary btn-sm trash deleteItem" type="button" title="Xóa">
