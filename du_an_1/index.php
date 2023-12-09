@@ -8,9 +8,11 @@ include "./Views/Includes/header.php";
 include "./Models/course.php";
 include "./Models/account.php";
 include "./Models/payment.php";
+include "./Models/slider.php";
 
 $featured_course = featured_course();
 $all_course = all_course();
+$all_slider = getHomeSlider();
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];

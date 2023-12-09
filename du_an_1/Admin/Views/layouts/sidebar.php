@@ -115,15 +115,16 @@
       <li><a class="app-menu__item 
             <?php
               switch ($_GET['act']) {
-                  case 'listSlide':
+                  case 'listSlider':
+                  case 'addSlider':
                     echo 'active';
                     break;
                   default:
                     break;
                 }
             ?>
-      " href="index.php?act=listSlide"><i class='app-menu__icon fa-regular fa-images fa-lg'></i>
-          <span class="app-menu__label">Quản lý Slide</span></a></li>
+      " href="index.php?act=listSlider"><i class='app-menu__icon fa-regular fa-images fa-lg'></i>
+          <span class="app-menu__label">Quản lý Slider</span></a></li>
 
       <li><a class="app-menu__item  
             <?php

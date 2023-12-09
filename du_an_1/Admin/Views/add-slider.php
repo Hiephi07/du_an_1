@@ -12,63 +12,33 @@
             <div class="tile">
                 <div class="tile-body">
                     <div class="add-product">
-                        <h1 class="text-center my-3">Thêm người dùng</h1>
+                        <h1 class="text-center my-3">Thêm slider</h1>
                         <form class="border p-4 rounded" action="" method="POST" enctype="multipart/form-data">
                             <?php
-                                if (isset($_SESSION['notice__insertUser'])) {
-                                    $state = $_SESSION['notice__insertUser']['state'];
-                                    $msg = $_SESSION['notice__insertUser']['msg'];
+                                if (isset($_SESSION['notice__insertSlider'])) {
+                                    $state = $_SESSION['notice__insertSlider']['state'];
+                                    $msg = $_SESSION['notice__insertSlider']['msg'];
                                     echo 
                                         '
                                             <div class="'.$state.' rounded-2  text-center p-2 mb-1 w-100 " role="alert">
                                                 '.$msg.'
                                             </div>
                                         ';
-                                    unset($_SESSION['notice__insertUser']);
+                                    unset($_SESSION['notice__insertSlider']);
                                 }
                             ?>
                             
                             <div class="mb-3">
-                                <label for="chapter_order" class="form-label">Vai trò người dùng</label>
-                                <select class="form-select" aria-label="Default select example" name="user_role">
-                                    <option selected value="0">Chọn vai trò user</option>
-                                        <?php
-                                            if ($_SESSION['admin']['role'] == 1) {
-                                                ?>
-                                                    <option value="1" <?php if (isset($_POST['user_role'])) echo ($_POST['user_role']==1)?"selected":FALSE;?> >SuperAdmin</option> 
-                                                    <option value="2" <?php if (isset($_POST['user_role'])) echo ($_POST['user_role']==2)?"selected":FALSE;?> >Admin</option> 
-                                                <?php
-                                            }
-                                        ?>
-                                        <option value="3" <?php if (isset($_POST['user_role'])) echo ($_POST['user_role']==3)?"selected":FALSE;?> >Customer</option> 
-                                </select>
+                                <label for="slider_order" class="form-label">Thứ tự của Slider đang thêm</label>
+                                <input type="number" class="form-control bg-white" id="slider_order" name="slider_order" value="<?php if (isset($_POST['slider_order'])) echo $_POST['slider_order'];?>"/>
                             </div>
                             <div class="mb-3">
-                                <label for="chapter_name" class="form-label">Tên đăng nhập</label>
-                                <input type="text" class="form-control bg-white" id="loginName" name="loginName" value="<?php if (isset($_POST['loginName'])) echo $_POST['loginName'];?>"/>
+                                <label for="slider_img" class="form-label">Slider</label>
+                                <input type="file" class="form-control bg-white" id="slider_img" name="slider_img"/>
                             </div>
-                            <div class="mb-3">
-                                <label for="chapter_name" class="form-label">Mật khẩu</label>
-                                <input type="password" class="form-control bg-white" id="user_password" name="user_password" value="<?php if (isset($_POST['user_password'])) echo $_POST['user_password'];?>"/>
-                            </div>
-                            <div class="mb-3">
-                                <label for="chapter_name" class="form-label">Nhập lại mật khẩu</label>
-                                <input type="password" class="form-control bg-white" id="user_repassword" name="user_repassword" value="<?php if (isset($_POST['user_repassword'])) echo $_POST['user_repassword'];?>"/>
-                            </div>
-                            <div class="mb-3">
-                                <label for="chapter_name" class="form-label">Họ tên</label>
-                                <input type="text" class="form-control bg-white" id="user_name" name="user_name" value="<?php if (isset($_POST['user_name'])) echo $_POST['user_name'];?>"/>
-                            </div>
-                            <div class="mb-3">
-                                <label for="chapter_name" class="form-label">Ảnh đại diện</label>
-                                <input type="file" class="form-control bg-white" id="user_avatar" name="user_avatar" value="<?php if (isset($_POST['user_avatar'])) echo $_POST['user_avatar'];?>"/>
-                            </div>
-                            <div class="mb-3">
-                                <label for="chapter_name" class="form-label">Email</label>
-                                <input type="gmail" class="form-control bg-white" id="user_email" name="user_email" value="<?php if (isset($_POST['user_email'])) echo $_POST['user_email'];?>"/>
-                            </div>
+
                             <div class="form-group d-flex justify-content-end">
-                                <input class="btn btn-primary " type="submit" value="Thêm người dùng" name="insertUserBtn" />
+                                <input class="btn btn-primary " type="submit" value="Thêm Slider" name="insertSliderBtn" />
                             </div>
                         </form>
                     </div>
@@ -133,5 +103,7 @@
         </div>
     </div>
 </div>
-
+<!--
+MODAL
+-->
 

@@ -33,7 +33,7 @@
                                 <select class="form-select" aria-label="Default select example" name="user_role" disabled>
                                     <option selected value="0">Chọn vai trò user</option>
                                         <?php
-                                            if ($_SESSION['user']['role'] == 1) {
+                                            if ($_SESSION['admin']['role'] == 1) {
                                                 ?>
                                                     <option value="1" <?=($userToEdit['roles']==1)?"selected":FALSE;?> >SuperAdmin</option> 
                                                     <option value="2" <?=($userToEdit['roles']==2)?"selected":FALSE;?> >Admin</option> 
