@@ -7,14 +7,17 @@ include "./Models/connect.php";
 include "./Models/course.php";
 include "./Models/account.php";
 include "./Models/payment.php";
+include "./Models/slider.php";
 include "./Models/watchLesson.php";
 include "./Models/comment.php";
 include "./Models/category.php";
 
 include "./Views/Includes/header.php";
 
+
 $featured_course = featured_course();
 $all_course = all_course();
+$all_slider = getHomeSlider();
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];

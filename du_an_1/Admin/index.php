@@ -3,6 +3,7 @@
 ?>
 <?php
 session_start();
+
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 include "../Models/connect.php";
 include "../Models/course.php";
@@ -11,6 +12,9 @@ include "../Models/payment.php";
 include "../Models/user.php";
 include "../Models/order.php";
 include "../Models/category.php";
+
+include "../Models/slider.php";
+
 include "../Models/comment.php";
 
 include "../Models/thong_ke.php";
@@ -21,6 +25,17 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
     include "Views/layouts/sidebar.php";
     include "Views/layouts/navbar.php";
 
+    $act = $_GET['act'];
+
+    if ($act != 'login' && $act != 'signin') {
+        include "Views/layouts/navbar.php";
+        include "Views/layouts/sidebar.php";
+        include "Views/layouts/header.php";
+    }
+
+}
+
+if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
     switch ($act) {
         case 'listCourses':
@@ -778,8 +793,133 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             header("Location: index.php?act=listCategory");
             break;
+        case 'listSlider':
+            $listSlider = getAllSlider();
+            include "Views/list-slider.php";
+            break;
+        case 'addSlider';
+            if (isset($_POST['insertSliderBtn'])) {
+                $sliderOrder = $_POST['slider_order'];
+                $sliderImg = $_FILES['slider_img']['name'];
+                $tmp_sliderImg = $_FILES['slider_img']['tmp_name'];
+                if ($sliderOrder == "" || $sliderImg == "") {
+                    $_SESSION['notice__insertSlider']['state'] = "alert-danger";
+                    $_SESSION['notice__insertSlider']['msg'] = "Bạn phải điền đầy đủ thông tin";
+                } else {
+                    if (getSliderOrderAvailable($sliderOrder)) {
+                        $_SESSION['notice__insertSlider']['state'] = "alert-danger";
+                        $_SESSION['notice__insertSlider']['msg'] = "Thứ tự slider đã tồn tại";
+                    } else {
+                        if (insertSlider($sliderOrder, $sliderImg) && move_uploaded_file($tmp_sliderImg, "../Public/images/sliders/".$sliderImg)) {
+                            $_SESSION['notice__insertSlider']['state'] = "alert-success";
+                            $_SESSION['notice__insertSlider']['msg'] = "Thêm thành công slider";
+                            unset($_POST);
+                        } else {
+                            $_SESSION['notice__insertSlider']['state'] = "alert-danger";
+                            $_SESSION['notice__insertSlider']['msg'] = "Đã xảy ra lỗi, vui lòng thử lại sau";
+                        }
+                    }
+                }
+            }
+            include "Views/add-slider.php";
+            break;
+        case 'editSlider':
+            $sliderId;
+            $sliderToEdit;
+            if (isset($_GET['sliderId'])) {
+                $sliderId = $_GET['sliderId'];
+                $sliderToEdit = getSlider($sliderId);
+            }
 
+            if (isset($_POST['editSliderBtn'])) {
+                $sliderOrder = $_POST['slider_order'];
+                $sliderImg = $_FILES['slider_img']['name'];
+                $tmp_sliderImg = $_FILES['slider_img']['tmp_name'];
 
+                if ($sliderOrder == "") {
+                    $_SESSION['notice__editSlider']['state'] = "alert-danger";
+                    $_SESSION['notice__editSlider']['msg'] = "Bạn phải điền đầy đủ thông tin";
+                } else {
+                    if (getSliderOrderAvailable($sliderOrder) && $sliderOrder != $sliderToEdit['slider_order']) {
+                        $_SESSION['notice__editSlider']['state'] = "alert-danger";
+                        $_SESSION['notice__editSlider']['msg'] = "Thứ tự slider đã tồn tại";
+                    } else {
+                        if ($sliderImg != "") {
+                            if (editSlider($sliderOrder, $sliderImg, $sliderId) && move_uploaded_file($tmp_sliderImg, "../Public/images/sliders/".$sliderImg)) {
+                                $_SESSION['notice__editSlider']['state'] = "alert-success";
+                                $_SESSION['notice__editSlider']['msg'] = "Cập nhật thành công slider";
+                                unset($_POST);
+                            } else {
+                                $_SESSION['notice__editSlider']['state'] = "alert-danger";
+                                $_SESSION['notice__editSlider']['msg'] = "Đã xảy ra lỗi, vui lòng thử lại sau";
+                            }
+                        } else {
+                            if (editSlider($sliderOrder, $sliderImg, $sliderId)) {
+                                $_SESSION['notice__editSlider']['state'] = "alert-success";
+                                $_SESSION['notice__editSlider']['msg'] = "Cập nhật thành công slider";
+                                unset($_POST);
+                            } else {
+                                $_SESSION['notice__editSlider']['state'] = "alert-danger";
+                                $_SESSION['notice__editSlider']['msg'] = "Đã xảy ra lỗi, vui lòng thử lại sau";
+                            }
+                        }
+                        
+                    }
+                }
+            }
+
+            $sliderToEdit = getSlider($sliderId);
+            include "Views/edit-slider.php";
+            break;
+        case 'deleteSlider':
+            if (isset($_GET['sliderId'])) {
+                $sliderId = $_GET['sliderId'];
+                if (deleteSlider($sliderId)) {
+                    $_SESSION['notice__sliderAction']['state'] = "alert-success";
+                    $_SESSION['notice__sliderAction']['msg'] = "Slider đã được xóa thành công";
+                } else {
+                    $_SESSION['notice__sliderAction']['state'] = "alert-danger";
+                    $_SESSION['notice__sliderAction']['msg'] = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                }
+            }
+            header("Location: index.php?act=listSlider");
+            break;
+        case 'deleteManySlider':
+            if (isset($_POST['deleteSelectedSliderBtn']) && isset($_POST['checkbox'])) {
+                $deleteList = [];
+                $deleteList = $_POST['checkbox'];
+                foreach ($deleteList as $deleteItem) {
+                    deleteSlider($deleteItem);
+                }
+            }
+            header("Location: index.php?act=listSlider");
+            break;
+        case 'hideSlider';
+            if (isset($_GET['sliderId'])) {
+                $sliderId = $_GET['sliderId'];
+                if (changeSliderStatus($sliderId, 0)) {
+                    $_SESSION['notice__sliderAction']['state'] = "alert-success";
+                    $_SESSION['notice__sliderAction']['msg'] = "Slider đã được ẩn";
+                } else {
+                    $_SESSION['notice__sliderAction']['state'] = "alert-danger";
+                    $_SESSION['notice__sliderAction']['msg'] = "Đã xảy ra lỗi, vui lòng thử lại sau";
+                } 
+            }
+            header("Location: index.php?act=listSlider");
+            break;
+        case 'showSlider';
+            if (isset($_GET['sliderId'])) {
+                $sliderId = $_GET['sliderId'];
+                if (changeSliderStatus($sliderId, 1)) {
+                    $_SESSION['notice__sliderAction']['state'] = "alert-success";
+                    $_SESSION['notice__sliderAction']['msg'] = "Slider đã được hiển thị";
+                } else {
+                    $_SESSION['notice__sliderAction']['state'] = "alert-danger";
+                    $_SESSION['notice__sliderAction']['msg'] = "Đã xảy ra lỗi, vui lòng thử lại sau";
+                } 
+            }
+            header("Location: index.php?act=listSlider");
+            break;
         case 'signin':
             if (isset($_POST['signinBtn'])) {
                 $username = $_POST['username'];
@@ -797,14 +937,14 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 
                     // $_SESSION['user_id'] = $account['user_id'];
                     // $_SESSION['user_session_id'] = $user_session_id;
-
+                  
                     header('location:index.php?act=dashboard');
                 } else {
                     $messLogin = 'Tài khoản hoặc mật khẩu không chính xác!';
                     include "./Views/login.php";
                 }
             }
-        break;
+            break;
         case 'logout':
             session_destroy();
             header('location:index.php');
@@ -853,14 +993,23 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include './Views/comment.php';
             break;
         default:
-            // header('location: index.php?act=dashboard');
+            include "./Views/login.php";
             break;
     }
 } else {
     include "./Views/login.php";
 }
 
-include "Views/layouts/footer.php";
+if (isset($_GET['act']) && $_GET['act'] != '') {
+    $act = $_GET['act'];
+
+    if ($act != 'login' && $act != 'signin') {
+        include "Views/layouts/footer.php";
+    }
+
+}
+
+
 
 ?>
 

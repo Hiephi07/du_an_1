@@ -8,7 +8,16 @@
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item active">
+                <?php
+                    foreach ($all_slider as $slider) {
+                        ?>
+                            <div class="carousel-item active">
+                                <img src="./Public/images/sliders/<?=$slider['slider_img']?>" class="d-block w-100" alt="..." height="400px" />
+                            </div>
+                        <?php
+                    }
+                ?>
+                <!-- <div class="carousel-item active">
                     <img src="./Public/images/banner1.png" class="d-block w-100" alt="..." height="400px" />
                 </div>
                 <div class="carousel-item">
@@ -16,7 +25,7 @@
                 </div>
                 <div class="carousel-item">
                     <img src="./Public/images/banner3.png" class="d-block w-100" alt="..." height="400px" />
-                </div>
+                </div> -->
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
