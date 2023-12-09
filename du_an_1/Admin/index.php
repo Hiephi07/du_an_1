@@ -941,7 +941,8 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     header('location:index.php?act=dashboard');
                 } else {
                     $messLogin = 'Tài khoản hoặc mật khẩu không chính xác!';
-                    include "./Views/login.php";
+                    header('location:index.php');
+                    // include "./Views/login.php";
                 }
             }
             break;
@@ -992,22 +993,22 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             $load_all_cmt = load_all_cmt();
             include './Views/comment.php';
             break;
-        default:
-            include "./Views/login.php";
-            break;
+        // default:
+        //     include "./Views/login.php";
+        //     break;
     }
 } else {
     include "./Views/login.php";
 }
 
-if (isset($_GET['act']) && $_GET['act'] != '') {
-    $act = $_GET['act'];
+// if (isset($_GET['act']) && $_GET['act'] != '') {
+//     $act = $_GET['act'];
 
-    if ($act != 'login' && $act != 'signin') {
-        include "Views/layouts/footer.php";
-    }
+//     if ($act != 'login' && $act != 'signin') {
+//         include "Views/layouts/footer.php";
+//     }
 
-}
+// }
 
 
 

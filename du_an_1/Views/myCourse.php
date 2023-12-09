@@ -1,5 +1,5 @@
     <!-- My Course -->
-    <main class="container-fluid w-1400 mt-5" id="main">
+    <main class="container-fluid w-1400 mt-5" id="main" style="min-height: 100dvh;">
         <div class="row mt-4">
 
             <h3 class="mt-3">Khóa học của tôi</h3>

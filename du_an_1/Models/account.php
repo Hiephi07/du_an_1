@@ -10,8 +10,8 @@ function signUp($email, $user, $pass, $user_name) {
         return 'Email hoặc Username đã tồn tại, vui lòng đăng ký tài khoản khác!';
     } else {
         // Nếu không tồn tại, thêm tài khoản mới
-        $insert_sql = "INSERT INTO users(user_email, username, user_password, user_name) 
-                        VALUES('$email', '$user', '$pass', '$user_name')";
+        $insert_sql = "INSERT INTO users(user_email, username, user_password, user_name, roles) 
+                        VALUES('$email', '$user', '$pass', '$user_name', 3)";
 
         pdo_execute($insert_sql);
         return 'Đã đăng ký thành công, vui lòng đăng nhập!';
@@ -20,7 +20,7 @@ function signUp($email, $user, $pass, $user_name) {
 
 //Đăng nhập User
 function signIn($user, $pass){
-    $sql = "SELECT * FROM users WHERE (username = '$user' OR user_email = '$user') AND user_password = '$pass' AND roles = 1";
+    $sql = "SELECT * FROM users WHERE (username = '$user' OR user_email = '$user') AND user_password = '$pass' AND roles = 3";
     $reslut = pdo_query_one($sql);
     return $reslut;
 }

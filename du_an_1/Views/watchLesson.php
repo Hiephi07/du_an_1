@@ -7,7 +7,7 @@
                     </video> -->
                     <div class="ratio ratio-16x9 border">
                         <video id="myVideo" controls autoplay>
-                            <source id="videoSource" src="./Public/video/one_million.mp4" type="video/mp4">
+                            <source id="videoSource" src="./Public/video/Bai_1_Ban_se_lam_duoc_gi_sau_khoa_hoc.mp4" type="video/mp4">
                         </video>
                     </div>
 
