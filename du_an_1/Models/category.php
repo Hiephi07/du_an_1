@@ -1,5 +1,11 @@
 <?php
 
+//show_Category
+function show_Category() {
+    $sql = "SELECT * FROM category WHERE category_status = 1";
+    return pdo_query($sql);
+}
+
 function totalCourseInCategory($categoryId) {
     $sql = "SELECT * FROM category WHERE category_id=$categoryId";
     return pdo_get_rows($sql);

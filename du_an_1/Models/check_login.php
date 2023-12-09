@@ -2,7 +2,7 @@
 
 //check_login.php
 
-$connect = new PDO('mysql:host=localhost;dbname=du_an_1;charset=utf8', 'root', '');
+$connect = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
 
 session_start();
 

@@ -30,9 +30,16 @@ ob_start(); // Start output buffering
         <form action="" method="POST" class="d-flex flex-row align-items-center" style="position: relative;">
             <div class="mx-2">
                 <select class="form-select" id="category" style="width: auto !important;">
-                    <option value="1">BackEnd</option>
+                    <?php 
+                    $show_Category = show_Category();
+                    foreach($show_Category as $category) {
+                        extract($category);
+                        echo"<option value='$category_id'>$category_name</option>";
+                        }
+                    ?>
+                    <!-- <option value="1">BackEnd</option>
                     <option value="2">FrontEnd</option>
-                    <option value="3">Devops</option>
+                    <option value="3">Devops</option> -->
                 </select>
             </div>
 
@@ -205,13 +212,10 @@ ob_start(); // Start output buffering
                 </form>
                 <ul class="list-group list-group-flush mt-2">
                     <li class="list-group-item p-2 border-0">
-                        <a href="#" class="text-decoration-none text-secondary">Giỏ hàng <span class="bg-danger py-1 px-2 fw-bold text-white rounded-2 ms-1">10</span></a>
-                    </li>
-                    <li class="list-group-item p-2 border-0">
-                        <a href="dangnhap.html" class="text-decoration-none text-secondary">Đăng nhập</a>
+                        <a href="index.php?act=signin" class="text-decoration-none text-secondary">Đăng nhập</a>
                     </li>
                     <li class="list-group-item p-2">
-                        <a href="dangky.html" class="text-decoration-none text-secondary">Đăng ký</a>
+                        <a href="index.php?act=signup" class="text-decoration-none text-secondary">Đăng ký</a>
                     </li>
                 </ul>
             </div>

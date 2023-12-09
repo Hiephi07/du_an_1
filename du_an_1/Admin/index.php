@@ -12,13 +12,19 @@ include "../Models/payment.php";
 include "../Models/user.php";
 include "../Models/order.php";
 include "../Models/category.php";
+
 include "../Models/slider.php";
+
+include "../Models/comment.php";
 
 include "../Models/thong_ke.php";
 
 
-
 if (isset($_GET['act']) && $_GET['act'] != '') {
+    include "Views/layouts/header.php";
+    include "Views/layouts/sidebar.php";
+    include "Views/layouts/navbar.php";
+
     $act = $_GET['act'];
 
     if ($act != 'login' && $act != 'signin') {
@@ -921,6 +927,17 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $account = loginAdmin($username, $password);
                 if (is_array($account)) {
                     $_SESSION['admin']['role'] = $account['roles'];
+                    // $_SESSION['user'] = $account;
+                    // session_regenerate_id();
+                    // $user_session_id = session_id();
+
+                    // $query = "UPDATE users SET user_session_id = '$user_session_id' 
+                    //         WHERE user_id = " . $account['user_id'];
+                    // pdo_query($query);
+
+                    // $_SESSION['user_id'] = $account['user_id'];
+                    // $_SESSION['user_session_id'] = $user_session_id;
+                  
                     header('location:index.php?act=dashboard');
                 } else {
                     $messLogin = 'Tài khoản hoặc mật khẩu không chính xác!';
@@ -945,6 +962,35 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             $courses = featured_course();
             $doanhThu = loadDoanhThu();
             include './Views/baoCao.php';
+            break;
+        case 'comment':
+            if(isset($_POST['deleteCmt'])){
+                $cmt_id = $_POST['cmt_id'];
+                delete_cmt($cmt_id);
+            }
+
+            $load_all_cmt = load_all_cmt();
+            include './Views/comment.php';
+            break;
+        case 'hiddenCmt':
+            if(isset($_GET['cmt_id'])){
+                echo $cmt_id = $_GET['cmt_id'];
+                status_cmt($cmt_id, 0);
+            }
+            $load_all_cmt = load_all_cmt();
+            include './Views/comment.php';
+            break;
+        case 'showCmt':
+            if(isset($_GET['cmt_id'])){
+                echo $cmt_id = $_GET['cmt_id'];
+                status_cmt($cmt_id, 1);
+            }
+            $load_all_cmt = load_all_cmt();
+            include './Views/comment.php';
+            break;
+        case 'statusCmt':
+            $load_all_cmt = load_all_cmt();
+            include './Views/comment.php';
             break;
         default:
             include "./Views/login.php";

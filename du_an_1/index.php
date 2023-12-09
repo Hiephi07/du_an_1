@@ -4,11 +4,16 @@ session_start();
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 include "./Models/connect.php";
-include "./Views/Includes/header.php";
 include "./Models/course.php";
 include "./Models/account.php";
 include "./Models/payment.php";
 include "./Models/slider.php";
+include "./Models/watchLesson.php";
+include "./Models/comment.php";
+include "./Models/category.php";
+
+include "./Views/Includes/header.php";
+
 
 $featured_course = featured_course();
 $all_course = all_course();
@@ -74,7 +79,8 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 if (isset($_SESSION['user']['user_id'])) {
                     $_SESSION['course_of_user'] = course_of_user($_SESSION['user']['user_id']);
                     if (in_array($_GET['course_id'], $_SESSION['course_of_user'])) {
-                        header('location: index.php?act=watchLesson&course_id' . $_GET['course_id']);
+                        // header('location: index.php?act=watchLesson&course_id=' . $_GET['course_id']);
+                        $learnNow = $_GET['course_id'];
                     }
                 }
 
@@ -82,9 +88,19 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $one_course = load_one_sanpham($course_id);
                 extract($one_course);
                 $course_cungLoai = load_sanpham_cungloai($category_id);
+                $load_cmt = load_cmt($_GET['course_id']);
                 include './Views/course.php';
             } else {
                 include 'view/home.php';
+            }
+            break;
+        case "sendCmt":
+            if (isset($_POST['sendCmt'])){
+                $contentCmt = $_POST['contentCmt'];
+                $user_id = $_SESSION['user']['user_id'];
+                $course_id = $_POST['course_id'];
+                insert_binhluan($contentCmt, $user_id, $course_id);
+                header("location: index.php?act=course&course_id=$course_id");
             }
             break;
         case "payment":
@@ -183,6 +199,11 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include './Views/myCourse.php';
             break;
         case "watchLesson":
+            if (isset($_GET['course_id']) && ($_GET['course_id'] > 0)) {
+                $getNameCourse = getNameCourse($_GET['course_id']);
+                $getChapterCourse = getChapterCourse($_GET['course_id']);
+                $getLessonCourse = getLessonCourse($_GET['course_id']);
+            }
             include './Views/watchLesson.php';
             break;
     }

@@ -23,7 +23,7 @@ function featured_course(){
 
 // tất cả khóa học
 function all_course(){
-    $sql = "SELECT * FROM courses WHERE course_status = 1 ORDER BY created_at DESC LIMIT 0,12";
+    $sql = "SELECT * FROM courses WHERE course_status = 1 ORDER BY created_at DESC";
     $courses =  pdo_query($sql);
     return $courses;
 }
@@ -43,7 +43,7 @@ function load_one_sanpham($course_id){
 
 //
 function load_sanpham_cungloai($category_id){
-    $sql = "SELECT * FROM courses WHERE category_id = $category_id LIMIT 0,8";
+    $sql = "SELECT * FROM courses WHERE category_id = $category_id LIMIT 0,4";
     $dssanpham_cungloai =  pdo_query($sql);
     return $dssanpham_cungloai;
 }
