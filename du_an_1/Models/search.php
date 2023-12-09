@@ -4,8 +4,8 @@ if (isset($_POST['search']) && isset($_POST['category_id'])) {
     $search = $_POST['search'];
     $category_id = $_POST['category_id'];
 
-    $connect = new PDO('mysql:host=localhost;dbname=du_an_1;charset=utf8', 'root', '');
-    $sql = "SELECT * FROM courses WHERE course_name LIKE '%".$search."%'" . " AND category_id = $category_id";
+    $connect = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
+    $sql = "SELECT * FROM courses WHERE course_name LIKE '%".$search."%'" . " AND category_id = $category_id AND course_status = 1";
     $stsm = $connect->query($sql);
 
     $output = "";

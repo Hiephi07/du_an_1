@@ -4,7 +4,7 @@ if (isset($_POST['dateEnd']) && isset($_POST['dateStart'])) {
     $dateEnd = $_POST['dateEnd'];
     $dateStart = $_POST['dateStart'];
 
-    $connect = new PDO('mysql:host=localhost;dbname=du_an_1;charset=utf8', 'root', '');
+    $connect = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
     $sql = "SELECT o.order_id, u.user_name, c.course_name, o.order_date, c.course_price
             FROM `orders` as o 
             JOIN users as u ON o.user_id = u.user_id

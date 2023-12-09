@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST['exportExcel'])) {
 
-    $connect = new PDO('mysql:host=localhost;dbname=du_an_1;charset=utf8', 'root', '');
+    $connect = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
     $dateStart = date("Y");
     $dateEnd = date("Y-m-d H:i:s");
     $sql = "SELECT o.order_id, u.user_name, c.course_name, o.order_date, c.course_price

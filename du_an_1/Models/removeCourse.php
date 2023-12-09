@@ -4,7 +4,7 @@ if (isset($_POST['course_id']) && $_POST['user_id']) {
     $course_id = $_POST['course_id'];
     $user_id = $_POST['user_id'];
 
-    $connect = new PDO('mysql:host=localhost;dbname=du_an_1;charset=utf8', 'root', '');
+    $connect = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
     $sql = "DELETE FROM carts
         WHERE user_id = $user_id AND course_id = $course_id";
 

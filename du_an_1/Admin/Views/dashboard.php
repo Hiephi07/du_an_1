@@ -138,14 +138,14 @@
       <li><a class="app-menu__item
             <?php
               switch ($_GET['act']) {
-                  case 'listComment':
+                  case 'comment':
                     echo 'active';
                     break;
                   default:
                     break;
                 }
             ?>
-      " href="index.php?act=listComment"><i class='app-menu__icon fa-regular fa-comment fa-lg'></i><span
+      " href="index.php?act=comment"><i class='app-menu__icon fa-regular fa-comment fa-lg'></i><span
             class="app-menu__label">Quản lý bình luận
           </span></a></li>
       <li><a class="app-menu__item 

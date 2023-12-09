@@ -116,7 +116,7 @@ function sendMailPass($email, $username, $pass) {
 
 //login
 function loginAdmin($user, $pass){
-    $sql = "SELECT * FROM users WHERE (username = '$user' OR user_email = '$user') AND user_password = '$pass' AND roles = 2";
+    $sql = "SELECT * FROM users WHERE (username = '$user' OR user_email = '$user') AND user_password = '$pass' AND (roles = 2 OR roles = 3)";
     $reslut = pdo_query_one($sql);
     return $reslut;
 }
