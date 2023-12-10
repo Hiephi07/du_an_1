@@ -8,12 +8,14 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 include "../Models/connect.php";
 include "../Models/course.php";
 include "../Models/account.php";
+include "Models/sendAdminEmail.php";
 include "../Models/payment.php";
 include "../Models/user.php";
 include "../Models/order.php";
 include "../Models/category.php";
 
 include "../Models/slider.php";
+include "../Models/admin.php";
 
 include "../Models/comment.php";
 
@@ -21,16 +23,20 @@ include "../Models/thong_ke.php";
 
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
-    include "Views/layouts/header.php";
-    include "Views/layouts/sidebar.php";
-    include "Views/layouts/navbar.php";
+    // include "Views/layouts/header.php";
+    // include "Views/layouts/sidebar.php";
+    // include "Views/layouts/navbar.php";
 
     $act = $_GET['act'];
 
-    if ($act != 'login' && $act != 'signin') {
-        include "Views/layouts/navbar.php";
-        include "Views/layouts/sidebar.php";
+    if ($act != 'login' && $act != 'signin' && $act != 'forgotPassword') {
         include "Views/layouts/header.php";
+        include "Views/layouts/navbar.php";
+        // if ($act != 'dashboard' && $act != 'baoCao') {
+        // }
+        
+        include "Views/layouts/sidebar.php";
+        
     }
 
 }
@@ -920,31 +926,148 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             header("Location: index.php?act=listSlider");
             break;
+        // case 'signin':
+        //     if (isset($_POST['signinBtn'])) {
+        //         $username = $_POST['username'];
+        //         $password = sha1($_POST['password']);
+        //         $account = loginAdmin($username, $password);
+        //         if (is_array($account)) {
+        //             $_SESSION['admin']['role'] = $account['roles'];
+        //             // $_SESSION['user'] = $account;
+        //             // session_regenerate_id();
+        //             // $user_session_id = session_id();
+
+        //             // $query = "UPDATE users SET user_session_id = '$user_session_id' 
+        //             //         WHERE user_id = " . $account['user_id'];
+        //             // pdo_query($query);
+
+        //             // $_SESSION['user_id'] = $account['user_id'];
+        //             // $_SESSION['user_session_id'] = $user_session_id;
+                  
+        //             header('location:index.php?act=dashboard');
+        //         } else {
+        //             $messLogin = 'Tài khoản hoặc mật khẩu không chính xác!';
+        //             header('location:index.php');
+        //             // include "./Views/login.php";
+        //         }
+        //     }
+        //     break;
         case 'signin':
             if (isset($_POST['signinBtn'])) {
                 $username = $_POST['username'];
                 $password = sha1($_POST['password']);
-                $account = loginAdmin($username, $password);
-                if (is_array($account)) {
-                    $_SESSION['admin']['role'] = $account['roles'];
-                    // $_SESSION['user'] = $account;
-                    // session_regenerate_id();
-                    // $user_session_id = session_id();
-
-                    // $query = "UPDATE users SET user_session_id = '$user_session_id' 
-                    //         WHERE user_id = " . $account['user_id'];
-                    // pdo_query($query);
-
-                    // $_SESSION['user_id'] = $account['user_id'];
-                    // $_SESSION['user_session_id'] = $user_session_id;
-                  
-                    header('location:index.php?act=dashboard');
+                $adminInfo = checkLoginAdmin($username, $password);
+                if (is_array($adminInfo)) {
+                    if ($adminInfo['user_status'] == 1) {
+                        $_SESSION['admin']['role'] = $adminInfo['roles'];
+                        $_SESSION['admin']['id'] = $adminInfo['user_id'];
+                        $_SESSION['admin']['user_name'] = $adminInfo['user_name'];
+                        $_SESSION['admin']['user_avatar'] = $adminInfo['user_avatar'];
+                        header('location:index.php?act=dashboard');
+                    } else {
+                        $messLogin = 'Tài khoản đã bị khóa';
+                        include "./Views/login.php";
+                    }
                 } else {
                     $messLogin = 'Tài khoản hoặc mật khẩu không chính xác!';
-                    header('location:index.php');
-                    // include "./Views/login.php";
+                    include "./Views/login.php";
                 }
             }
+            break;
+        case 'forgotPassword':
+            if (isset($_POST['forgotPasswordBtn'])) {
+                $email = $_POST['email'];
+                $checkAdminEmail = checkEmailAvailable($email);
+
+                if ($checkAdminEmail) {
+                    if ($checkAdminEmail['roles'] == 3) {
+                        $_SESSION['notice__adminForgotPassword']['state'] = "alert-danger";
+                        $_SESSION['notice__adminForgotPassword']['msg'] = "Email không có quyền";
+                    } else {
+                        if (sendMail2($email)) {
+                            $_SESSION['notice__adminForgotPassword']['state'] = "alert-success";
+                            $_SESSION['notice__adminForgotPassword']['msg'] = "Đã gửi mật khẩu mới tới email";
+                        } else {
+                            $_SESSION['notice__adminForgotPassword']['state'] = "alert-danger";
+                            $_SESSION['notice__adminForgotPassword']['msg'] = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                        }
+                    }
+                } else {
+                    $_SESSION['notice__adminForgotPassword']['state'] = "alert-danger";
+                    $_SESSION['notice__adminForgotPassword']['msg'] = "Email không tồn tại";
+                }
+
+            }
+            include "./Views/forgotPassword.php";
+            break;
+        case 'editProfileAdmin';
+            if (isset($_POST['btnEditProfile'])) {
+                $userName = $_POST['userName'];
+                if ($userName == "") {
+                    $_SESSION['notice__adminProfile']['state'] = "alert-danger";
+                    $_SESSION['notice__adminProfile']['msg'] = "Không được để trống tên quản trị viên";
+                } else {
+                    if (updateAdminInfo($_SESSION['admin']['id'], $userName)) {
+                        $_SESSION['notice__adminProfile']['state'] = "alert-success";
+                        $_SESSION['notice__adminProfile']['msg'] = "Cập nhật thành công";
+                        $_SESSION['admin']['user_name'] = $userName;
+                    } else {
+                        $_SESSION['notice__adminProfile']['state'] = "alert-danger";
+                        $_SESSION['notice__adminProfile']['msg'] = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                    }
+                }
+            }
+
+            if (isset($_POST['btnChangeAdminAvatar'])) {
+                $adminAvatar = $_FILES['adminAvatar']['name'];
+                $tmp_adminAvatar=$_FILES['adminAvatar']['tmp_name'];
+
+                if ($adminAvatar == "") {
+                    $_SESSION['notice__adminProfile']['state'] = "alert-danger";
+                    $_SESSION['notice__adminProfile']['msg'] = "Bạn chưa upload ảnh";
+                } else {
+                    if (changeAvatar($_SESSION['admin']['id'], $adminAvatar) && move_uploaded_file($tmp_adminAvatar, "../Public/images/Avatar/".$adminAvatar)) {
+                        $_SESSION['admin']['user_avatar'] = $adminAvatar;
+                        $_SESSION['notice__adminProfile']['state'] = "alert-success";
+                        $_SESSION['notice__adminProfile']['msg'] = "Cập nhật ảnh đại diện thành công";
+                    } else {
+                        $_SESSION['notice__adminProfile']['state'] = "alert-danger";
+                        $_SESSION['notice__adminProfile']['msg'] = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                    }
+                }
+            }
+            include "./Views/admin-editProfile.php";
+            break;
+        case 'changePasswordAdmin';
+            if (isset($_POST['changeAdminPasswordBtn'])) {
+                $oldPassword = $_POST['oldPassword'];
+                $newPassword = $_POST['newPassword'];
+                $confirmNewPassword = $_POST['confirmNewPassword'];
+                if ($oldPassword == "" || $newPassword == "" || $confirmNewPassword == "") {
+                    $_SESSION['notice__adminChangePassword']['state'] = "alert-danger";
+                    $_SESSION['notice__adminChangePassword']['msg'] = "Bạn phải điền đầy đủ thông tin";
+                } else {
+                    if (checkAdminPassword($_SESSION['admin']['id'], sha1($oldPassword))) {
+                        if ($newPassword == $confirmNewPassword) {
+                            if (changeAdminPassword($_SESSION['admin']['id'], sha1($newPassword))) {
+                                $_SESSION['notice__adminChangePassword']['state'] = "alert-success";
+                                $_SESSION['notice__adminChangePassword']['msg'] = "Thay đổi mật khẩu thành công";
+                            } else {
+                                $_SESSION['notice__adminChangePassword']['state'] = "alert-danger";
+                                $_SESSION['notice__adminChangePassword']['msg'] = "Đã có lỗi xảy ra, vui lòng thử lại sau";
+                            }
+                        } else {
+                            $_SESSION['notice__adminChangePassword']['state'] = "alert-danger";
+                            $_SESSION['notice__adminChangePassword']['msg'] = "Mật khẩu nhập lại không khớp";
+                        }
+                    } else {
+                        $_SESSION['notice__adminChangePassword']['state'] = "alert-danger";
+                        $_SESSION['notice__adminChangePassword']['msg'] = "Mật khẩu cũ không chính xác";
+                    }
+                }
+                
+            }
+            include "./Views/admin-changePassword.php";
             break;
         case 'logout':
             session_destroy();
@@ -993,9 +1116,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             $load_all_cmt = load_all_cmt();
             include './Views/comment.php';
             break;
-        // default:
-        //     include "./Views/login.php";
-        //     break;
+        default:
+            include "./Views/login.php";
+            break;
     }
 } else {
     include "./Views/login.php";
@@ -1009,6 +1132,14 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 //     }
 
 // }
+
+if (isset($_GET['act']) && $_GET['act'] != '') {
+    $act = $_GET['act'];
+
+    if ($act != 'login' && $act != 'signin' && $act != 'forgotPassword') {
+        include "Views/layouts/footer.php";
+    }
+}
 
 
 

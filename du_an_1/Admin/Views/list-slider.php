@@ -30,7 +30,7 @@
                     </div>
                     <div>
                         <a href="index.php?act=addSlider" class="btn btn-primary"><i class="fa-solid fa-plus me-2" ></i>Thêm slider</a>
-                        <a href="index.php?act=addSlider" class="btn btn-primary btn-add">Sắp xếp thứ tự</a>
+                        <!-- <a href="index.php?act=addSlider" class="btn btn-primary btn-add">Sắp xếp thứ tự</a> -->
                     </div>
                 </div>
                 <div class="tile-body">

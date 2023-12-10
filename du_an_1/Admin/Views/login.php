@@ -50,11 +50,11 @@
                             <input type="submit" value="Đăng nhập" name="signinBtn" id="submit" />
                         </div>
                         <!--=====LINK TÌM MẬT KHẨU======-->
-                        <!-- <div class="text-right p-t-12">
-                            <a class="txt2" href="/forgot.html">
+                        <div class="text-right p-t-12">
+                            <a class="txt2" href="index.php?act=forgotPassword">
                                 Bạn quên mật khẩu?
                             </a>
-                        </div> -->
+                        </div>
                     </form>
                 </div>
             </div>

@@ -3,9 +3,16 @@
     <div class="row">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <?php
+                    for ($x = 0; $x < sizeof($all_slider); $x++) {
+                        ?>
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<?=$x?>" aria-label="Slide <?=$x+1?>" <?php if ($x === 0) echo 'class="active" aria-current="true"'?> ></button>
+                        <?php
+                    }
+                    
+                ?>                
+                <!-- <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button> -->
             </div>
             <div class="carousel-inner">
                 <?php
