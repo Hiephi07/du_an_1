@@ -26,6 +26,7 @@
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"
         ></script>
+        <script src="../Public/js/js_bootstrap.bundle.min.js" defer></script>
     </head>
 
     <body onload="time()" class="app sidebar-mini rtl"></body>

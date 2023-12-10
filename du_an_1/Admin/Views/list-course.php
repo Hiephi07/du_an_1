@@ -65,9 +65,16 @@
                                                 <?=totalLessonInCourse($course['course_id'])?>
                                             </td>
                                             <td class="text-center">
-                                                <a href="index.php?act=deleteCourse&courseId=<?=$course['course_id']?>" class="btn btn-primary btn-sm trash deleteItem" type="button" title="Xóa">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </a>
+                                                <?php
+                                                    if ($_SESSION['admin']['role'] == 1) {
+                                                        ?>
+                                                            <a href="index.php?act=deleteCourse&courseId=<?=$course['course_id']?>" class="btn btn-primary btn-sm trash deleteItem" type="button" title="Xóa">
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </a>
+                                                        <?php
+                                                    }
+                                                ?>
+                                                
                                                 <?php 
                                                     if ($course['course_status'] == 1) {
                                                         ?>
@@ -79,9 +86,11 @@
                                                         <?php
                                                     }
                                                 ?>
+                                                
                                                 <a href="index.php?act=editCourse&courseId=<?=$course['course_id']?>" class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
+                                                        
                                             </td>
                                         </tr>
                                     <?php

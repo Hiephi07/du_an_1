@@ -101,30 +101,29 @@
                                   
                                 </td>
                                 <td class="text-center">
+                                  
                                   <?php
-                                      if ($_SESSION['admin']['role'] == 2) {
-                                        if ($user['roles'] == 3) {
-                                            ?>
-                                              <a href="index.php?act=deleteUser&userId=<?=$user['user_id']?>" class="btn btn-primary btn-sm trash deleteItem" type="button" title="Xóa">
-                                                  <i class="fas fa-trash-alt"></i>
-                                              </a>
-                                              <a href="index.php?act=editUser&userId=<?=$user['user_id']?>" class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP">
-                                                  <i class="fas fa-edit"></i>
-                                              </a>
-                                            <?php
-                                          }
-                                      } else {
-                                        if ($user['roles'] != 1) {
+
+                                    if ($_SESSION['admin']['role'] == 2) {
+                                      if ($user['roles'] == 3) {
                                           ?>
-                                            <a href="index.php?act=deleteUser&userId=<?=$user['user_id']?>" class="btn btn-primary btn-sm trash deleteItem" type="button" title="Xóa">
-                                              <i class="fas fa-trash-alt"></i>
-                                            </a>
                                             <a href="index.php?act=editUser&userId=<?=$user['user_id']?>" class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                           <?php
                                         }
+                                    } else {
+                                      if ($user['roles'] != 1) {
+                                        ?>
+                                          <a href="index.php?act=deleteUser&userId=<?=$user['user_id']?>" class="btn btn-primary btn-sm trash deleteItem" type="button" title="Xóa">
+                                            <i class="fas fa-trash-alt"></i>
+                                          </a>
+                                          <a href="index.php?act=editUser&userId=<?=$user['user_id']?>" class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP">
+                                              <i class="fas fa-edit"></i>
+                                          </a>
+                                        <?php
                                       }
+                                    }
                                   ?>
                                   
                                 </td>

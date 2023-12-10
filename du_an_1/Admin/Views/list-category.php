@@ -61,9 +61,16 @@
                                                 <?=totalCourseInCategory($category['category_id'])?>
                                             </td>
                                             <td class="text-center">
-                                                <a href="index.php?act=deleteCategory&categoryId=<?=$category['category_id']?>" class="btn btn-primary btn-sm trash deleteItem" type="button" title="Xóa">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </a>
+                                                <?php
+                                                    if ($_SESSION['admin']['role'] == 1) {
+                                                        ?>
+                                                            <a href="index.php?act=deleteCategory&categoryId=<?=$category['category_id']?>" class="btn btn-primary btn-sm trash deleteItem" type="button" title="Xóa">
+                                                                <i class="fas fa-trash-alt"></i>
+                                                            </a>
+                                                        <?php
+                                                    }
+                                                ?>
+                                                
                                                 <?php
                                                     if ($category['category_status'] == 1) {
                                                         ?>
@@ -80,6 +87,7 @@
                                                 <a href="index.php?act=editCategory&categoryId=<?=$category['category_id']?>" class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
+                                                        
                                             </td>
                                         </tr>
                                     <?php

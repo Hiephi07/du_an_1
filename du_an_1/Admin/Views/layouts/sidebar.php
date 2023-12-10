@@ -1,13 +1,29 @@
   <!-- Sidebar menu-->
   <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
   <aside class="app-sidebar">
-    <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="/images/hay.jpg" width="50px"
+    <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="../Public/images/Avatar/<?php
+      if (isset($_SESSION['admin']['user_avatar'])) {
+        echo $_SESSION['admin']['user_avatar'];
+      } else {
+        echo "avatar_default.png";
+      }
+    ?>
+    " width="50px"
         alt="User Image">
       <div>
-        <p class="app-sidebar__user-name"><b>Anonymous</b></p>
-        <p class="app-sidebar__user-designation">Chào mừng bạn trở lại</p>
+        <p class="app-sidebar__user-name fs-2"><b><?=$_SESSION['admin']['user_name']?></b></p>
+        <p class="app-sidebar__user-designation mt-2">
+          <?php
+            if ($_SESSION['admin']['role'] == 1) {
+              echo "SuperAdmin";
+            } else {
+              echo "Admin";
+            }
+          ?>
+        </p>
       </div>
     </div>
+
     <hr>
 
     <ul class="app-menu">
@@ -129,7 +145,7 @@
       <li><a class="app-menu__item  
             <?php
             switch ($_GET['act']) {
-                case 'baocao':
+                case 'baoCao':
                   echo 'active';
                   break;
                 default:

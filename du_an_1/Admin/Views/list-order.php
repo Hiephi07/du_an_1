@@ -24,9 +24,9 @@
                             unset($_SESSION['notice__orderAction']);
                         }
                     ?>
-                    <div class="d-flex justify-content-end align-items-center mb-2 ">
+                    <!-- <div class="d-flex justify-content-end align-items-center mb-2 ">
                         <a href="index.php?act=addOrder" class="btn btn-add"><i class="fa-solid fa-plus me-2" ></i>Thêm đơn hàng</a>
-                    </div>
+                    </div> -->
                     <table class="table table-hover table-bordered" id="sampleTable">
                         <thead>
                             <tr>
@@ -36,7 +36,7 @@
                                 <th class="text-center">Thời gian mua</th>
                                 <th class="text-center">Tổng tiền</th>
                                 <th class="text-center">Trạng thái</th>
-                                <th class="text-center">Hành động</th>
+                                <!-- <th class="text-center">Hành động</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -59,10 +59,10 @@
                                                     </select>
                                                 </form>
                                             </td>
-                                            <td class="text-center">
+                                            <!-- <td class="text-center"> -->
                                                 <!-- <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"><i class="fas fa-trash-alt"></i></button> -->
-                                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button>
-                                            </td>
+                                                <!-- <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fa fa-edit"></i></button> -->
+                                            <!-- </td> -->
                                         </tr>
                                     <?php
                                 }
