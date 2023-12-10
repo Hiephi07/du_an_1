@@ -1,7 +1,7 @@
 <?php
 //get all User
 function allUser(){
-    $sql = "SELECT COUNT(*) AS totalUser FROM `users` WHERE roles = 1";
+    $sql = "SELECT COUNT(*) AS totalUser FROM `users` WHERE roles = 3";
     return pdo_query_one($sql);
 }
 
