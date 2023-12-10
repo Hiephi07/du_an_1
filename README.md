@@ -2,7 +2,6 @@
 
 #Member: Tran Quang Hiep (Leader)
          Nguyen Hung Bac
-         Lam Anh Quan
 
 #Name Project: Online Learning Website (PolyLearn)
 
@@ -17,7 +16,8 @@
             + Decentralization
             + Phân quyền
 
-`Giai đoạn 1 (1/11 - 5/11): Chọn đề tài, Khảo sát, xây dựng cấu trúc dự án (User Flow, Design DB, Struct Folder Project)
+`Giai đoạn 1 (1/11 - 5/11): Chọn đề tài, Khảo sát, xây dựng cấu trúc dự án (User Flow, Flow Admin, Design DB, Struct Folder Project)
+
  Giai đoạn 2 (6/11 - 12/11): Xây dựng giao diện User & Admin (có responsive)
  Giai đoạn 3 (13/11 - 19/11): Xây dựng chức năng người dùng (70%)
  Giai đoạn 4 (20/11 - 26/11): Xây dựng chức năng người dùng (30%) và Admin (100%)
@@ -28,46 +28,56 @@
 #Funcition: 
 - User: 
 + watch category course: all user
-+ watch detail course: all user
++ watch detail course: all user(name,price, disc, danh sách bài học, comment)(F8 + Udemy)
 + add course cart: all user (Nếu chưa Login sẽ lưu vào locolStorage, có hiện số lượng khóa học được thêm)
 + buy: bắt buộc phải đăng nhập
 + pay: sau khi đăng nhập mới sử dụng được
-+ edit info: Họ, tên, username, email, mô tả, avata
++ edit info: Họ, tên, username, email, mô tả, avatar
 + my course: sau khi đăng nhập mới hiển thị
 + Notification: // có thể bỏ //
-+ Sign in: validate username >= 6; pw >= 8, ký tự đặc biệt, viết hoa , chữ số
++ Sign in: validate username >= 6; pw >= 8, ký tự đặc biệt, viết hoa , chữ số(oninput)
 + Login: kỹ thuật SINGLE SESSION PER USER (https://www.youtube.com/watch?v=NXtdRO5N6B0)
 + Forget Password: gửi mật khẩu mới về email được đăng ký (user submit quên pw CSDL tự Random 1 pw mới sau đó gửi về Mail)
 + Lưu trữ tk cho lần đăng nhập sau: cookie
-+ comment: bắt buộc phải đăng nhập
++ comment: bắt buộc phải đăng nhập, thêm, sửa, xóa
 + My learning: sau khi đăng nhập mới hiển thị
-+ Watch video: sử dụng kỹ thuật load video 1 phần, xem quá 80% mới đc next video
+<!-- + Watch video: sử dụng kỹ thuật load video 1 phần, xem quá 80% mới đc next video -->
 + lesson list: hiển thị danh sách video trong khóa học đó.
-+ note in video: ghi chú kiến thức.
+<!-- + *note in video: ghi chú kiến thức. -->
 + Ưu đãi: giá gốc(thẻ del), giá ưu đãi
 + Lịch sử mua
++ Pagination: (Sử dụng Ajax)
 + Search: Autocompalte (Sử dụng Ajax)
-+ Delete account: ẩn tk, trong DB có 2 cột userDel (user tự del acc) sẽ bị ẩn
-                    AdminHide: admin sẽ ẩn tk đấy
-
+<!-- + Delete account: ẩn tk, trong DB có 2 cột userDel (user tự del acc) sẽ bị ẩn
+                    AdminHide: admin sẽ ẩn tk đấy -->
++ Page Liên hệ(F8): cho người dùng gửi phản ánh (Email,tiêu đề,họ tên,sdt, nội dung)
++ User mua khóa học đó rồi thì chuyển hướng sang xem khóa học đó.
+<!-- Search: thanh tìm kiếm chỉ để ở trang Home -->
 
 - Admin:
-+ Lịch sử login của Admin, User
-+ Info User
+<!-- + Lịch sử login của Admin, User -->
++ Info User(số KH đã mua => Chi tiết lịch sử học User - số bài đã học/tổng số bài)
 + CRUD và ẩn danh mục khóa học
 + CRUD và ẩn khóa học
 + CRUD và ẩn bài học trong khóa học
 + Thống kê theo biểu đồ miền: total user, User new / tháng; sl User mua khóa học , sl user mua khóa học mới theo tháng; doanh thu, doanh thu/tháng
 + Comment: delete, hide
-+ Quản lý: Header, Slider, Footer
++ Quản lý: Header, Slider, Footer, Khóa học nổi bật(tự chọn), Tất cả khóa học sắp xếp theo ngày tạo mới nhất/cũ nhất/nhiều lượt mua nhất.
++ DB thêm bảng liên hệ (id, email, tieude, noidung, datraloi(yes/no) )
++ Super Admin.
+<!-- Thêm trong trang phương thức thanh toán(VNPay, Mono, ZaloPay, Bank(checked)) -> new Page Xác 
+nhận thanh toán(5p không nhấn Xác nhận ) -> Done/Cancelled -->
+<!--  -->
 
-`Giao diện Admin tham khảo: https://www.youtube.com/watch?v=O_oFVzv-yLQ
-https://www.youtube.com/watch?v=eNEgqCIFPQ8&list=PLWTu87GngvNwRxrFZ_wbxfvHHed14H5RC`
-
-
+<!-- Nâng cao -->
+<!-- Quản lý tiến độ học -->
+<!-- Quizz -->
+<!-- Cấp chứng chỉ -->
+<!--  -->
 - Cấu trúc thư mục dự án: 
+<!-- + Core: select_one, select_all, check_login -->
 
-- Quy tắc đặt tên class, thư mục file:
+- Quy tắc đặt tên class, thư mục file: 
 
 - Quy tắc Commit : 
 + thêm file: "add ten_file"
